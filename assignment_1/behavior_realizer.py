@@ -1,10 +1,10 @@
-from collections import Counter
 from qibullet import SimulationManager
 import gtts
 from playsound import playsound
 import threading
 import time
 import tempfile
+from collections import namedtuple
 
 from math import pi
 
@@ -30,6 +30,8 @@ class WavingSkill():
     -------
     degtorad(x)
         Converts x degrees into radians 
+    execute_state(x)
+        Executes the state described as a tuple of parameters
     __call__(execTime)
         Performs the actual FSM commanding joint angles for execTime seconds
     """
@@ -44,67 +46,53 @@ class WavingSkill():
         self.pepper = pepperInstance
         self.waveAngle = waveAngle
 
+        state = namedtuple(
+            'state', ['jointName', 'targetDegree', 'speed', 'nextState', 'threshold'])
+
+        # Basic FSM Diagram
+        # 0 -> 1 -> 2 -> 3
+        #           ^    |
+        #           |____|
+
+        self.fsm = [
+            # Set the right shoulder in default position
+            state(jointName="RShoulderPitch", targetDegree=0,
+                  speed=1, nextState=1, threshold=1e-2),
+            # Moves the arm to right direction rotating the shoulder
+            state(jointName="RShoulderRoll", targetDegree=- \
+                  90, speed=1, nextState=2, threshold=1e-2),
+            # Flip the arm facing upward
+            state(jointName="RShoulderPitch", targetDegree=- \
+                  90, speed=1, nextState=3, threshold=1e-2),
+            # Bend the elbow to 90 degree (first waving step)
+            state(jointName="RElbowRoll", targetDegree=90,
+                  speed=self.speed, nextState=4, threshold=1e-2),
+            # Bend the elbow back to 90-self.waveAngle degree (second waving step).
+            # Once this last state is executed, the following state will be again the state 3
+            state(jointName="RElbowRoll", targetDegree=90-self.waveAngle,
+                  speed=self.speed, nextState=3, threshold=1e-2),
+        ]
+
     def degtorad(self, x):
         return x*pi/180
 
-    # Basic FSM Diagram
-    # 1 -> 2 -> 3 -> 4
-    #           ^    |
-    #           |____|
+    def execute_state(self, state):
+        # Setting the desired joint angle
+        target = self.degtorad(state.targetDegree)
+        # Error between the desired joint angle and the actual one
+        error = abs(self.pepper.getAnglesPosition(state.jointName) - target)
+
+        # If the error is small enough, then execute the state transition
+        if error < state.threshold:
+            self.state = state.nextState
+        else:
+            # Otherwise issue the command
+            self.pepper.setAngles(state.jointName, target, state.speed)
 
     def __call__(self, execTime):
         beginTime = time.time()
         while time.time() - beginTime < execTime:
-
-            # Set the right shoulder in default position
-            if self.state == 0:
-                # Setting the desired joint angle
-                target = self.degtorad(0)
-                # Command the execution
-                self.pepper.setAngles("RShoulderPitch", target, 1.)
-                # Error between the desired joint angle and the actual one
-                error = abs(self.pepper.getAnglesPosition(
-                    "RShoulderPitch") - target)
-                # If the error is small enough, then execute a state transition
-                if error < 1e-2:
-                    self.state = 1
-
-            # Moves the arm to right direction rotating the shoulder
-            elif self.state == 1:
-                target = self.degtorad(-90)
-                self.pepper.setAngles("RShoulderRoll", target, 1.)
-                error = abs(self.pepper.getAnglesPosition(
-                    "RShoulderRoll") - target)
-                if error < 1e-2:
-                    self.state = 2
-
-            # Flip the arm facing upward
-            elif self.state == 2:
-                target = self.degtorad(-90)
-                self.pepper.setAngles("RShoulderPitch", target, 1.)
-                error = abs(self.pepper.getAnglesPosition(
-                    "RShoulderPitch") - target)
-                if error < 1e-2:
-                    self.state = 3
-
-            # Bend the elbow to 90 degree (first waving step)
-            elif self.state == 3:
-                target = self.degtorad(90)
-                self.pepper.setAngles("RElbowRoll", target, self.speed)
-                error = abs(self.pepper.getAnglesPosition(
-                    "RElbowRoll") - target)
-                if error < 1e-2:
-                    self.state = 4
-
-            # Bend the elbow back to 90-self.waveAngle degree (second waving step).
-            # Once this last state is executed, the following state will be again the state 3
-            elif self.state == 4:
-                target = self.degtorad(90-self.waveAngle)
-                self.pepper.setAngles("RElbowRoll", target, self.speed)
-                error = abs(self.pepper.getAnglesPosition(
-                    "RElbowRoll") - target)
-                if error < 1e-2:
-                    self.state = 3
+            self.execute_state(self.fsm[self.state])
 
         # Finally go back to the base configuration again
         self.pepper.goToPosture("StandZero", 1.)
@@ -169,7 +157,7 @@ if __name__ == "__main__":
                 behavior_realizer_class.waving((int)(user_input[1]))
             else:
                 print(
-                    "\n[TIP: you can also specify the duration of the waving by typing 'waving <TimeInSeconds>', e.g. 'waving 5']\n")
+                    "\nTIP: you can also specify the duration of the waving by typing 'waving <TimeInSeconds>', e.g. 'waving 5'\n")
                 behavior_realizer_class.waving()
 
         elif user_input[0] == INPUT_OPTIONS[2]:
