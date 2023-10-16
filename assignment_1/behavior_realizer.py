@@ -50,9 +50,9 @@ class WavingSkill():
             'state', ['jointName', 'targetDegree', 'speed', 'nextState', 'threshold'])
 
         # Basic FSM Diagram
-        # 0 -> 1 -> 2 -> 3
-        #           ^    |
-        #           |____|
+        # 0 -> 1 -> 2 -> 3 -> 4
+        #                ^    |
+        #                |____|
 
         self.fsm = [
             # Set the right shoulder in default position
