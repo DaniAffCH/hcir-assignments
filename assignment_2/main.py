@@ -8,5 +8,5 @@ if __name__ == "__main__":
     pepper = simulation_manager.spawnPepper(
         client, spawn_ground_plane=True)
     parser = Parser("test.json")
-    c = Coordinator(parser)
+    c = Coordinator(parser, pepper)
     c.spawn()
