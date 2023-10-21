@@ -1,11 +1,25 @@
+from typing import Any
 import gtts
 from playsound import playsound
 import time
 import tempfile
 from collections import namedtuple
 
-from math import pi
+from math import pi, atan2
 
+class LookAtRelativePointSkill():
+    def __init__(self, pepper) -> None:
+        self.pepper = pepper
+
+    def __call__(self, x, y, z, execTime):
+        beginTime = time.time()
+        while time.time() - beginTime < execTime:
+            yawAngle = atan2(y,x)
+            self.pepper.setAngles("HeadYaw", yawAngle, 1.)
+            pitchAngle = atan2(-z,x) 
+            self.pepper.setAngles("HeadPitch", pitchAngle, 1.)
+
+        self.pepper.goToPosture("StandZero", 0.5)
 
 class WavingSkill():
 
@@ -122,10 +136,14 @@ class BehaviorRealizer():
     def __init__(self, pepper):
         self.theSaySkill = SaySkill()
         self.theWavingSkill = WavingSkill(pepper)
+        self.theLookAtRelativePointSkill = LookAtRelativePointSkill(pepper)
 
     def say(self, text):
         self.theSaySkill(text)
 
     def waving(self, execTime=5):
         self.theWavingSkill(execTime)
+
+    def lookAtRelativePoint(self, x, y, z, execTime=5):
+        self.theLookAtRelativePointSkill(x,y,z,execTime)
 

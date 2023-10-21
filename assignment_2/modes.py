@@ -13,7 +13,6 @@ class BehaviourClass(threading.Thread, ABC):
     def run(self):
         while True:
             self.t = time.time() - self.start_t
-            print(self.t)
             if self.behaviourSeq and self.behaviourSeq[0]["start"] <= self.t:
                 element = self.behaviourSeq.pop(0)
                 self.routine(element)
@@ -32,7 +31,7 @@ class Speech(BehaviourClass):
 
 class Gaze(BehaviourClass):
     def routine(self, atomicBehaviour):
-        print("GAZE STARTED")
+        self.behaviourRealizer.lookAtRelativePoint(50,0,20,atomicBehaviour["end"] - atomicBehaviour["start"])
 
 class Head(BehaviourClass):
     def routine(self, atomicBehaviour):

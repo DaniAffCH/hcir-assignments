@@ -1,8 +1,5 @@
 import json 
 import os
-
-# TODO: every block is a class?
-
 class Parser():
     def __init__(self, path:str) -> None:
         self.__sanityChecks(path)
