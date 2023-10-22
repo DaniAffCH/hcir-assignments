@@ -7,7 +7,27 @@ from collections import namedtuple
 
 from math import pi, atan2, sin
 
+
 class PoseSkill():
+
+    """
+    A class used to implement a pose skill. The skill brings the robot to a given configuration.
+
+    ...
+
+    Attributes
+    ----------
+    pepper : qibullet.pepper_virtual.PepperVirtual
+        pepper instance
+
+    Methods
+    -------
+    degtorad(x)
+        Converts x degrees into radians 
+    __call__(poseDict, execTime)
+        brings the robot in the configuration specified in poseDict for execTime seconds
+    """
+
     def __init__(self, pepper) -> None:
         self.pepper = pepper
 
@@ -17,39 +37,78 @@ class PoseSkill():
     def __call__(self, poseDict, execTime) -> Any:
         beginTime = time.time()
         while time.time() - beginTime < execTime:
+            # set every joint angle specified in the dictionary
             for k in poseDict:
                 self.pepper.setAngles(k, self.degtorad(poseDict[k]), 1.)
         self.pepper.goToPosture("StandZero", 0.5)
 
 
 class NodSkill():
+    """
+    A class used to implement a top to down nod skill.
+
+    ...
+
+    Attributes
+    ----------
+    pepper : qibullet.pepper_virtual.PepperVirtual
+        pepper instance
+
+    Methods
+    -------
+    __call__(execTime)
+        executes the top to down nod given an execution time.
+    """
+
     def __init__(self, pepper) -> None:
         self.pepper = pepper
 
     def __call__(self, execTime) -> Any:
         beginTime = time.time()
 
-        f = lambda t : -pi/4*sin(2*pi*t/execTime)
+        # sinusoidal trajectory for the head pitch
+        def f(t): return -pi/4*sin(2*pi*t/execTime)
 
         while time.time() - beginTime < execTime:
             t = time.time() - beginTime
+            # apply f(t)
             self.pepper.setAngles("HeadPitch", f(t), 1.)
 
         self.pepper.goToPosture("StandZero", 0.5)
 
+
 class LookAtRelativePointSkill():
+    """
+    A class used to orient the head torward a relative point.
+
+    ...
+
+    Attributes
+    ----------
+    pepper : qibullet.pepper_virtual.PepperVirtual
+        pepper instance
+
+    Methods
+    -------
+    __call__(x,y,z,execTime)
+        orient the head torward the 3D relative point (x,y,z) and look at that point for execTime seconds.
+    """
     def __init__(self, pepper) -> None:
         self.pepper = pepper
 
     def __call__(self, x, y, z, execTime):
         beginTime = time.time()
         while time.time() - beginTime < execTime:
-            yawAngle = atan2(y,x)
+            # head yaw angle obtained by applying the atan2 function to the x,y components
+            yawAngle = atan2(y, x)
             self.pepper.setAngles("HeadYaw", yawAngle, 1.)
-            pitchAngle = atan2(-z,x) 
+            # head pitch angle obtained by applying the atan2 function to the -z,x components.
+            # The minus in front of the z axis is because the reference frame axis points down.
+            pitchAngle = atan2(-z, x)
             self.pepper.setAngles("HeadPitch", pitchAngle, 1.)
 
         self.pepper.goToPosture("StandZero", 0.5)
+
 
 class WavingSkill():
 
@@ -177,30 +236,26 @@ class BehaviorRealizer():
         self.theWavingSkill(execTime)
 
     def lookAtRelativePoint(self, x, y, z, execTime=5):
-        self.theLookAtRelativePointSkill(x,y,z,execTime)
-    
+        self.theLookAtRelativePointSkill(x, y, z, execTime)
+
     def nod(self, execTime=5):
         self.theNodeSkill(execTime)
-    
-    def happySwirl(self, execTime = 5):
+
+    def happySwirl(self, execTime=5):
         joint_angles = {
-            "HeadPitch": 15.0,     
-            "HeadYaw": 0.0,        
-            "HipPitch": 10.0,   
-            "HipRoll": 5.0,  
-            "KneePitch": 10.0,  
-            "LElbowRoll": -60.0,    
-            "LElbowYaw": -10.0, 
-            "LHand": 0.5,           
+            "HeadPitch": 15.0,
+            "HipPitch": 10.0,
+            "HipRoll": 5.0,
+            "KneePitch": 10.0,
+            "LElbowRoll": -60.0,
+            "LElbowYaw": -10.0,
+            "LHand": 0.5,
             "LShoulderPitch": 20,
-            "LShoulderRoll": 10.0,    
-            "LWristYaw": 0.0,        
-            "RElbowRoll": 60.0,      
-            "RElbowYaw": 10.0,   
-            "RHand": 0.5,            
+            "LShoulderRoll": 10.0,
+            "RElbowRoll": 60.0,
+            "RElbowYaw": 10.0,
+            "RHand": 0.5,
             "RShoulderPitch": 20.,
-            "RShoulderRoll": -10.0,   
-            "RWristYaw": 0.0          
+            "RShoulderRoll": -10.0,
         }
         self.thePoseSkill(joint_angles, execTime)
-
