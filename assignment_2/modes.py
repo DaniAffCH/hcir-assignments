@@ -15,6 +15,7 @@ class BehaviourClass(threading.Thread, ABC):
         while True:
             t = time.time() - start_t
             if self.behaviourSeq and self.behaviourSeq[0]["start"] <= t:
+                assert(self.behaviourSeq[0]["start"] < self.behaviourSeq[0]["end"])
                 element = self.behaviourSeq.pop(0)
                 self.routine(element)
 

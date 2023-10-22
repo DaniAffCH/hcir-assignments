@@ -25,3 +25,4 @@ class Coordinator():
     def join(self):
         for e in self.threads:
             e.join()
+        self.threads = list()
