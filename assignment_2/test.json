@@ -30,6 +30,20 @@
                     "start": 1,
                     "end": 5
                 }
+            ],
+            "head": [
+                {
+                    "id":"h1",
+                    "start": 6,
+                    "end": 9
+                }
+            ],
+            "posture": [
+                {
+                    "id":"p1",
+                    "start": 9,
+                    "end": 12
+                }
             ]
         }
     }

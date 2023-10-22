@@ -5,7 +5,37 @@ import time
 import tempfile
 from collections import namedtuple
 
-from math import pi, atan2
+from math import pi, atan2, sin
+
+class PoseSkill():
+    def __init__(self, pepper) -> None:
+        self.pepper = pepper
+
+    def degtorad(self, x):
+        return x*pi/180
+
+    def __call__(self, poseDict, execTime) -> Any:
+        beginTime = time.time()
+        while time.time() - beginTime < execTime:
+            for k in poseDict:
+                self.pepper.setAngles(k, self.degtorad(poseDict[k]), 1.)
+        self.pepper.goToPosture("StandZero", 0.5)
+
+
+class NodSkill():
+    def __init__(self, pepper) -> None:
+        self.pepper = pepper
+
+    def __call__(self, execTime) -> Any:
+        beginTime = time.time()
+
+        f = lambda t : -pi/4*sin(2*pi*t/execTime)
+
+        while time.time() - beginTime < execTime:
+            t = time.time() - beginTime
+            self.pepper.setAngles("HeadPitch", f(t), 1.)
+
+        self.pepper.goToPosture("StandZero", 0.5)
 
 class LookAtRelativePointSkill():
     def __init__(self, pepper) -> None:
@@ -137,6 +167,8 @@ class BehaviorRealizer():
         self.theSaySkill = SaySkill()
         self.theWavingSkill = WavingSkill(pepper)
         self.theLookAtRelativePointSkill = LookAtRelativePointSkill(pepper)
+        self.theNodeSkill = NodSkill(pepper)
+        self.thePoseSkill = PoseSkill(pepper)
 
     def say(self, text):
         self.theSaySkill(text)
@@ -146,4 +178,29 @@ class BehaviorRealizer():
 
     def lookAtRelativePoint(self, x, y, z, execTime=5):
         self.theLookAtRelativePointSkill(x,y,z,execTime)
+    
+    def nod(self, execTime=5):
+        self.theNodeSkill(execTime)
+    
+    def happySwirl(self, execTime = 5):
+        joint_angles = {
+            "HeadPitch": 15.0,     
+            "HeadYaw": 0.0,        
+            "HipPitch": 10.0,   
+            "HipRoll": 5.0,  
+            "KneePitch": 10.0,  
+            "LElbowRoll": -60.0,    
+            "LElbowYaw": -10.0, 
+            "LHand": 0.5,           
+            "LShoulderPitch": 20,
+            "LShoulderRoll": 10.0,    
+            "LWristYaw": 0.0,        
+            "RElbowRoll": 60.0,      
+            "RElbowYaw": 10.0,   
+            "RHand": 0.5,            
+            "RShoulderPitch": 20.,
+            "RShoulderRoll": -10.0,   
+            "RWristYaw": 0.0          
+        }
+        self.thePoseSkill(joint_angles, execTime)
 

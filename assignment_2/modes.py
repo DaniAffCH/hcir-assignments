@@ -8,12 +8,13 @@ class BehaviourClass(threading.Thread, ABC):
         super(BehaviourClass, self).__init__()
         self.behaviourSeq = behaviourSeq
         self.behaviourRealizer = BehaviorRealizer(pepper)
-        self.start_t = time.time()
 
     def run(self):
+        start_t = time.time()
+
         while True:
-            self.t = time.time() - self.start_t
-            if self.behaviourSeq and self.behaviourSeq[0]["start"] <= self.t:
+            t = time.time() - start_t
+            if self.behaviourSeq and self.behaviourSeq[0]["start"] <= t:
                 element = self.behaviourSeq.pop(0)
                 self.routine(element)
 
@@ -35,8 +36,8 @@ class Gaze(BehaviourClass):
 
 class Head(BehaviourClass):
     def routine(self, atomicBehaviour):
-        print("HEAD STARTED")
+        self.behaviourRealizer.nod(atomicBehaviour["end"] - atomicBehaviour["start"])
 
 class Posture(BehaviourClass):
     def routine(self, atomicBehaviour):
-        print("POSTURE STARTED")
+        self.behaviourRealizer.happySwirl(atomicBehaviour["end"] - atomicBehaviour["start"])
