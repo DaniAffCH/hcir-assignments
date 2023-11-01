@@ -2,6 +2,31 @@ from BLMparser import Parser
 from modes import Gesture, Speech, Gaze, Head, Posture
 
 class Coordinator():
+
+    """
+    A thread spawner class.
+
+    ...
+
+    Attributes
+    ----------
+    classMapping: dict
+        maps type name into a class
+    threads: list 
+        list of threads
+    pepper: qibullet.pepper_virtual.PepperVirtual
+        pepper instance
+    behaviours: dict 
+        dictionary containing the bml attributes
+
+    Methods
+    -------
+    spawn()
+        it spawns a thread for every behavior mode, running the corresponding class.
+    join()
+        wait for all the threads to finish
+    """
+
     def __init__(self, parser:Parser, pepper) -> None:
         self.behaviours = parser.getBehaviours()
         self.threads = list()

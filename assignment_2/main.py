@@ -7,6 +7,6 @@ if __name__ == "__main__":
     client = simulation_manager.launchSimulation(gui=True)
     pepper = simulation_manager.spawnPepper(
         client, spawn_ground_plane=True)
-    parser = Parser("test.json")
+    parser = Parser("bml.json")
     c = Coordinator(parser, pepper)
     c.spawn()
