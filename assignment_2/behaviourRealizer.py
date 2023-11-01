@@ -39,7 +39,7 @@ class PoseSkill():
         while time.time() - beginTime < execTime:
             # set every joint angle specified in the dictionary
             for k in poseDict:
-                self.pepper.setAngles(k, self.degtorad(poseDict[k]), 1.)
+                self.pepper.setAngles(k, self.degtorad(poseDict[k]), 0.5)
         self.pepper.goToPosture("StandZero", 0.5)
 
 
@@ -243,19 +243,9 @@ class BehaviorRealizer():
 
     def happySwirl(self, execTime=5):
         joint_angles = {
-            "HeadPitch": 15.0,
-            "HipPitch": 10.0,
-            "HipRoll": 5.0,
-            "KneePitch": 10.0,
-            "LElbowRoll": -60.0,
-            "LElbowYaw": -10.0,
-            "LHand": 0.5,
-            "LShoulderPitch": 20,
-            "LShoulderRoll": 10.0,
-            "RElbowRoll": 60.0,
-            "RElbowYaw": 10.0,
-            "RHand": 0.5,
-            "RShoulderPitch": 20.,
-            "RShoulderRoll": -10.0,
+            "HipRoll": 60.0,
+            "KneePitch": 5.0,
+            "LShoulderPitch": -90.0,
+            "RShoulderPitch": -90.0,
         }
         self.thePoseSkill(joint_angles, execTime)

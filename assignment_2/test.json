@@ -1,6 +1,6 @@
 {
     "bml": {
-        "xmlns": "blabla",
+        "xmlns": "customblm-1.0",
         "character": "Pepper",
         "id": "p1",
         "behaviours": {
