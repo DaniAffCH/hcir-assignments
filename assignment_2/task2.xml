@@ -1,0 +1,20 @@
+<bml xmlns="http://www.bml-initiative.org/bml/bml-1.0"
+        character="Alice"
+        id="bml1">
+    <gaze id = gaze1 start = "0" target = "human" />
+    <speech id="speech1" start="1">
+        <text>
+        Hello!
+        </text>
+    </speech>
+    <gesture id="wave" lexeme="hello-waving" start="1" end="5">
+    <speech id="speech2" start="wave:end">
+        <text>
+        Glad to see you!
+        </text>
+    </speech>
+    <head id="nod" lexeme="NOD" start="gaze1:end" end="9"/>
+    <posture id="posture" start="nod:end" end="12">  
+        <stance type="STANDING"/>    
+    </posture>
+</bml>

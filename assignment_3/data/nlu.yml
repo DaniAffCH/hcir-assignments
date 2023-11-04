@@ -1,6 +1,84 @@
 version: "3.1"
 
 nlu:
+
+- intent: give_info_master_AS
+  examples: |
+    - can you give me any information about the master in autonomous systems?
+    - can you give me any information about the master?
+    - do you know anything about the master?
+    - may I ask you about the master in autonomous systems?
+
+- intent: requirements_master_AS
+  examples: |
+    - what are the requirements for master in Autonomous systems?
+    - what are the requirements?
+    - can you tell me about the requirements for this master?
+    - what requirements do I need for the application?
+  
+- intent: language_proficiency_master_AS
+examples: |
+  - do i need any language certificates and what kind?
+  - in what language is the program taught?
+  - what kind of language skill do I need?
+  - are there any language requirements?
+  - what language skills do I need?
+  - what are the language profeciencies?
+
+- intent: fees_master_AS
+  examples: |
+    - what does the master cost?
+    - what fees do I have to pay?
+    - how much do I have to pay for the program?
+    - are there any fees?
+    - are there any costs?
+    - how much does the program cost?
+    - what is included in the fees?
+
+- intent: deadlines_master_AS
+  examples: |
+    - what are the deadlines to apply?
+    - what is the deadline?
+    - when is the deadline?
+    - when do I have to apply?
+    - when is the application deadline?
+    - when is the deadline to apply?
+    - when is the deadline for the application?
+    - what is the deadline if i require a visa?
+    - what is the deadline if i need a visa?
+    - what is the deadline if i do not need a visa?
+    - what is the deadline if i do not require a visa?
+
+- intent: application_process_AS
+  examples: |
+    - how do I apply?
+    - how can I apply?
+    - how do I submit my application?
+    - how do I submit my documents?
+    - how do I submit my application doc
+    - where can I apply?
+    - what do I need to upload for the application?
+    - what documents do I need to upload for the application?
+    - what documents do I need to submit for the application?
+    - where is the link for application?
+
+- intent: notification_master_AS
+  examples: |
+    - when am I going to be notified?
+    - when will I be notified?
+    - when will I get a feedback?
+    - when will I get a response?
+    - when will I get a reply?
+    - when will I hear about the decision?  
+
+- intent: letter_of_admission_master_AS
+  examples: |
+    - what is the letter of admission?
+    - when will I get the letter of admission?
+    - will I get a hardcopy of the letter of admission?
+
+
+
 - intent: greet
   examples: |
     - hey
@@ -89,3 +167,4 @@ nlu:
     - are you a human?
     - am I talking to a bot?
     - am I talking to a human?
+
