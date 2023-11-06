@@ -13,44 +13,44 @@ rules:
   - action: utter_iamabot
 
 - rule: Provide information about requirements for master programm
-steps:
-- intent: requirements_master_AS
-- action: utter_requirements_master_AS
+  steps:
+  - intent: requirements_master_AS
+  - action: utter_requirements_master_AS
 
 - rule: Confirm knowledge about master in autonomous systems
-steps:
-- intent: give_info_master_AS
-- action: utter_give_info
+  steps:
+  - intent: give_info_master_AS
+  - action: utter_give_info
 
 - rule: Give Information about language proficiency
-steps:
-- intent: language_proficiency_master_AS
-- action: utter_info_about_language_proficiency
+  steps:
+  - intent: language_proficiency_master_AS
+  - action: utter_info_about_language_proficiency
 
 - rule: Answer about the semester fees
-steps:
-- intent: semester_fees
-- action: utter_fee_master_AS
+  steps:
+  - intent: semester_fees
+  - action: utter_fee_master_AS
 
 - rule: Give Information about deadlines for applications
-steps:
-- intent: deadlines_master_AS
-- action: utter_deadlines_master_AS
+  steps:
+  - intent: deadlines_master_AS
+  - action: utter_deadlines_master_AS
 
 - rule: Give information about the notification 
-steps:
-- intent: notification_master_AS
-- action: utter_notification_master_AS
+  steps:
+  - intent: notification_master_AS
+  - action: utter_notification_master_AS
 
 - rule: Provide information about the letter of admission
-steps:
-- intent: letter_of_admission_master_AS
-- action: utter_letter_of_admission_master_AS
+  steps:
+  - intent: letter_of_admission_master_AS
+  - action: utter_letter_of_admission_master_AS
 
 - rule: Give further information about the application process
-steps:
-- intent: application_process
-- action: utter_application_process_AS
+  steps:
+  - intent: application_process
+  - action: utter_application_process_AS
 
 
 
