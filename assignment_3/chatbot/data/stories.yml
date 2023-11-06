@@ -1,37 +1,95 @@
 version: "3.1"
 
 stories:
+  - story: happy path
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: mood_great
+      - action: utter_happy
 
-- story: happy path
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_great
-  - action: utter_happy
+  - story: sad path 1
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: mood_unhappy
+      - action: utter_cheer_up
+      - action: utter_did_that_help
+      - intent: affirm
+      - action: utter_happy
 
-- story: sad path 1
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - intent: affirm
-  - action: utter_happy
+  - story: sad path 2
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: mood_unhappy
+      - action: utter_cheer_up
+      - action: utter_did_that_help
+      - intent: deny
+      - action: utter_goodbye
 
-- story: sad path 2
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - intent: deny
-  - action: utter_goodbye
-  
-- story: requirements_AS
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: give_info_master_AS
-  - action: utter_requirements_master_AS
+  - story: ask about requirements, language proficiency and fees in master autonomous systems
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: give_info_master_AS
+      - action: utter_give_info
+      - intent: requirements_master_AS
+      - action: utter_requirements_master_AS
+      - intent: language_proficiency_master_AS
+      - action: utter_info_about_language_proficiency
+      - intent: semester_fees
+      - action: utter_fee_master_AS
+      - intent: mood_great
+      - action: utter_did_that_help
+      - intent: affirm
+      - action: utter_happy
+      - intent: goodbye
+      - action: utter_goodbye
+
+  - story: ask about requirements, dealine and notification in master autonomous systems
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: give_info_master_AS
+      - action: utter_give_info
+      - intent: requirements_master_AS
+      - action: utter_requirements_master_AS
+      - intent: deadlines_master_AS
+      - action: utter_deadlines_master_AS
+      - intent: notification_master_AS
+      - action: utter_notification_master_AS
+      - intent: mood_great
+      - action: utter_happy
+      - intent: goodbye
+      - action: utter_goodbye
+
+  - story: inform about notification and letter of admission in master autonomous systems
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: notification_master_AS
+      - action: utter_notification_master_AS
+      - intent: letter_of_admission_master_AS
+      - action: utter_letter_of_admission_master_AS
+      - intent: mood_great
+      - action: utter_happy
+      - intent: goodbye
+      - action: utter_goodbye
+
+  - story: inform about application process, requirements and language proficiency in master autonomous systems
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: give_info_master_AS
+      - action: utter_give_info
+      - intent: application_process
+      - action: utter_application_process_AS
+      - intent: requirements_master_AS
+      - action: utter_requirements_master_AS
+      - intent: language_proficiency_master_AS
+      - action: utter_info_about_language_proficiency
+      - intent: mood_great
+      - action: utter_happy
+      - intent: goodbye
+      - action: utter_goodbye

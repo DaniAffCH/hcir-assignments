@@ -14,6 +14,9 @@ intents:
   - deadlines_master_AS
   - notification_master_AS
   - letter_of_admission_master_AS
+  - semester_fees
+  - application_process
+  
 
 responses:
   utter_greet:
@@ -46,43 +49,43 @@ responses:
   - language proficiecies: English (TOEFL, IELTS, Cambridge Certificate of Proficiency in English (CPE) or Cambridge Certificate " 
 
 
-tter_give_info:
-    - text: "The program is taught in english so that
-    you need fulfill those requirements if you do not have English 
-    as the de facto language in your country. There are some expceptions for
-    students with a degree from universities in Australia, Bahamas, Canada, New 
-    Zealand, UK, and US. If you do not fall into one of those exceptions you need
-    skill level upper B2 which corresponds to a TOEFL score of 88 or higher on the 
-    internet-based test and to an IELTS score of 6.5. The TOEFL code for the university
-    is 7977. There are no German language skills required for the programme."
+  utter_info_about_language_proficiency:
+      - text: "The program is taught in english so that
+      you need fulfill those requirements if you do not have English 
+      as the de facto language in your country. There are some expceptions for
+      students with a degree from universities in Australia, Bahamas, Canada, New 
+      Zealand, UK, and US. If you do not fall into one of those exceptions you need
+      skill level upper B2 which corresponds to a TOEFL score of 88 or higher on the 
+      internet-based test and to an IELTS score of 6.5. The TOEFL code for the university
+      is 7977. There are no German language skills required for the programme."
 
-utter_fee_master_AS:
-    - text: "Yes, Each semester, a semester contribution fee is due. 
-     fee is mandatory and includes a student administration office fee, a student
-    union's fee and a public transportation fee. This fee is around 300€ per semester."
-  
-utter_deadlines_master_AS:
-    - text: "Each year for thw winter term the application window opens from November 15.
-    and for the summer semester it starts on the May 15. Therefore it is necessary under the immigration
-    law to have a visa. For applicants requiring a visa the deadlines are the following.
-    For the Winter Semester: August 15th the same year that the semester starts For the Summer Semester: February 15th the same year that the semester starts"
+  utter_fee_master_AS:
+      - text: "Yes, Each semester, a semester contribution fee is due. 
+      fee is mandatory and includes a student administration office fee, a student
+      union's fee and a public transportation fee. This fee is around 300€ per semester."
+    
+  utter_deadlines_master_AS:
+      - text: "Each year for thw winter term the application window opens from November 15.
+      and for the summer semester it starts on the May 15. Therefore it is necessary under the immigration
+      law to have a visa. For applicants requiring a visa the deadlines are the following.
+      For the Winter Semester: August 15th the same year that the semester starts For the Summer Semester: February 15th the same year that the semester starts"
 
-utter_application_process_AS:
-    - text: "To apply you have to use the Apollo online portal with this link: https://apollo.h-brs.de/qisserver/pages/cs/sys/portal/hisinoneStartPage.faces.
-    You need to upload your Original Certificate of your first academic degree including transcripts and translation,
-    Scan of your passport's first page, Certificate of APS, Evidence of sufficient English language skills, 
-    Curriculum vitae and a Letter of motivation."
+  utter_application_process_AS:
+      - text: "To apply you have to use the Apollo online portal with this link: https://apollo.h-brs.de/qisserver/pages/cs/sys/portal/hisinoneStartPage.faces.
+      You need to upload your Original Certificate of your first academic degree including transcripts and translation,
+      Scan of your passport's first page, Certificate of APS, Evidence of sufficient English language skills, 
+      Curriculum vitae and a Letter of motivation."
 
 
-utter_notification_master_AS:
-    - text: "This depends whether you need a visa or not. Candidates requiring a visa are notified of their admission 
-    decision around the following dates: For the Winter Semester: March 15th and for the Summer Semester: September 15st. For candidates 
-    candidates who do not require a visa are notified of their admission decision around the following dates: 
-    For the Winter Semester: August 22nd and for the Summer Semester: February 22nd."
+  utter_notification_master_AS:
+      - text: "This depends whether you need a visa or not. Candidates requiring a visa are notified of their admission 
+      decision around the following dates: For the Winter Semester: March 15th and for the Summer Semester: September 15st. For candidates 
+      candidates who do not require a visa are notified of their admission decision around the following dates: 
+      For the Winter Semester: August 22nd and for the Summer Semester: February 22nd."
 
-utter_letter_of_admission_master_AS:
-    - text: "The letter of admission is going to be sent to you as a hardcopy. The german
-    word for that is Zulassungsbeschei and with that one you may apply for a visa. "
+  utter_letter_of_admission_master_AS:
+      - text: "The letter of admission is going to be sent to you as a hardcopy. The german
+      word for that is Zulassungsbeschei and with that one you may apply for a visa. "
 
 session_config:
   session_expiration_time: 60

@@ -1,143 +1,161 @@
 version: "3.1"
 
 nlu:
-- intent: give_info_master_AS
-  examples: |
-    - can you give me any information about the master in autonomous systems?
-    - can you give me any information about the master?
-    - do you know anything about the master?
-    - may I ask you about the master in autonomous systems?
+  - intent: give_info_master_AS
+    examples: |
+      - can you give me any information about the master in autonomous systems?
+      - can you give me any information about the master?
+      - do you know anything about the master?
+      - may I ask you about the master in autonomous systems?
 
-- intent: requirements_master_AS
-  examples: |
-    - what are the requirements for master in Autonomous systems?
-    - what are the requirements?
-    - can you tell me about the requirements for this master?
-    - what requirements do I need for the application?
+  - intent: requirements_master_AS
+    examples: |
+      - what are the requirements for master in Autonomous systems?
+      - what are the requirements?
+      - can you tell me about the requirements for this master?
+      - what requirements do I need for the application?
 
-- intent: language_proficiency_master_AS
-  examples: |
-    - do i need any language certificates and what kind?
-    - in what language is the program taught?
-    - what kind of language skill do I need?
-    - are there any language requirements?
-    - what language skills do I need?
-    - what are the language profeciencies?
+  - intent: language_proficiency_master_AS
+    examples: |
+      - do i need any language certificates and what kind?
+      - in what language is the program taught?
+      - what kind of language skill do I need?
+      - are there any language requirements?
+      - what language skills do I need?
+      - what are the language profeciencies?
 
-- intent: deadlines_master_AS
-  examples: |
-    - what are the deadlines to apply?
-    - what is the deadline?
-    - when is the deadline?
-    - when do I have to apply?
-    - when is the application deadline?
-    - when is the deadline to apply?
-    - when is the deadline for the application?
-    - what is the deadline if i require a visa?
-    - what is the deadline if i need a visa?
-    - what is the deadline if i do not need a visa?
-    - what is the deadline if i do not require a visa?
+  - intent: semester_fees
+    examples: |
+      - What are the semester fees?
+      - How much do I have to pay?
+      - How much is the semester fee?
+      - How much do I have to pay per semester?
+      - Can you tell me about the semester fees?
+      - What are the semester fees for the master in autonomous systems?
 
-- intent: notification_master_AS
-  examples: |
-    - when am I going to be notified?
-    - when will I be notified?
-    - when will I get a feedback?
-    - when will I get a response?
-    - when will I get a reply?
-    - when will I hear about the decision?  
+  - intent: deadlines_master_AS
+    examples: |
+      - what are the deadlines to apply?
+      - what is the deadline?
+      - when is the deadline?
+      - when do I have to apply?
+      - when is the application deadline?
+      - when is the deadline to apply?
+      - when is the deadline for the application?
+      - what is the deadlinutter_info_about_language_proficiencye if i require a visa?
+      - what is the deadline if i need a visa?
+      - what is the deadline if i do not need a visa?
+      - what is the deadline if i do not require a visa?
 
-- intent: letter_of_admission_master_AS
-  examples: |
-    - what is the letter of admission?
-    - when will I get the letter of admission?
-    - will I get a hardcopy of the letter of admission?
+  - intent: notification_master_AS
+    examples: |
+      - when am I going to be notified?
+      - when will I be notified?
+      - when will I get a feedback?
+      - when will I get a response?
+      - when will I get a reply?
+      - when will I hear about the decision?
 
-- intent: greet
-  examples: |
-    - hey
-    - hello
-    - hi
-    - hello there
-    - good morning
-    - good evening
-    - moin
-    - hey there
-    - let's go
-    - hey dude
-    - goodmorning
-    - goodevening
-    - good afternoon
+  - intent: letter_of_admission_master_AS
+    examples: |
+      - what is the letter of admission?
+      - when will I get the letter of admission?
+      - will I get a hardcopy of the letter of admission?
 
-- intent: goodbye
-  examples: |
-    - cu
-    - good by
-    - cee you later
-    - good night
-    - bye
-    - goodbye
-    - have a nice day
-    - see you around
-    - bye bye
-    - see you later
+  - intent: application_process
+    examples: |
+      - how do I apply?
+      - how can I apply?
+      - how do I apply for the master in autonomous systems?
+      - where do I apply?
+      - where can I apply?
+      - what is the link to apply?
 
-- intent: affirm
-  examples: |
-    - yes
-    - y
-    - indeed
-    - of course
-    - that sounds good
-    - correct
+  - intent: greet
+    examples: |
+      - hey
+      - hello
+      - hi
+      - hello there
+      - good morning
+      - good evening
+      - moin
+      - hey there
+      - let's go
+      - hey dude
+      - goodmorning
+      - goodevening
+      - good afternoon
 
-- intent: deny
-  examples: |
-    - no
-    - n
-    - never
-    - I don't think so
-    - don't like that
-    - no way
-    - not really
+  - intent: goodbye
+    examples: |
+      - cu
+      - good by
+      - cee you later
+      - good night
+      - bye
+      - goodbye
+      - have a nice day
+      - see you around
+      - bye bye
+      - see you later
 
-- intent: mood_great
-  examples: |
-    - perfect
-    - great
-    - amazing
-    - feeling like a king
-    - wonderful
-    - I am feeling very good
-    - I am great
-    - I am amazing
-    - I am going to save the world
-    - super stoked
-    - extremely good
-    - so so perfect
-    - so good
-    - so perfect
+  - intent: affirm
+    examples: |
+      - yes
+      - y
+      - indeed
+      - of course
+      - that sounds good
+      - correct
 
-- intent: mood_unhappy
-  examples: |
-    - my day was horrible
-    - I am sad
-    - I don't feel very well
-    - I am disappointed
-    - super sad
-    - I'm so sad
-    - sad
-    - very sad
-    - unhappy
-    - not good
-    - not very good
-    - extremly sad
-    - so saad
-    - so sad
+  - intent: deny
+    examples: |
+      - no
+      - n
+      - never
+      - I don't think so
+      - don't like that
+      - no way
+      - not really
 
-- intent: bot_challenge
-  examples: |
-    - are you a bot?
-    - are you a human?
-    - am I talking to a bot?
-    - am I talking to a human?
+  - intent: mood_great
+    examples: |
+      - perfect
+      - great
+      - amazing
+      - feeling like a king
+      - wonderful
+      - I am feeling very good
+      - I am great
+      - I am amazing
+      - I am going to save the world
+      - super stoked
+      - extremely good
+      - so so perfect
+      - so good
+      - so perfect
+
+  - intent: mood_unhappy
+    examples: |
+      - my day was horrible
+      - I am sad
+      - I don't feel very well
+      - I am disappointed
+      - super sad
+      - I'm so sad
+      - sad
+      - very sad
+      - unhappy
+      - not good
+      - not very good
+      - extremly sad
+      - so saad
+      - so sad
+
+  - intent: bot_challenge
+    examples: |
+      - are you a bot?
+      - are you a human?
+      - am I talking to a bot?
+      - am I talking to a human?
