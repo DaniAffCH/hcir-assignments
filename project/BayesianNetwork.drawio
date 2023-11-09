@@ -1,1 +1,70 @@
-<mxfile host="Electron" modified="2023-11-09T16:04:58.010Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/17.2.4 Chrome/96.0.4664.174 Electron/16.1.0 Safari/537.36" etag="PrYZvGWuFbkh82HO0iKI" version="17.2.4" type="device"><diagram id="ebjFQ3Yt5vL26mvpQOZ1" name="Seite-1">7Vtbc6M2FP41nmkfvGNujvNoJ7vbh3am07TT3b54ZJBBG4GIEL701/cIhI0AO7h2jJ14JjOGc6Sjw3euSKRnPYSrrxzFwW/Mw7RnDrxVz3rsmabhGPfwIylrRbm3RjnF58RTtC3hifyLFXGgqCnxcKINFIxRQWKd6LIowq7QaIhzttSHzRnVV42Rj2uEJxfROvVv4okgp47Muy39F0z8oFjZGKonDlExWD1JEiCPLUsk63PPeuCMifwqXD1gKtErcMnnfdnB3SjGcSTaTJi/fJmOvy4nyT/mX8ELn/35/Y9B38qlLBBN1QP3zCEFeZMkRpHUWqwVFMOXVKo6mbNI9JPMUGMYYJixgB9gZPACb45CQtc5F6ahMM6YlmXDr4d/oEWaoCipsbZLwJUvf5HrsjBkHhKESWXmyCWUiHW23qO0sOtOgbgRFc2SXGL+DABG/hi5uII841WKRxbShyhKEu1ZM+8oqTUQRFTg+D0bMjDq2r8mnKI1S8WYY3T4XJfRNIx2z5OGyAHTtdXg3zG3teXtT8Ph8C5e7RZVR3qHSYCcq6yTGd0rETzn/rCrYrETCS7EZWb63/KOkdI419TMZwq8kvRAhBQIhgwsSvwIrl3IHZgDYYG5IJD1xooREs+T0yccg8HRLBMlgzxmJBKZLzqTnvMoZaWC5U6RiU4EZ8/4gVEGch8jFkkpc0JphaQSD6yLVzszmrHJk1BhMAux4DL41YS+Y6vcqqpLf6jul9tUbRZjAi1NKyJS5cHfCN9mULhQSfSAhGrc1eDHHlQUdasenrM08rCnMGVcBMxnEaK/MhYrHH9gIdaqHkqIdQPmi0jJ+7EDRVjKVRLYobGqAQJxH4t9A51ma3BMIUEvdE1ODuymjL5DYEddAmvUewAKi05JNJ1AU1VHnVJoviTYy4AI/BTnNWYJDWATlMdF+KgS4IZVj3DDbIjw0ZsF+LCGyEU5nX0V0Vy8F1xRNLcGtttotpujOcKITx+gS06Tab25eELRs5iOUz9NBOk25O/bRLx1zog3ravzVaelr8pRHZb06+uVWgPbbXZ1mpMAohLSTgu6oYe32XU5N+2r88FRWx/cYYozBffoLMACfHz9Tc7/5BS335W47OZxpd2t1V0nBhl2mhRGzUlBMNA6wHy6JCJo6A0SDBGP6DQRqYflu3+X+cOwLy1/GDVUFVBTuXUCF263GbeKmOF0Dpl54ZD1DdO5NMzqFT3mZIEEvhDMjIvzsuGFI2beXRpkVj0w9XOI+pGA3Fruq91keSZA8VzsOQ4oCB7j4dQobV/PqkObt8NPo0b5AKIvR8vaC9jIU498y+u1s4qzqaY69ovRRyXqrGnZBNFB2lUi7t2eTWxCt+hU7JbhPXyz8N592KsHptnbE5jbxnBf6OijNC/WWSon6w7V2kcy571SD6m+CTelf+Os/lHfOmz2D6udf7ySbuWOJPzke5IHn9hXhRZvMRmAgJ85YPntEXJ7tc8KBtuXoCP1PSSRfoxwqL7Ztc2Xb9cO1XvuUjw0lFY3B0VWVe7PfgK94A/WHpSufu61/1YmwHSBpSVrHF2I9jHOqsLLtZTMCGIX0Q2bYgH1tQ+u5pLIbxzS3CuUmSTKvDjjDkprZ0zBUZTMQWQhXBYBNWDJuKevXZ4+Q+6zn+0N9SugmvZoA6Zp32+vHQlttY1pV86u3pQZe6liQvLtXM8PY2c9y97seW32VNM9ksQUKcxJRElp4TllSJQVqvpAv16u99boMu2ELcnN+T6o8x3Rgt585tp85laA3pc9T5EDjntdvPnMtfnMLQe8L3ueqg9o3NI8aGvnDIdPI/v13Zamr+yKz/MO2G2B2+1/OWW80j+LWZ//Aw==</diagram></mxfile>
+<mxfile host="65bd71144e">
+    <diagram id="ebjFQ3Yt5vL26mvpQOZ1" name="Seite-1">
+        <mxGraphModel dx="1352" dy="1684" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="fqF_AGwBsZ2UhqrbTYR0-17" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="fqF_AGwBsZ2UhqrbTYR0-13" target="fqF_AGwBsZ2UhqrbTYR0-15" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="fqF_AGwBsZ2UhqrbTYR0-20" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="fqF_AGwBsZ2UhqrbTYR0-13" target="fqF_AGwBsZ2UhqrbTYR0-18" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="fqF_AGwBsZ2UhqrbTYR0-13" value="live_in_Bonn" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="-80" y="-130" width="120" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="fqF_AGwBsZ2UhqrbTYR0-16" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="fqF_AGwBsZ2UhqrbTYR0-14" target="fqF_AGwBsZ2UhqrbTYR0-15" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="fqF_AGwBsZ2UhqrbTYR0-19" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="fqF_AGwBsZ2UhqrbTYR0-14" target="fqF_AGwBsZ2UhqrbTYR0-18" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="fqF_AGwBsZ2UhqrbTYR0-14" value="live_near_Campus_&lt;br&gt;Sankt_Augustin" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="90" y="-130" width="130" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="fqF_AGwBsZ2UhqrbTYR0-23" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="fqF_AGwBsZ2UhqrbTYR0-15" target="fqF_AGwBsZ2UhqrbTYR0-22" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="fqF_AGwBsZ2UhqrbTYR0-27" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="fqF_AGwBsZ2UhqrbTYR0-15" target="fqF_AGwBsZ2UhqrbTYR0-25" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="fqF_AGwBsZ2UhqrbTYR0-15" value="live_alone" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="-10" y="20" width="120" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="fqF_AGwBsZ2UhqrbTYR0-24" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="fqF_AGwBsZ2UhqrbTYR0-18" target="fqF_AGwBsZ2UhqrbTYR0-21" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="fqF_AGwBsZ2UhqrbTYR0-28" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="fqF_AGwBsZ2UhqrbTYR0-18" target="fqF_AGwBsZ2UhqrbTYR0-26" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="fqF_AGwBsZ2UhqrbTYR0-18" value="live_together_with_&lt;br&gt;several_students" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="140" y="20" width="120" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="fqF_AGwBsZ2UhqrbTYR0-21" value="student_residence" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="140" y="150" width="120" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="fqF_AGwBsZ2UhqrbTYR0-22" value="student_residence" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="-125" y="150" width="120" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="fqF_AGwBsZ2UhqrbTYR0-25" value="private_residence" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="10" y="150" width="120" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="fqF_AGwBsZ2UhqrbTYR0-26" value="private_residence" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="270" y="150" width="120" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="fqF_AGwBsZ2UhqrbTYR0-32" value="&lt;div style=&quot;text-align: left&quot;&gt;&lt;b&gt;dorm_1&lt;/b&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left&quot;&gt;&lt;span&gt;- live in Bonn&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left&quot;&gt;&lt;span&gt;- alone&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left&quot;&gt;&lt;span&gt;- student residence&lt;/span&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
+                    <mxGeometry x="-120" y="240" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="fqF_AGwBsZ2UhqrbTYR0-33" value="&lt;b&gt;dorm_2&lt;/b&gt;&lt;br&gt;- live in Bonn&lt;br&gt;- alone&lt;br&gt;- private residence" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
+                    <mxGeometry x="10" y="250" width="110" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="fqF_AGwBsZ2UhqrbTYR0-34" value="&lt;b&gt;dorm_3&lt;/b&gt;&lt;br&gt;&lt;span&gt;- live near Campus&lt;/span&gt;&lt;br&gt;&lt;span&gt;- together with other&lt;/span&gt;&lt;br&gt;&lt;span&gt;&amp;nbsp; students&lt;/span&gt;&lt;br&gt;&lt;span&gt;- student residence&lt;/span&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
+                    <mxGeometry x="140" y="240" width="120" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="fqF_AGwBsZ2UhqrbTYR0-35" value="&lt;b style=&quot;color: rgb(0 , 0 , 0) ; font-family: &amp;#34;helvetica&amp;#34; ; font-size: 12px ; font-style: normal ; letter-spacing: normal ; text-align: left ; text-indent: 0px ; text-transform: none ; word-spacing: 0px ; background-color: rgb(248 , 249 , 250)&quot;&gt;dorm_2&lt;/b&gt;&lt;br style=&quot;color: rgb(0 , 0 , 0) ; font-family: &amp;#34;helvetica&amp;#34; ; font-size: 12px ; font-style: normal ; font-weight: 400 ; letter-spacing: normal ; text-align: left ; text-indent: 0px ; text-transform: none ; word-spacing: 0px ; background-color: rgb(248 , 249 , 250)&quot;&gt;&lt;span style=&quot;color: rgb(0 , 0 , 0) ; font-family: &amp;#34;helvetica&amp;#34; ; font-size: 12px ; font-style: normal ; font-weight: 400 ; letter-spacing: normal ; text-align: left ; text-indent: 0px ; text-transform: none ; word-spacing: 0px ; background-color: rgb(248 , 249 , 250) ; display: inline ; float: none&quot;&gt;-&amp;nbsp;&lt;/span&gt;&lt;span&gt;live near Campus&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;color: rgb(0 , 0 , 0) ; font-family: &amp;#34;helvetica&amp;#34; ; font-size: 12px ; font-style: normal ; font-weight: 400 ; letter-spacing: normal ; text-align: left ; text-indent: 0px ; text-transform: none ; word-spacing: 0px ; background-color: rgb(248 , 249 , 250) ; display: inline ; float: none&quot;&gt;- together with other&lt;/span&gt;&lt;br style=&quot;color: rgb(0 , 0 , 0) ; font-family: &amp;#34;helvetica&amp;#34; ; font-size: 12px ; font-style: normal ; font-weight: 400 ; letter-spacing: normal ; text-align: left ; text-indent: 0px ; text-transform: none ; word-spacing: 0px ; background-color: rgb(248 , 249 , 250)&quot;&gt;&lt;span style=&quot;color: rgb(0 , 0 , 0) ; font-family: &amp;#34;helvetica&amp;#34; ; font-size: 12px ; font-style: normal ; font-weight: 400 ; letter-spacing: normal ; text-align: left ; text-indent: 0px ; text-transform: none ; word-spacing: 0px ; background-color: rgb(248 , 249 , 250) ; display: inline ; float: none&quot;&gt;&amp;nbsp; students&lt;/span&gt;&lt;br style=&quot;color: rgb(0 , 0 , 0) ; font-family: &amp;#34;helvetica&amp;#34; ; font-size: 12px ; font-style: normal ; font-weight: 400 ; letter-spacing: normal ; text-align: left ; text-indent: 0px ; text-transform: none ; word-spacing: 0px ; background-color: rgb(248 , 249 , 250)&quot;&gt;&lt;span style=&quot;color: rgb(0 , 0 , 0) ; font-family: &amp;#34;helvetica&amp;#34; ; font-size: 12px ; font-style: normal ; font-weight: 400 ; letter-spacing: normal ; text-align: left ; text-indent: 0px ; text-transform: none ; word-spacing: 0px ; background-color: rgb(248 , 249 , 250) ; display: inline ; float: none&quot;&gt;- private residence&lt;/span&gt;" style="text;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="284" y="240" width="130" height="90" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
