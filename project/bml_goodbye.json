@@ -6,8 +6,8 @@
         "behaviours": {
             "gaze": [{
                 "id": "g1",
-                "start": 0,
-                "end": 6,
+                "start": 6,
+                "end": 10,
                 "target": "human"
             }],
             "speech": [
@@ -15,14 +15,27 @@
                     "id": "s1",
                     "start": 0,
                     "end" : 5,
-                    "text": "Hey, how can I help you?"
+                    "text": "It was nice meeting you!"
+                },
+                {
+                    "id": "s2",
+                    "start": 7,
+                    "end" : 10,
+                    "text": "Goodbye!"
                 }
             ],
             "gesture": [
                 {
                     "id":"wave",
+                    "start": 6,
+                    "end": 10
+                }
+            ],
+            "head": [
+                {
+                    "id":"h1",
                     "start": 0,
-                    "end": 6
+                    "end": 4
                 }
             ]
         }
