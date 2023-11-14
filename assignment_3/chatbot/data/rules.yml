@@ -52,6 +52,11 @@ rules:
   - intent: application_process
   - action: utter_application_process_AS
 
+- rule: Get mensa menu
+  steps:
+  - intent: get_mensa_menu
+  - action: action_mensa
+
 
 
   

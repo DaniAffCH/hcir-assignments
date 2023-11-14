@@ -16,6 +16,7 @@ intents:
   - letter_of_admission_master_AS
   - semester_fees
   - application_process
+  - get_mensa_menu
   
 
 responses:
@@ -86,6 +87,9 @@ responses:
   utter_letter_of_admission_master_AS:
       - text: "The letter of admission is going to be sent to you as a hardcopy. The german
       word for that is Zulassungsbeschei and with that one you may apply for a visa. "
+
+actions:
+  - action_mensa
 
 session_config:
   session_expiration_time: 60

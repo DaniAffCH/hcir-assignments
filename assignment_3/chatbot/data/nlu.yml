@@ -24,6 +24,15 @@ nlu:
       - what language skills do I need?
       - what are the language profeciencies?
 
+  - intent: get_mensa_menu
+    examples: |
+      - What's on the menu at the university mensa for today?
+      - What's the today's menu?
+      - Today's menu?
+      - Can you tell me what's being served at the mensa today?
+      - I'd like to know what dishes are available at the university mensa right now. Can you help?
+      - What's the today's menu like?
+
   - intent: semester_fees
     examples: |
       - What are the semester fees?
