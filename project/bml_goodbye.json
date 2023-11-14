@@ -6,43 +6,36 @@
         "behaviours": {
             "gaze": [{
                 "id": "g1",
-                "start": 0,
-                "end": 6,
+                "start": 6,
+                "end": 10,
                 "target": "human"
             }],
             "speech": [
                 {
                     "id": "s1",
-                    "start": 1,
-                    "end" : 3,
-                    "text": "Hello"
+                    "start": 0,
+                    "end" : 5,
+                    "text": "It was nice meeting you!"
                 },
                 {
                     "id": "s2",
-                    "start": 5,
-                    "end" : 9,
-                    "text": "Glad to see you!!"
+                    "start": 7,
+                    "end" : 10,
+                    "text": "Goodbye!"
                 }
             ],
             "gesture": [
                 {
-                    "id":"ge1",
-                    "start": 1,
-                    "end": 5
+                    "id":"wave",
+                    "start": 6,
+                    "end": 10
                 }
             ],
             "head": [
                 {
                     "id":"h1",
-                    "start": 6,
-                    "end": 9
-                }
-            ],
-            "posture": [
-                {
-                    "id":"p1",
-                    "start": 9,
-                    "end": 12
+                    "start": 0,
+                    "end": 4
                 }
             ]
         }
