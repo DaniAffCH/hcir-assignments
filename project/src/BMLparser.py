@@ -1,7 +1,7 @@
 import json 
 import os
 class Parser():
-    def __init__(self, path:str) -> None:
+    def request(self, path:str) -> None:
         self.__sanityChecks(path)
 
         with open(path, "r") as f:
