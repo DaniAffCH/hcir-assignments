@@ -1,0 +1,22 @@
+# Ignore images
+*.jpg
+*.jpeg
+*.png
+*.gif
+*.bmp
+*.tiff
+*.webp
+
+# Ignore Python cache files
+__pycache__/
+
+# Ignore .pt files
+*.pt
+
+# Ignore bin
+*.bin
+
+# Ignore training data
+src/model/data/negatives/*
+src/model/data/klara_positive/*
+src/model/data/daniele_positive/*
