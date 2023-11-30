@@ -1,0 +1,30 @@
+{
+    "bml": {
+        "xmlns": "custombml-1.0",
+        "character": "Pepper",
+        "id": "p1",
+        "behaviours": {
+            "gaze": [{
+                "id": "g1",
+                "start": 0,
+                "end": 6,
+                "target": "human"
+            }],
+            "speech": [
+                {
+                    "id": "s1",
+                    "start": 0,
+                    "end" : 5,
+                    "text": "Hey, how can I help you?"
+                }
+            ],
+            "gesture": [
+                {
+                    "id":"wave",
+                    "start": 0,
+                    "end": 6
+                }
+            ]
+        }
+    }
+}
