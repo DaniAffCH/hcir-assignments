@@ -1,12 +1,7 @@
 
 from typing import Any
-from enum import Enum
 import numpy as np
-
-class FaceClasses(Enum):
-    UNAUTHORIZED = 0
-    DANIELE = 1
-    KLARA = 2
+from utils import FaceClasses
 
 class FaceRecognition():
     def __init__(self) -> None:

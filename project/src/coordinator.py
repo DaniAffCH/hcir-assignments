@@ -1,4 +1,3 @@
-from BLMparser import Parser
 from modes import Gesture, Speech, Gaze, Head, Posture
 
 class Coordinator():
@@ -27,10 +26,10 @@ class Coordinator():
         wait for all the threads to finish
     """
 
-    def __init__(self, parser:Parser, pepper) -> None:
-        self.behaviours = parser.getBehaviours()
+    def __init__(self, parser, pepper) -> None:
         self.threads = list()
         self.pepper = pepper
+        self.parser = parser
         self.classMapping = {
             "gaze": Gaze,
             "speech": Speech,
@@ -40,6 +39,7 @@ class Coordinator():
         }
 
     def spawn(self):
+        self.behaviours = self.parser.getBehaviours()
         for e in self.behaviours:
             if e not in self.classMapping:
                 raise Exception("[Fatal] BLM syntax error, {e} is not a valid behavior type")

@@ -1,0 +1,19 @@
+{
+    "bml": {
+        "xmlns": "custombml-1.0",
+        "character": "Pepper",
+        "id": "say",
+        "behaviours": {
+
+            "speech": [
+                {
+                    "id": "s1",
+                    "start": 0,
+                    "end" : 4,
+                    "text": "{text}"
+                }
+            ]
+
+        }
+    }
+}

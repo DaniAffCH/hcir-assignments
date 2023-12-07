@@ -35,7 +35,7 @@ class BehaviourClass(threading.Thread, ABC):
     def run(self):
         start_t = time.time()
 
-        while True:
+        while self.behaviourSeq:
             t = time.time() - start_t
             if self.behaviourSeq and self.behaviourSeq[0]["start"] <= t:
                 assert(self.behaviourSeq[0]["start"] < self.behaviourSeq[0]["end"])
@@ -48,7 +48,11 @@ class BehaviourClass(threading.Thread, ABC):
 
 class Gesture(BehaviourClass):
     def routine(self, atomicBehaviour):
-        self.behaviourRealizer.waving(atomicBehaviour["end"] - atomicBehaviour["start"])
+        if atomicBehaviour["id"] == "wave":
+            self.behaviourRealizer.waving(atomicBehaviour["end"] - atomicBehaviour["start"])
+        
+        else:
+            raise Exception(f"[FATAL] id {atomicBehaviour['id']} is not valid for a Gesture")
 
 class Speech(BehaviourClass):
     def routine(self, atomicBehaviour):
@@ -64,4 +68,9 @@ class Head(BehaviourClass):
 
 class Posture(BehaviourClass):
     def routine(self, atomicBehaviour):
-        self.behaviourRealizer.happySwirl(atomicBehaviour["end"] - atomicBehaviour["start"])
+        if atomicBehaviour["id"] == "cross":
+            self.behaviourRealizer.cross(atomicBehaviour["end"] - atomicBehaviour["start"])
+        elif atomicBehaviour["id"] == "happySwirl":
+            self.behaviourRealizer.happySwirl(atomicBehaviour["end"] - atomicBehaviour["start"])
+        else: 
+            raise Exception(f"[FATAL] id {atomicBehaviour['id']} is not valid for a Posture")

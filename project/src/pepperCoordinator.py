@@ -1,19 +1,13 @@
-from enum import Enum
 from typing import Any
 from model.face_recognition import FaceRecognition, FaceClasses
 import time
 import cv2
+from BMLparser import Parser
+from utils import PepperStates, Request
 
 # Main Idea: every state has a FSM associated 
-class PepperStates(Enum):
-    RECOGNITION = 1
-    GREETING = 2
-    CONVERSATION = 3
-    INFERENCE = 4
-    FAREWELL = 5
-
 class RecognitionFSM():
-    def __init__(self) -> None:
+    def __init__(self, thePepperCoordinator) -> None:
         self.state = 0
         self.model = FaceRecognition()
         self.ts = None
@@ -21,7 +15,7 @@ class RecognitionFSM():
         self.detectionThreshold = 0.4
         self.video_capture = cv2.VideoCapture(0)
         self.collectingTime = 5
-
+        self.thePepperCoordinator = thePepperCoordinator
 
     def __call__(self) -> Any:
         match self.state:
@@ -46,7 +40,7 @@ class RecognitionFSM():
             case 1:
                 print("Evaluating...")
 
-                # thershold based on statistical analysis
+                # threshold based on statistical analysis
                 l = len(self.faceDetections)
                 pd = self.faceDetections.count(FaceClasses.DANIELE) 
                 pk = self.faceDetections.count(FaceClasses.KLARA) 
@@ -72,14 +66,18 @@ class RecognitionFSM():
                 print("I'm not sure")
 
             case 3:
-                print(f"I'm sure, it's {'Daniele' if self.userDetected == FaceClasses.DANIELE else 'Klara'}")
+                user = 'Daniele' if self.userDetected == FaceClasses.DANIELE else 'Klara'
+                self.thePepperCoordinator.addRequest("hello", {"name": user})
+                self.state = 5 #DEAD STATE FOR NOW, TODO: go to a different high level FSM
 
             case 4:
-                # We have a negative answer, maybe pepper can say smth and then go back to state 0
                 print("Not authorized user detected")
+                # We have a negative answer, maybe pepper can say smth and then go back to state 0
+                self.thePepperCoordinator.addRequest("notOk")
+                self.state = 5 #DEAD STATE FOR NOW, TODO: go back to state 0
 
 
-class GreetingFSM():
+class GreetingFSM(): # Is it really necessary?? 
     pass
 
 class ConversationFSM():
@@ -93,19 +91,23 @@ class FarewellFSM():
     pass
 
 class PepperCoordinator():
-    def __init__(self) -> None:
+    def __init__(self, pepper) -> None:
         self.state = PepperStates.RECOGNITION
 
         self.stateToFSM = {
-            PepperStates.RECOGNITION: RecognitionFSM(),
+            PepperStates.RECOGNITION: RecognitionFSM(self),
             PepperStates.GREETING: GreetingFSM(),
             PepperStates.CONVERSATION: ConversationFSM(),
             PepperStates.INFERENCE: InferenceFSM(),
             PepperStates.FAREWELL: FarewellFSM()
         }
-
+        self.bmlParser = Parser(pepper)
         self.currentFSM = self.stateToFSM[self.state]
 
     def update(self):
         self.currentFSM()
-    
+
+    def addRequest(self, name, params=None, async_=False):
+        r = Request(name, params, async_)
+        self.bmlParser.request(r)
+

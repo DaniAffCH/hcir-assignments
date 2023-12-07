@@ -1,7 +1,15 @@
+from utils import Request
+from coordinator import Coordinator
 import json 
 import os
+
+BML_PATH = "bml"
 class Parser():
-    def request(self, path:str) -> None:
+    def __init__(self, pepper) -> None:
+        self.modeCoordinator = Coordinator(self, pepper)
+
+    def request(self, req:Request) -> None:
+        path = os.path.join(BML_PATH, req.name+".json")
         self.__sanityChecks(path)
 
         with open(path, "r") as f:
@@ -10,6 +18,17 @@ class Parser():
         # Sort every behaviour category according its starting time
         for k in self.rawJson["bml"]["behaviours"]:
             self.rawJson["bml"]["behaviours"][k] = sorted(self.rawJson["bml"]["behaviours"][k], key=lambda e: e["start"])
+
+        # Fill templates if needed
+        if req.params:
+            for i, _ in enumerate(self.rawJson["bml"]["behaviours"]["speech"]):
+                self.rawJson["bml"]["behaviours"]["speech"][i]["text"] = self.rawJson["bml"]["behaviours"]["speech"][i]["text"].format(**req.params)
+
+        self.modeCoordinator.spawn()
+
+        if not req.async_:
+            self.modeCoordinator.join() 
+
         
     def __sanityChecks(self, path):
         if not os.path.exists(path):

@@ -6,8 +6,6 @@ import tempfile
 from collections import namedtuple
 
 from math import pi, atan2, sin
-
-
 class PoseSkill():
 
     """
@@ -198,8 +196,6 @@ class WavingSkill():
         # Finally go back to the base configuration again
         self.pepper.goToPosture("StandZero", 1.)
         self.state = 0
-
-
 class SaySkill():
     """
     A class used to implement a human-like robot speaking skill. It uses a Text To Speech plugin to synthesize a text.
@@ -234,6 +230,15 @@ class BehaviorRealizer():
 
     def waving(self, execTime=5):
         self.theWavingSkill(execTime)
+
+    def cross(self, execTime=5):
+        joint_angles = {
+            "RShoulderPitch": -90, 
+            "LShoulderPitch": -90,
+            "RElbowRoll": 90,
+            "LElbowRoll": -90,
+        }
+        self.thePoseSkill(joint_angles, execTime)
 
     def lookAtRelativePoint(self, x, y, z, execTime=5):
         self.theLookAtRelativePointSkill(x, y, z, execTime)
