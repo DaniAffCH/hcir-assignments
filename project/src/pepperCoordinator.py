@@ -3,7 +3,7 @@ from model.face_recognition import FaceRecognition, FaceClasses
 import time
 import cv2
 from BMLparser import Parser
-from utils import PepperStates, Request
+from utils_ import PepperStates, Request
 
 # Main Idea: every state has a FSM associated 
 class RecognitionFSM():

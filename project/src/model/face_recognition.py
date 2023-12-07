@@ -1,7 +1,7 @@
 
 from typing import Any
 import numpy as np
-from utils import FaceClasses
+from utils_ import FaceClasses
 
 class FaceRecognition():
     def __init__(self) -> None:
