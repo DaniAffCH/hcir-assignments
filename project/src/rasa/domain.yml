@@ -38,15 +38,14 @@ responses:
   "of all, do you have a limited budget which is" +
   "below 400 euros?"
   
-  utter_pos_answer_limited_budget:
-  - text: "Okay, I will keep that in mind. Would you pay" +
-  "mroe to have your own flat and not share any common rooms?"
+  utter_answer_limited_budget:
+  - text: "Alright, good to know. Then as a next question would you be"+
+  "willing to share common rooms such as kitchen or bathroom?"
 
-  utter_neg_answer_limited_budget:
+  utter_answer_pay_more_for_own_flat:
+  
   - text: "Okay, I will keep that in mind. Would you pay" +
-  "more to have your own, single flat where you would" +
-  "not need to share any common rooms?"
-
+  "more to have your own flat and not share any common rooms?"
 
 session_config:
   session_expiration_time: 60
