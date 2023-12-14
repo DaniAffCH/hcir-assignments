@@ -8,6 +8,7 @@ intents:
   - mood_great
   - mood_unhappy
   - bot_challenge
+  - help_to_find_dorm
 
 responses:
   utter_greet:
@@ -28,6 +29,24 @@ responses:
 
   utter_iamabot:
   - text: "I am a bot, powered by Rasa."
+
+  utter_help_to_find_dorm:
+  - text: "Yes, of course I will help you" +
+  "find a suitable dorm for you. For that I" +
+  "need to ask you a few questions about your" + 
+  "preferences.if you are fine with that. First" +
+  "of all, do you have a limited budget which is" +
+  "below 400 euros?"
+  
+  utter_pos_answer_limited_budget:
+  - text: "Okay, I will keep that in mind. Would you pay" +
+  "mroe to have your own flat and not share any common rooms?"
+
+  utter_neg_answer_limited_budget:
+  - text: "Okay, I will keep that in mind. Would you pay" +
+  "more to have your own, single flat where you would" +
+  "not need to share any common rooms?"
+
 
 session_config:
   session_expiration_time: 60
