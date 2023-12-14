@@ -39,6 +39,9 @@ responses:
   utter_answer_pay_more_for_own_flat:
     - text: "Okay, I will keep that in mind. Would you pay more to have your own flat and not share any common rooms?"
 
+  utter_answer_common_space:
+    - text: "Okay, I will keep that in mind."
+
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true

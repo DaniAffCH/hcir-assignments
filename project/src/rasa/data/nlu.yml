@@ -154,14 +154,24 @@ nlu:
       - No, I don't.
       - No, I do not.
 
-  - intent: neg_answer_pay_more_for_own_flat
+  - intent: pos_common_space
     examples: |
-      - No, I do not want to pay more for my own flat.
-      - No, I do not want to pay more for my own flat to not share any common rooms.
-      - No, I would not like to pay more for my own, single flat.
-      - No, I do not want to pay more for that. 
-      - No, I do not want to pay more for my own flat.
+      - Yes, I would want to share common rooms such as kitchen or bathroom.
+      - Yes, I would want to share common rooms.
+      - Yes, why not.
+      - Yes.
+      - Okay, yes.
+      - Okay, yes I would want to share common rooms.
+      - Yes, that would be okay for me.
+      - Yes, that would be okay.
+      - Yes, I want to share.
+
+  - intent: neg_common_space
+    examples: |
+      - No, I do not want to share common rooms such as kitchen or bathroom.
+      - No, I do not want to share common rooms.
+      - No, I do not want to share.
+      - No.
+      - No, I don't want to share common rooms.
+      - No, I don't want to share.
       - No, I don't want that.
-      - No, I do not want to pay more. 
-      - No, I don't.
-      - No, I do not.

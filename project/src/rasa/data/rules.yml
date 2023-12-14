@@ -40,3 +40,13 @@ rules:
     steps:
       - intent: neg_answer_limited_budget
       - action: utter_neg_answer_pay_more_for_own_flat
+
+  - rule: positive for sharing common space
+    steps:
+      - intent: pos_common_space
+      - action: utter_answer_common_space
+
+  - rule: negative for sharing common space
+    steps:
+      - intent: neg_common_space
+      - action: utter_answer_common_space
