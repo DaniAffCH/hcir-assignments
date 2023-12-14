@@ -102,6 +102,7 @@ nlu:
 
   - intent: positive
     examples: |
+      - Yes.
       - Yes, I do have a limited budget.
       - Yes my limited budget which is below 400 euros.
       - Yes, I do.
@@ -126,7 +127,9 @@ nlu:
       - Yes, I would want to share common rooms such as kitchen or bathroom.
       - Yes, I would want to share common rooms.
       - Yes, why not.
-      - Yes.
+      - yes
+      - Yes
+      - Y
       - Okay, yes.
       - Okay, yes I would want to share common rooms.
       - Yes, that would be okay for me.

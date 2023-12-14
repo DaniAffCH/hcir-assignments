@@ -10,13 +10,3 @@ rules:
     steps:
       - intent: bot_challenge
       - action: utter_iamabot
-
-  - rule: Initiate question about dorm preferences
-    steps:
-      - intent: help_to_find_dorm
-      - action: utter_help_to_find_dorm
-
-  - rule: Initiate question about dorm preferences
-    steps:
-      - intent: help_to_find_dorm
-      - action: utter_help_to_find_dorm
