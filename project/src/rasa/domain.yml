@@ -12,40 +12,32 @@ intents:
 
 responses:
   utter_greet:
-  - text: "Hey! How are you?"
+    - text: "Hey! How are you?"
 
   utter_cheer_up:
-  - text: "Here is something to cheer you up:"
-    image: "https://i.imgur.com/nGF1K8f.jpg"
+    - text: "Here is something to cheer you up:"
+      image: "https://i.imgur.com/nGF1K8f.jpg"
 
   utter_did_that_help:
-  - text: "Did that help you?"
+    - text: "Did that help you?"
 
   utter_happy:
-  - text: "Great, carry on!"
+    - text: "Great, carry on!"
 
   utter_goodbye:
-  - text: "Bye"
+    - text: "Bye"
 
   utter_iamabot:
-  - text: "I am a bot, powered by Rasa."
+    - text: "I am a bot, powered by Rasa."
 
   utter_help_to_find_dorm:
-  - text: "Yes, of course I will help you" +
-  "find a suitable dorm for you. For that I" +
-  "need to ask you a few questions about your" + 
-  "preferences.if you are fine with that. First" +
-  "of all, do you have a limited budget which is" +
-  "below 400 euros?"
-  
+    - text: "Yes, of course I will help you find a suitable dorm for you. For that I need to ask you a few questions about your preferences. First of all, do you have a limited budget which is below 400 euros?"
+
   utter_answer_limited_budget:
-  - text: "Alright, good to know. Then as a next question would you be"+
-  "willing to share common rooms such as kitchen or bathroom?"
+    - text: "Alright, good to know. Then as a next question would you be willing to share common rooms such as kitchen or bathroom?"
 
   utter_answer_pay_more_for_own_flat:
-  
-  - text: "Okay, I will keep that in mind. Would you pay" +
-  "more to have your own flat and not share any common rooms?"
+    - text: "Okay, I will keep that in mind. Would you pay more to have your own flat and not share any common rooms?"
 
 session_config:
   session_expiration_time: 60
