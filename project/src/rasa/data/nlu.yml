@@ -131,25 +131,25 @@ nlu:
       - Nope. I do not have a limited budget which is below 400 euros.
 
   - intent: pos_answer_pay_more_for_own_flat
-      examples: |
-        - Yes, I would like to pay more for my own flat.
-        - Yes, I would like to pay more for my own flat to not share any common rooms.
-        - Yes, I would pay more for that.
-        - Yes, I would like to pay more for my own, single flat.
-        - Yes, I would pay more for a single flat.
-        - Yes, of course I would pay more for a single flat.
-        - Sure, I would pay more for a single flat.
-        - Sure, I would pay more for that. 
-        - Yes, I want to pay more for that. 
+    examples: |
+      - Yes, I would like to pay more for my own flat.
+      - Yes, I would like to pay more for my own flat to not share any common rooms.
+      - Yes, I would pay more for that.
+      - Yes, I would like to pay more for my own, single flat.
+      - Yes, I would pay more for a single flat.
+      - Yes, of course I would pay more for a single flat.
+      - Sure, I would pay more for a single flat.
+      - Sure, I would pay more for that. 
+      - Yes, I want to pay more for that.
 
   - intent: neg_answer_pay_more_for_own_flat
-      examples: |
-        - No, I do not want to pay more for my own flat.
-        - No, I do not want to pay more for my own flat to not share any common rooms.
-        - No, I would not like to pay more for my own, single flat.
-        - No, I do not want to pay more for that. 
-        - No, I do not want to pay more for my own flat.
-        - No, I don't want that.
-        - No, I do not want to pay more. 
-        - No, I don't.
-        - No, I do not. 
+    examples: |
+      - No, I do not want to pay more for my own flat.
+      - No, I do not want to pay more for my own flat to not share any common rooms.
+      - No, I would not like to pay more for my own, single flat.
+      - No, I do not want to pay more for that. 
+      - No, I do not want to pay more for my own flat.
+      - No, I don't want that.
+      - No, I do not want to pay more. 
+      - No, I don't.
+      - No, I do not.
