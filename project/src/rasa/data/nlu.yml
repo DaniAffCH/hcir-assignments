@@ -100,7 +100,7 @@ nlu:
       - I want to find a dorm. Can you help me?
       - Can you give me an advice finding a dorm?
 
-  - intent: pos_answer_limited_budget
+  - intent: positive
     examples: |
       - Yes, I do have a limited budget.
       - Yes my limited budget which is below 400 euros.
@@ -114,8 +114,26 @@ nlu:
       - Certainly. I do have a limited budget which is below 400 euros.
       - Indeed. I can not spend more than 400 euros for a dorm.
       - Indeed. I can not spend more than 400 euros.
+      - Yes, I would like to pay more for my own flat.
+      - Yes, I would like to pay more for my own flat to not share any common rooms.
+      - Yes, I would pay more for that.
+      - Yes, I would like to pay more for my own, single flat.
+      - Yes, I would pay more for a single flat.
+      - Yes, of course I would pay more for a single flat.
+      - Sure, I would pay more for a single flat.
+      - Sure, I would pay more for that. 
+      - Yes, I want to pay more for that.
+      - Yes, I would want to share common rooms such as kitchen or bathroom.
+      - Yes, I would want to share common rooms.
+      - Yes, why not.
+      - Yes.
+      - Okay, yes.
+      - Okay, yes I would want to share common rooms.
+      - Yes, that would be okay for me.
+      - Yes, that would be okay.
+      - Yes, I want to share.
 
-  - intent: neg_answer_limited_budget
+  - intent: negative
     examples: |
       - No, I do not have limited budget. 
       - No, I do not have a limited budget which is below 400 euros.
@@ -129,21 +147,6 @@ nlu:
       - Not really. 
       - Nope. I can spend more than 400 euros for a dorm.
       - Nope. I do not have a limited budget which is below 400 euros.
-
-  - intent: pos_answer_pay_more_for_own_flat
-    examples: |
-      - Yes, I would like to pay more for my own flat.
-      - Yes, I would like to pay more for my own flat to not share any common rooms.
-      - Yes, I would pay more for that.
-      - Yes, I would like to pay more for my own, single flat.
-      - Yes, I would pay more for a single flat.
-      - Yes, of course I would pay more for a single flat.
-      - Sure, I would pay more for a single flat.
-      - Sure, I would pay more for that. 
-      - Yes, I want to pay more for that.
-
-  - intent: neg_answer_pay_more_for_own_flat
-    examples: |
       - No, I do not want to pay more for my own flat.
       - No, I do not want to pay more for my own flat to not share any common rooms.
       - No, I would not like to pay more for my own, single flat.
@@ -152,22 +155,6 @@ nlu:
       - No, I don't want that.
       - No, I do not want to pay more. 
       - No, I don't.
-      - No, I do not.
-
-  - intent: pos_common_space
-    examples: |
-      - Yes, I would want to share common rooms such as kitchen or bathroom.
-      - Yes, I would want to share common rooms.
-      - Yes, why not.
-      - Yes.
-      - Okay, yes.
-      - Okay, yes I would want to share common rooms.
-      - Yes, that would be okay for me.
-      - Yes, that would be okay.
-      - Yes, I want to share.
-
-  - intent: neg_common_space
-    examples: |
       - No, I do not want to share common rooms such as kitchen or bathroom.
       - No, I do not want to share common rooms.
       - No, I do not want to share.

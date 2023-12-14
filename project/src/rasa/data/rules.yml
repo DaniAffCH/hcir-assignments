@@ -23,30 +23,30 @@ rules:
 
   - rule: positive limited budget
     steps:
-      - intent: pos_answer_limited_budget
+      - intent: positive
       - action: utter_answer_limited_budget
 
   - rule: negative limited budget
     steps:
-      - intent: neg_answer_limited_budget
+      - intent: negative
       - action: utter_answer_limited_budget
 
   - rule: positive pay more for own flat for neg
     steps:
-      - intent: pos_answer_pay_more_for_own_flat
+      - intent: positive
       - action: utter_answer_pay_more_for_own_flat
 
   - rule: negative pay more for own flat for neg
     steps:
-      - intent: neg_answer_pay_more_for_own_flat
+      - intent: negative
       - action: utter_answer_pay_more_for_own_flat
 
   - rule: positive for sharing common space
     steps:
-      - intent: pos_common_space
+      - intent: positive
       - action: utter_answer_common_space
 
   - rule: negative for sharing common space
     steps:
-      - intent: neg_common_space
+      - intent: negative
       - action: utter_answer_common_space
