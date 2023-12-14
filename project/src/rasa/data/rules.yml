@@ -23,22 +23,20 @@ rules:
 
   - rule: positive limited budget
     steps:
-      - intent: pos_answer_limited_budget 
+      - intent: pos_answer_limited_budget
       - action: utter_answer_limited_budget
 
   - rule: negative limited budget
-      steps:
-        - intent: neg_answer_limited_budget
-        - action: utter_answer_limited_budget
+    steps:
+      - intent: neg_answer_limited_budget
+      - action: utter_answer_limited_budget
 
   - rule: positive pay more for own flat for neg
-      steps:
-        - intent: pos_answer_limited_budget
-        - action: utter_answer_pay_more_for_own_flat
+    steps:
+      - intent: pos_answer_limited_budget
+      - action: utter_answer_pay_more_for_own_flat
 
   - rule: negative pay more for own flat for neg
-      steps:
-        - intent: neg_answer_limited_budget
-        - action: utter_neg_answer_pay_more_for_own_flat
-  
-
+    steps:
+      - intent: neg_answer_limited_budget
+      - action: utter_neg_answer_pay_more_for_own_flat

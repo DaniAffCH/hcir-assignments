@@ -153,3 +153,15 @@ nlu:
       - No, I do not want to pay more. 
       - No, I don't.
       - No, I do not.
+
+  - intent: neg_answer_pay_more_for_own_flat
+    examples: |
+      - No, I do not want to pay more for my own flat.
+      - No, I do not want to pay more for my own flat to not share any common rooms.
+      - No, I would not like to pay more for my own, single flat.
+      - No, I do not want to pay more for that. 
+      - No, I do not want to pay more for my own flat.
+      - No, I don't want that.
+      - No, I do not want to pay more. 
+      - No, I don't.
+      - No, I do not.
