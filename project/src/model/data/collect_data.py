@@ -2,7 +2,7 @@ import cv2
 import time
 
 video_capture = cv2.VideoCapture(0)
-folder = "klara_positive/"
+folder = "daniele_positive/"
 
 while True:
     # Capture frame-by-frame
