@@ -9,6 +9,12 @@ intents:
   - mood_unhappy
   - bot_challenge
   - help_to_find_dorm
+  - pos_answer_limited_budget
+  - neg_answer_limited_budget
+  - pos_answer_pay_more_for_own_flat
+  - neg_answer_pay_more_for_own_flat
+  - pos_common_space
+  - neg_common_space
 
 responses:
   utter_greet:
