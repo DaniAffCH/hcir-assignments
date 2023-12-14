@@ -33,12 +33,12 @@ rules:
 
   - rule: positive pay more for own flat for neg
     steps:
-      - intent: pos_answer_limited_budget
+      - intent: pos_answer_pay_more_for_own_flat
       - action: utter_answer_pay_more_for_own_flat
 
   - rule: negative pay more for own flat for neg
     steps:
-      - intent: neg_answer_limited_budget
+      - intent: neg_answer_pay_more_for_own_flat
       - action: utter_neg_answer_pay_more_for_own_flat
 
   - rule: positive for sharing common space
