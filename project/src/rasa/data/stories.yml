@@ -1,65 +1,128 @@
 version: "3.1"
-  - story: question path ppp
-    steps:
-      - intent: greet
-      - action: utter_greet
-      - intent: help_to_find_dorm
-      - action: utter_help_to_find_dorm
-      - intent: positive
-      - action: utter_answer_limited_budget
-      - intent: positive
-      - action: utter_answer_common_space
-      - intent: positive
-      - action: utter_answer_pay_more_for_own_flat
 
-  - story: question path pnn
-    steps:
-      - intent: greet
-      - action: utter_greet
-      - intent: help_to_find_dorm
-      - action: utter_help_to_find_dorm
-      - intent: positive
-      - action: utter_answer_limited_budget
-      - intent: negative
-      - action: utter_answer_common_space
-      - intent: negative
-      - action: utter_answer_pay_more_for_own_flat
+stories:
 
-  - story: question path nnn
-    steps:
-      - intent: greet
-      - action: utter_greet
-      - intent: help_to_find_dorm
-      - action: utter_help_to_find_dorm
-      - intent: negative
-      - action: utter_answer_limited_budget
-      - intent: negative
-      - action: utter_answer_common_space
-      - intent: negative
-      - action: utter_answer_pay_more_for_own_flat
+- story: happy path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_great
+  - action: utter_happy
 
-  - story: question path npn
-    steps:
-      - intent: greet
-      - action: utter_greet
-      - intent: help_to_find_dorm
-      - action: utter_help_to_find_dorm
-      - intent: negative
-      - action: utter_answer_limited_budget
-      - intent: positive
-      - action: utter_answer_common_space
-      - intent: negative
-      - action: utter_answer_pay_more_for_own_flat
+- story: robetta 1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: help_to_find_dorm
+  - action: utter_help_to_find_dorm
+  - intent: positive
+  - action: utter_answer_limited_budget
+  - intent: positive
+  - action: utter_answer_common_space
+  - intent: positive
+  - action: utter_answer_pay_more_for_own_flat
+  - intent: uni_location
 
-  - story: question path nnp
-    steps:
-      - intent: greet
-      - action: utter_greet
-      - intent: help_to_find_dorm
-      - action: utter_help_to_find_dorm
-      - intent: negative
-      - action: utter_answer_limited_budget
-      - intent: negative
-      - action: utter_answer_common_space
-      - intent: positive
-      - action: utter_answer_pay_more_for_own_flat
+- story: robetta 2 pnnn
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: help_to_find_dorm
+  - action: utter_help_to_find_dorm
+  - intent: positive
+  - action: utter_answer_limited_budget
+  - intent: negative
+  - action: utter_answer_common_space
+  - intent: negative
+  - action: utter_answer_pay_more_for_own_flat
+  - intent: uni_location
+
+
+- story: robetta 2 pppn
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: help_to_find_dorm
+  - action: utter_help_to_find_dorm
+  - intent: positive
+  - action: utter_answer_limited_budget
+  - intent: positive
+  - action: utter_answer_common_space
+  - intent: positive
+  - action: utter_answer_pay_more_for_own_flat
+  - intent: uni_location
+
+
+- story: robetta 3 ppnn
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: help_to_find_dorm
+  - action: utter_help_to_find_dorm
+  - intent: positive
+  - action: utter_answer_limited_budget
+  - intent: positive
+  - action: utter_answer_common_space
+  - intent: negative
+  - action: utter_answer_pay_more_for_own_flat
+  - intent: uni_location
+
+
+- story: robetta 2 nnnn
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: help_to_find_dorm
+  - action: utter_help_to_find_dorm
+  - intent: negative
+  - action: utter_answer_limited_budget
+  - intent: negative
+  - action: utter_answer_common_space
+  - intent: negative
+  - action: utter_answer_pay_more_for_own_flat
+  - intent: uni_location
+  - action: utter_uni_location
+
+- story: robetta 2 npnn
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: help_to_find_dorm
+  - action: utter_help_to_find_dorm
+  - intent: negative
+  - action: utter_answer_limited_budget
+  - intent: positive
+  - action: utter_answer_common_space
+  - intent: negative
+  - action: utter_answer_pay_more_for_own_flat
+  - intent: uni_location
+
+
+- story: robetta 2 npnn
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: help_to_find_dorm
+  - action: utter_help_to_find_dorm
+  - intent: negative
+  - action: utter_answer_limited_budget
+  - intent: positive
+  - action: utter_answer_common_space
+  - intent: negative
+  - action: utter_answer_pay_more_for_own_flat
+  - intent: uni_location
+
+
+- story: robetta 2 nnpn
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: help_to_find_dorm
+  - action: utter_help_to_find_dorm
+  - intent: negative
+  - action: utter_answer_limited_budget
+  - intent: negative
+  - action: utter_answer_common_space
+  - intent: positive
+  - action: utter_answer_pay_more_for_own_flat
+  - intent: uni_location

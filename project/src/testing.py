@@ -3,8 +3,8 @@
 from speech.recognition import SpeechRecognition
 from filter.filter import BadWordsFilter
 
-TESTING_BW = False
-TESTING_SENT = True
+TESTING_BW = True
+TESTING_SENT = False
 
 print("Loading...")
 
@@ -15,10 +15,9 @@ print("Loaded!")
 while True:
     if TESTING_BW:
         out = s.listen()
-        if len(out) > 0:
-            sentence = out["alternative"][0]["transcript"]
-            print(sentence)
-            res, bw = bwFilter.processSentence(sentence)
+        if out and len(out) > 0:
+            print(out)
+            res, bw = bwFilter.processSentence(out)
             print(f"Does it contain any badword? {res} -> {bw}")
     
     if TESTING_SENT:

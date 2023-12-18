@@ -14,7 +14,7 @@ intents:
 
 responses:
   utter_greet:
-    - text: "Hey! How are you?"
+    - text: "Hello! "
 
   utter_cheer_up:
     - text: "Here is something to cheer you up:"
@@ -39,10 +39,15 @@ responses:
     - text: "Alright, good to know. Then as a next question would you be willing to share common rooms such as kitchen or bathroom?"
 
   utter_answer_pay_more_for_own_flat:
-    - text: "Okay, I will keep that in mind. Would you pay more to have your own flat and not share any common rooms?"
+    - text: "Okay, I will keep that in mind. At which uni location are you studying? University of Bonn, HBRS in Sankt Augustin or HBRS in Rheinbach?"
 
   utter_answer_common_space:
-    - text: "Okay, I will keep that in mind."
+    - text: "Okay, I will keep that in mind. Would you pay more to have your own flat and not share any common rooms?"
+
+  utter_uni_location:
+    - text: "alright."
+
+  
 
 session_config:
   session_expiration_time: 60

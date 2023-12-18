@@ -29,25 +29,7 @@ nlu:
       - see you around
       - bye bye
       - see you later
-
-  - intent: affirm
-    examples: |
-      - yes
-      - y
-      - indeed
-      - of course
-      - that sounds good
-      - correct
-
-  - intent: deny
-    examples: |
-      - no
-      - n
-      - never
-      - I don't think so
-      - don't like that
-      - no way
-      - not really
+ 
 
   - intent: mood_great
     examples: |
@@ -103,6 +85,10 @@ nlu:
   - intent: positive
     examples: |
       - Yes.
+      - indeed
+      - of course
+      - that sounds good
+      - correct
       - Yes, I do have a limited budget.
       - Yes my limited budget which is below 400 euros.
       - Yes, I do.
@@ -138,6 +124,10 @@ nlu:
 
   - intent: negative
     examples: |
+      - never
+      - don't like that
+      - no way
+      - not really
       - No, I do not have limited budget. 
       - No, I do not have a limited budget which is below 400 euros.
       - No, I do not.
@@ -167,3 +157,15 @@ nlu:
       - No, I don't want to share common rooms.
       - No, I don't want to share.
       - No, I don't want that.
+
+  - intent: uni_location
+    examples: |
+      - HBRS Sankt Augustin
+      - HBRS Rheinbach
+      - University of Bonn
+      - Uni Bonn
+      - I study at HBRS Sankt Augustin.
+      - I study at HBRS Rheinbach.
+      - I study at University Bonn.
+      - Hochschule Bonn-Rhein-Sieg in Rheinbach
+      - Hochschule Bonn-Rhein-Sieg in Sankt Augustin 
