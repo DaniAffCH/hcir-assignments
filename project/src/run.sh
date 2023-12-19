@@ -5,5 +5,5 @@ if [ -n "$pastPid" ]; then
     kill $pastPid
 fi
 model="20231214-174915-burning-amplifier.tar.gz"
-rasa run --model "./rasa/models/$model" &
+rasa run --model "./rasa/models/$model" --enable-api &
 python3 main.py
