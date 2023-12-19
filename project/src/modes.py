@@ -54,6 +54,8 @@ class Gesture(BehaviourClass):
             self.behaviourRealizer.standInit()  
         elif atomicBehaviour["id"] == "talkingPos":
             self.behaviourRealizer.talkingPose(atomicBehaviour["end"] - atomicBehaviour["start"])   
+        elif atomicBehaviour["id"] == "agreeGesture":
+            self.behaviourRealizer.agreeGesture(atomicBehaviour["end"] - atomicBehaviour["start"])   
         else:
             raise Exception(f"[FATAL] id {atomicBehaviour['id']} is not valid for a Gesture")
 

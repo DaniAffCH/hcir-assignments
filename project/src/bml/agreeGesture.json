@@ -1,8 +1,9 @@
+
 {
     "bml": {
         "xmlns": "custombml-1.0",
         "character": "Pepper",
-        "id": "p1",
+        "id": "agreeGesture",
         "behaviours": {
             "gaze": [{
                 "id": "g1",
@@ -20,7 +21,7 @@
             ],
             "gesture": [
                 {
-                    "id":"wave",
+                    "id":"agreeGesture",
                     "start": 0,
                     "end": 6
                 }

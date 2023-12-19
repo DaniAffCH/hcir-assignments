@@ -261,9 +261,24 @@ class BehaviorRealizer():
         
     def talkingPose(self, execTime=5):
         joint_angles = {
-            "RShoulderPitch": -90, 
-            "LShoulderPitch": -90,
-            "RElbowRoll": 90,
-            "LElbowRoll": -90,
+            "RShoulderPitch": 90, 
+            "LShoulderPitch": 50,
+            "RElbowRoll": 70,
+            "LElbowRoll": -20,
+            "LElbowYaw": -104,
+            "RElbowYaw": 120,
+            "LWristYaw": -104,
+            "RWristYaw": 120
+        }
+        self.thePoseSkill(joint_angles, execTime)
+
+    def agreeGesture(self, execTime=5):
+        joint_angles = {
+            "RShoulderPitch": 50, #
+            "RShoulderRoll": 10,
+            "RElbowRoll": 50,
+            "RElbowYaw": 120,
+            "RWristYaw": 70,
+            "LShoulderPitch": 100
         }
         self.thePoseSkill(joint_angles, execTime)

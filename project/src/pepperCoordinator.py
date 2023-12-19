@@ -23,14 +23,13 @@ class RecognitionFSM():
     def __call__(self) -> Any:
         match self.state:
             case 0:
-                self.thePepperCoordinator.addRequest("sayGesture", {"text": f"Hiii Daniiiieeelllee"})
-                self.thePepperCoordinator.addRequest("say", {"text": f"Hi! I'm Pepper. Let's see if I can recognize you!"})
+                #self.thePepperCoordinator.addRequest("sayGesture", {"text": f"Hiii Daniiiieeelllee"})
+                self.thePepperCoordinator.addRequest("sayGesture", {"text": f"Hi! I'm Pepper. Let's see if I can recognize you!"})
                 self.state = 1
             case 1:
                 if self.ts is None:
                     self.faceDetections = list()
                     self.ts = time.time()
-
                 # acquire img
                 _, frame = self.video_capture.read()
                 # inference 
@@ -72,7 +71,7 @@ class RecognitionFSM():
                 print(sentiment, sentence)
                 if sentiment == "no" or sentiment is None:
                     self.userDetected = None
-                    self.thePepperCoordinator.addRequest("say", {"text": f"Ok I'm going to look at you more carefully"}, True)
+                    self.thePepperCoordinator.addRequest("sayGesture", {"text": f"Ok I'm going to look at you more carefully"}, True)
                     self.state = 1
                 elif sentiment == "yes":
                     self.state = 4
@@ -80,12 +79,14 @@ class RecognitionFSM():
 
             case 4:
                 user = 'Daniele' if self.userDetected == FaceClasses.DANIELE else 'Klara'
-                self.thePepperCoordinator.addRequest("hello", {"name": user})
+                self.thePepperCoordinator.addRequest("bml_greeting", {"text": f"Hello " + user + "Nice to see you!"})
+               # self.thePepperCoordinator.addRequest("agreeGesture", {"text": f"Hello " + user + "Nice to see you!"})
+                #self.thePepperCoordinator.addRequest("hello", {"name": user})
                 self.state = 5 #DEAD STATE
                 self.thePepperCoordinator.setState(PepperStates.CONVERSATION)
 
             case 5:
-                
+                self.thePepperCoordinator.addRequest("agreeGesture", {"text": f"I could not detect a face."})
                 print("Not authorized user detected")
                 # We have a negative answer, maybe pepper can say smth and then go back to state 0
                 self.thePepperCoordinator.addRequest("notOk")
@@ -116,11 +117,11 @@ class ConversationFSM():
                 answ = RasaInterface.interact(sentence)
                 print(f"{answ=}")
                 # Make something more engagin with gestures ecc ecc
-                self.thePepperCoordinator.addRequest("say", {"text": answ})
-
-
+                self.thePepperCoordinator.addRequest("sayGesture", {"text": answ})
+               
             case 1:
                 # Very short answer expected
+                
                 sentence = self.thePepperCoordinator.speechRecognition.listen(4)
                 is_bad, bw = self.thePepperCoordinator.badWordsDetector.processSentence(sentence)
 
@@ -128,7 +129,8 @@ class ConversationFSM():
 
                 answ = RasaInterface.interact(sentence)
                 # Make something more engagin with gestures ecc ecc
-                self.thePepperCoordinator.addRequest("say", {"text": answ})
+                self.thePepperCoordinator.addRequest("agreeGesture", {"text": answ})
+               # self.thePepperCoordinator.addRequest("say", {"text": answ})
 
 
 class InferenceFSM():
