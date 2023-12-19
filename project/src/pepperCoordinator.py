@@ -5,8 +5,7 @@ import cv2
 from BMLparser import Parser
 from utils_ import PepperStates, Request
 from speech.recognition import SpeechRecognition
-from rasaInterface import RasaInterface
-from filter.filter import BadWordsFilter
+from conversationEngine import ConversationEngine
 
 
 # Main Idea: every state has a FSM associated 
@@ -23,7 +22,6 @@ class RecognitionFSM():
     def __call__(self) -> Any:
         match self.state:
             case 0:
-                #self.thePepperCoordinator.addRequest("sayGesture", {"text": f"Hiii Daniiiieeelllee"})
                 self.thePepperCoordinator.addRequest("sayGesture", {"text": f"Hi! I'm Pepper. Let's see if I can recognize you!"})
                 self.state = 1
             case 1:
@@ -80,15 +78,11 @@ class RecognitionFSM():
             case 4:
                 user = 'Daniele' if self.userDetected == FaceClasses.DANIELE else 'Klara'
                 self.thePepperCoordinator.addRequest("bml_greeting", {"text": f"Hello " + user + "Nice to see you!"})
-               # self.thePepperCoordinator.addRequest("agreeGesture", {"text": f"Hello " + user + "Nice to see you!"})
-                #self.thePepperCoordinator.addRequest("hello", {"name": user})
                 self.state = 5 #DEAD STATE
                 self.thePepperCoordinator.setState(PepperStates.CONVERSATION)
 
             case 5:
                 self.thePepperCoordinator.addRequest("agreeGesture", {"text": f"I could not detect a face."})
-                print("Not authorized user detected")
-                # We have a negative answer, maybe pepper can say smth and then go back to state 0
                 self.thePepperCoordinator.addRequest("notOk")
                 self.state = 1
 
@@ -96,39 +90,19 @@ class ConversationFSM():
     def __init__(self, thePepperCoordinator) -> None:
         self.state = 0
         self.thePepperCoordinator = thePepperCoordinator
-
-    def cleanSentence(self, sent):
-        if sent and sent[0] == ' ':
-            return sent[1:]
-        else:
-            return sent
     
     def __call__(self) -> Any:
         match self.state:
             case 0:
                 # General conversation!
-                print("STARTING A CONVERSATION!")
                 sentence = self.thePepperCoordinator.speechRecognition.listen(7)
-                sentence = self.cleanSentence(sentence)
-                is_bad, bw = self.thePepperCoordinator.badWordsDetector.processSentence(sentence)
-
-                sentence = "[BADWORD]" if is_bad else sentence #Sanification
-                print(f"{sentence=}")
-                answ = RasaInterface.interact(sentence)
-                print(f"{answ=}")
-                # Make something more engagin with gestures ecc ecc
+                answ = self.thePepperCoordinator.conversationEngine(sentence, verbose=True)
                 self.thePepperCoordinator.addRequest("sayGesture", {"text": answ})
                
             case 1:
                 # Very short answer expected
-                
                 sentence = self.thePepperCoordinator.speechRecognition.listen(4)
-                is_bad, bw = self.thePepperCoordinator.badWordsDetector.processSentence(sentence)
-
-                sentence = "[BADWORD]" if is_bad else sentence #Sanification
-
-                answ = RasaInterface.interact(sentence)
-                # Make something more engagin with gestures ecc ecc
+                answ = self.thePepperCoordinator.conversationEngine(sentence, verbose=True)
                 self.thePepperCoordinator.addRequest("agreeGesture", {"text": answ})
                # self.thePepperCoordinator.addRequest("say", {"text": answ})
 
@@ -157,7 +131,7 @@ class PepperCoordinator():
         self.bmlParser = Parser(pepper)
         self.speechRecognition = SpeechRecognition()
         self.faceRecognition = FaceRecognition("model/trained_model.pt")
-        self.badWordsDetector = BadWordsFilter("filter/GoogleNews-vectors-negative300.bin")
+        self.conversationEngine = ConversationEngine()
 
 
     def update(self):
