@@ -162,7 +162,7 @@ class WavingSkill():
                   90, speed=1, nextState=2, threshold=1e-2),
             # Flip the arm facing upward
             state(jointName="RShoulderPitch", targetDegree=- \
-                  90, speed=1, nextState=3, threshold=1e-2),
+                  0, speed=1, nextState=3, threshold=1e-2),
             # Bend the elbow to 90 degree (first waving step)
             state(jointName="RElbowRoll", targetDegree=90,
                   speed=self.speed, nextState=4, threshold=1e-2),
