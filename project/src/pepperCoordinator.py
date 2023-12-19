@@ -23,6 +23,7 @@ class RecognitionFSM():
     def __call__(self) -> Any:
         match self.state:
             case 0:
+                self.thePepperCoordinator.addRequest("sayGesture", {"text": f"Hiii Daniiiieeelllee"})
                 self.thePepperCoordinator.addRequest("say", {"text": f"Hi! I'm Pepper. Let's see if I can recognize you!"})
                 self.state = 1
             case 1:
@@ -84,6 +85,7 @@ class RecognitionFSM():
                 self.thePepperCoordinator.setState(PepperStates.CONVERSATION)
 
             case 5:
+                
                 print("Not authorized user detected")
                 # We have a negative answer, maybe pepper can say smth and then go back to state 0
                 self.thePepperCoordinator.addRequest("notOk")

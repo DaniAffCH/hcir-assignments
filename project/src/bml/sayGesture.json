@@ -1,0 +1,31 @@
+
+{
+    "bml": {
+        "xmlns": "custombml-1.0",
+        "character": "Pepper",
+        "id": "talkingPos",
+        "behaviours": {
+            "gaze": [{
+                "id": "g1",
+                "start": 0,
+                "end": 6,
+                "target": "human"
+            }],
+            "speech": [
+                {
+                    "id": "s1",
+                    "start": 0,
+                    "end" : 5,
+                    "text": "{text}"
+                }
+            ],
+            "gesture": [
+                {
+                    "id":"talkingPos",
+                    "start": 0,
+                    "end": 6
+                }
+            ]
+        }
+    }
+}

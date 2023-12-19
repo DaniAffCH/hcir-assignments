@@ -50,7 +50,10 @@ class Gesture(BehaviourClass):
     def routine(self, atomicBehaviour):
         if atomicBehaviour["id"] == "wave":
             self.behaviourRealizer.waving(atomicBehaviour["end"] - atomicBehaviour["start"])
-        
+        elif atomicBehaviour["id"] == "standInit":
+            self.behaviourRealizer.standInit()  
+        elif atomicBehaviour["id"] == "talkingPos":
+            self.behaviourRealizer.talkingPose(atomicBehaviour["end"] - atomicBehaviour["start"])   
         else:
             raise Exception(f"[FATAL] id {atomicBehaviour['id']} is not valid for a Gesture")
 

@@ -38,7 +38,7 @@ class PoseSkill():
             # set every joint angle specified in the dictionary
             for k in poseDict:
                 self.pepper.setAngles(k, self.degtorad(poseDict[k]), 0.5)
-        self.pepper.goToPosture("StandZero", 0.5)
+        self.pepper.goToPosture("StandInit", 0.5)
 
 
 class NodSkill():
@@ -105,7 +105,7 @@ class LookAtRelativePointSkill():
             pitchAngle = atan2(-z, x)
             self.pepper.setAngles("HeadPitch", pitchAngle, 1.)
 
-        self.pepper.goToPosture("StandZero", 0.5)
+        self.pepper.goToPosture("StandInit", 0.5)
 
 
 class WavingSkill():
@@ -194,7 +194,7 @@ class WavingSkill():
             self.execute_state(self.fsm[self.state])
 
         # Finally go back to the base configuration again
-        self.pepper.goToPosture("StandZero", 1.)
+        self.pepper.goToPosture("StandInit", 1.)
         self.state = 0
 class SaySkill():
     """
@@ -224,6 +224,7 @@ class BehaviorRealizer():
         self.theLookAtRelativePointSkill = LookAtRelativePointSkill(pepper)
         self.theNodeSkill = NodSkill(pepper)
         self.thePoseSkill = PoseSkill(pepper)
+        self.pepper = pepper
 
     def say(self, text):
         self.theSaySkill(text)
@@ -252,5 +253,17 @@ class BehaviorRealizer():
             "KneePitch": 5.0,
             "LShoulderPitch": -90.0,
             "RShoulderPitch": -90.0,
+        }
+        self.thePoseSkill(joint_angles, execTime)
+
+    def standInit(self):
+        self.pepper.goToPosture("StandInit", 0.5)
+        
+    def talkingPose(self, execTime=5):
+        joint_angles = {
+            "RShoulderPitch": -90, 
+            "LShoulderPitch": -90,
+            "RElbowRoll": 90,
+            "LElbowRoll": -90,
         }
         self.thePoseSkill(joint_angles, execTime)

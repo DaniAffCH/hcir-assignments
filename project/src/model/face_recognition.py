@@ -12,8 +12,8 @@ from torchvision import transforms
 
 class FaceRecognition():
     def __init__(self, path) -> None:
-        self.trainedWeights = torch.load(path)
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+        self.trainedWeights = torch.load(path,map_location=self.device)
 
         self.model = InceptionResnetV1(pretrained='vggface2', device=self.device, classify= True, num_classes=3).to(self.device)
         self.model.load_state_dict(self.trainedWeights)
