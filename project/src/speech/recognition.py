@@ -11,7 +11,7 @@ class SpeechRecognition():
     def __init__(self) -> None:
         self.sample_rate = 44100
         self.channels = 2
-        self.sttModel = whisper.load_model("base")
+        self.sttModel = whisper.load_model("small.en")
         self.sentimentClassifier = pipeline('sentiment-analysis')
 
     def listen(self, duration=5, isDebug=False):
@@ -29,10 +29,9 @@ class SpeechRecognition():
         
         return result["text"]
 
-    def listenAndGetSentiment(self):
-        sent = self.listen()
-        if len(sent) > 0:
-            sent = sent["alternative"][0]["transcript"]
+    def listenAndGetSentiment(self, duration=5):
+        sent = self.listen(duration)
+        if sent and len(sent) > 0:
             res = self.sentimentClassifier(sent)
             if res[0]['label'] == 'POSITIVE':
                 return "yes", sent
