@@ -5,9 +5,7 @@ import cv2
 from BMLparser import Parser
 from utils_ import PepperStates, Request
 from speech.recognition import SpeechRecognition
-from rasaInterface import RasaInterface
-from filter.filter import BadWordsFilter
-
+from conversationEngine import ConversationEngine
 
 # Main Idea: every state has a FSM associated 
 class RecognitionFSM():
@@ -32,6 +30,7 @@ class RecognitionFSM():
 
                 # acquire img
                 _, frame = self.video_capture.read()
+                
                 # inference 
                 res = self.thePepperCoordinator.faceRecognition(frame)
                 # prediction
@@ -52,7 +51,6 @@ class RecognitionFSM():
                 
                 if m == pd:
                     self.userDetected = FaceClasses.DANIELE
-                    print(pd/l)
                     self.state = 4 if pd/l > self.detectionThreshold else 3
 
                 elif m == pk:
@@ -80,39 +78,25 @@ class RecognitionFSM():
             case 4:
                 user = 'Daniele' if self.userDetected == FaceClasses.DANIELE else 'Klara'
                 self.thePepperCoordinator.addRequest("hello", {"name": user})
-                self.state = 5 #DEAD STATE
+                self.state = 5 
                 self.thePepperCoordinator.setState(PepperStates.CONVERSATION)
 
             case 5:
-                print("Not authorized user detected")
                 # We have a negative answer, maybe pepper can say smth and then go back to state 0
                 self.thePepperCoordinator.addRequest("notOk")
                 self.state = 1
 
 class ConversationFSM():
     def __init__(self, thePepperCoordinator) -> None:
-        self.state = 0
+        self.state = 1
         self.thePepperCoordinator = thePepperCoordinator
 
-    def cleanSentence(self, sent):
-        if sent and sent[0] == ' ':
-            return sent[1:]
-        else:
-            return sent
-    
     def __call__(self) -> Any:
         match self.state:
             case 0:
                 # General conversation!
-                print("STARTING A CONVERSATION!")
                 sentence = self.thePepperCoordinator.speechRecognition.listen(7)
-                sentence = self.cleanSentence(sentence)
-                is_bad, bw = self.thePepperCoordinator.badWordsDetector.processSentence(sentence)
-
-                sentence = "[BADWORD]" if is_bad else sentence #Sanification
-                print(f"{sentence=}")
-                answ = RasaInterface.interact(sentence)
-                print(f"{answ=}")
+                answ = self.thePepperCoordinator.conversationEngine(sentence, verbose=True)
                 # Make something more engagin with gestures ecc ecc
                 self.thePepperCoordinator.addRequest("say", {"text": answ})
 
@@ -120,12 +104,7 @@ class ConversationFSM():
             case 1:
                 # Very short answer expected
                 sentence = self.thePepperCoordinator.speechRecognition.listen(4)
-                is_bad, bw = self.thePepperCoordinator.badWordsDetector.processSentence(sentence)
-
-                sentence = "[BADWORD]" if is_bad else sentence #Sanification
-
-                answ = RasaInterface.interact(sentence)
-                # Make something more engagin with gestures ecc ecc
+                answ = self.thePepperCoordinator.conversationEngine(sentence, verbose=True)
                 self.thePepperCoordinator.addRequest("say", {"text": answ})
 
 
@@ -152,9 +131,8 @@ class PepperCoordinator():
     def loading(self, pepper):
         self.bmlParser = Parser(pepper)
         self.speechRecognition = SpeechRecognition()
+        self.conversationEngine = ConversationEngine()
         self.faceRecognition = FaceRecognition("model/trained_model.pt")
-        self.badWordsDetector = BadWordsFilter("filter/GoogleNews-vectors-negative300.bin")
-
 
     def update(self):
         self.currentFSM()

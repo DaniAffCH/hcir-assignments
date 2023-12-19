@@ -39,6 +39,3 @@ class FaceRecognition():
         res = self.model(img)
         m = torch.argmax(res.detach())
         return self.classNames[m]
-
-        return FaceClasses.DANIELE if random.random() < 0.6 else FaceClasses.KLARA
-        return FaceClasses.UNAUTHORIZED # Hardcoded for now 
