@@ -61,7 +61,6 @@ class RecognitionFSM():
                     self.userDetected = FaceClasses.UNAUTHORIZED
                     self.state = 5
 
-
             case 3:
                 user = 'Daniele' if self.userDetected == FaceClasses.DANIELE else 'Klara'
                 self.thePepperCoordinator.addRequest("say", {"text": f"I'm not sure about who you are. Are you {user}?"})
@@ -73,7 +72,6 @@ class RecognitionFSM():
                     self.state = 1
                 elif sentiment == "yes":
                     self.state = 4
-
 
             case 4:
                 user = 'Daniele' if self.userDetected == FaceClasses.DANIELE else 'Klara'
