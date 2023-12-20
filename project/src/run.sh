@@ -4,6 +4,6 @@ if [ -n "$pastPid" ]; then
     echo "KILLING THE PREVIOUS PROCESS $pastPid"
     kill $pastPid
 fi
-model="20231214-174915-burning-amplifier.tar.gz"
+model="20231220-190630-abstract-swing.tar.gz"
 rasa run --model "./rasa/models/$model" --enable-api &
 python3 main.py
