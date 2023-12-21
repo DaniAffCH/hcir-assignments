@@ -6,7 +6,7 @@ from BMLparser import Parser
 from utils_ import PepperStates, Request
 from speech.recognition import SpeechRecognition
 from conversationEngine import ConversationEngine
-
+import numpy as np
 
 # Main Idea: every state has a FSM associated 
 class RecognitionFSM():
@@ -16,8 +16,16 @@ class RecognitionFSM():
         self.userDetected = None
         self.detectionThreshold = 0.7
         self.video_capture = cv2.VideoCapture(0)
-        self.collectingTime = 5
+        self.collectingTime = 10
         self.thePepperCoordinator = thePepperCoordinator
+    
+    def showImg(self, img, box, classification):
+        img = np.array(img)
+        if box is not None and classification is not None:
+            img = cv2.rectangle(img, (int(box[0]), int(box[1])), (int(box[2]), int(box[3])), (255, 0, 0), 2)
+            img = cv2.putText(img, classification.name, (int(box[0]), int(box[1]) - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 0, 0), 2)
+        cv2.imshow("Detection", img)
+        cv2.waitKey(1)
 
     def __call__(self) -> Any:
         match self.state:
@@ -31,11 +39,13 @@ class RecognitionFSM():
                 # acquire img
                 _, frame = self.video_capture.read()
                 # inference 
-                res = self.thePepperCoordinator.faceRecognition(frame)
+                res, box = self.thePepperCoordinator.faceRecognition(frame)
+                #self.showImg(frame, box, res)
                 # prediction
                 self.faceDetections.append(res)
 
                 if time.time() - self.ts > self.collectingTime:
+                    cv2.destroyAllWindows()
                     self.ts = None
                     self.state = 2
             
@@ -50,7 +60,6 @@ class RecognitionFSM():
                 
                 if m == pd:
                     self.userDetected = FaceClasses.DANIELE
-                    print(pd/l)
                     self.state = 4 if pd/l > self.detectionThreshold else 3
 
                 elif m == pk:
@@ -75,7 +84,7 @@ class RecognitionFSM():
 
             case 4:
                 user = 'Daniele' if self.userDetected == FaceClasses.DANIELE else 'Klara'
-                self.thePepperCoordinator.addRequest("bml_greeting", {"text": f"Hello " + user + "Nice to see you!"})
+                self.thePepperCoordinator.addRequest("hello", {"name": user})
                 self.state = 5 #DEAD STATE
                 self.thePepperCoordinator.setState(PepperStates.CONVERSATION)
 
@@ -128,7 +137,7 @@ class PepperCoordinator():
     def loading(self, pepper):
         self.bmlParser = Parser(pepper)
         self.speechRecognition = SpeechRecognition()
-        self.faceRecognition = FaceRecognition("model/trained_model.pt")
+        self.faceRecognition = FaceRecognition("model/finetuned.pt")
         self.conversationEngine = ConversationEngine()
 
 
