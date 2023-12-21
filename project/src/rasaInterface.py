@@ -4,7 +4,9 @@ PORT = 5005
 
 class RasaInterface:
     def interact(msg):
-        r = requests.post(f'http://localhost:{PORT}/webhooks/rest/webhook', json={"message": msg})
+        payload = {"sender":"user",
+                    "message": msg}
+        r = requests.post(f'http://localhost:{PORT}/webhooks/rest/webhook', json=payload)
 
         #metadata = requests.get("http://localhost:5005/conversations/default/tracker")
         #intents = metadata.json()["intent_ranking"]
