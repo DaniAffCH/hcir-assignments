@@ -1,6 +1,6 @@
 from typing import Any
 import gtts
-from playsound import playsound
+from pygame import mixer
 import time
 import tempfile
 from collections import namedtuple
@@ -206,6 +206,8 @@ class SaySkill():
     __call__(text)
         Performs the actual TTS pronouncing the text passed as parameter
     """
+    def __init__(self) -> None:
+        mixer.init()
 
     def __call__(self, text):
         # Creating a temporary file which will be deleted as soon as the associated object is closed
@@ -213,7 +215,8 @@ class SaySkill():
             # Write the tts file
             gtts.gTTS(text).save(tmpFile.name)
             # Execute the tts file
-            playsound(tmpFile.name)
+            mixer.Sound(tmpFile.name).play()
+            #playsound(tmpFile.name)
 
 
 class BehaviorRealizer():

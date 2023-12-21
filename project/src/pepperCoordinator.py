@@ -40,7 +40,7 @@ class RecognitionFSM():
                 _, frame = self.video_capture.read()
                 # inference 
                 res, box = self.thePepperCoordinator.faceRecognition(frame)
-                #self.showImg(frame, box, res)
+                self.showImg(frame, box, res)
                 # prediction
                 self.faceDetections.append(res)
 
