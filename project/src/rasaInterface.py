@@ -8,10 +8,7 @@ class RasaInterface:
                     "message": msg}
         r = requests.post(f'http://localhost:{PORT}/webhooks/rest/webhook', json=payload)
 
-        metadata = requests.get(f"http://localhost:{PORT}/conversations/default/tracker")
-        intents = metadata.json()
+        r = r.json()
 
-        print(intents)
-
-        return r.json()[0]['text'] if r.json() else None
+        return ". ".join([e["text"] for e in r]) if r else None
     

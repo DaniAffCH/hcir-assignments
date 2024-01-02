@@ -1,0 +1,19 @@
+{
+  "lookup": {
+    "eJyLrq6NBQAEOAGx": "action_listen",
+    "eJyLrq7VUaguKEoti09MLsnMz7NSqIYw4vMSc1OtFKCcnMziktQ8oNrS4tQioJrMPCC3xEohvSg1taS2NhYA6dwbhQ==": "utter_greet",
+    "eJyLrq7VUaguKEoti09MLsnMz7NSqIYw4vMSc1OtFKCcnMziktQ8oNrS4tQioJrMPCC3xEohvSg1taSWgBmlJSWpRfEQpbhMiAUAQvc0lw==": "action_listen",
+    "eJyLrq7VUaguKEoti09MLsnMz7NSqIYw4vMSc1OtFKCcnMziktQ8oNrS4tQioJrMPCC3xEohvSg1taSWgBmlJSWpRfEQpeSZQMAVufn5KSDzE4EGxQIAPEFQdQ==": "utter_happy",
+    "eJyLrq7VUaguKEoti09MLsnMz7NSqIYw4vMSc1OtFKCcnMziktQ8oNrS4tQioJrMPCC3xEohvSg1taSWgBmlJSWpRfEQpeSZQMAVufn5KSDzE4l0SkZiQUElfmNiAVKZa5w=": "action_listen",
+    "eJydjlEKgCAQBa/iATqBV4lYIrda0FXWtR/x7gn2L/T3BobhrbUtpibBB/ZDKbI1dQzgPaA1H3jKitzdklG6Q9xRrbkEUdukUVRRYKj/CpMXN/oEGuEkduCihNa2F3m/U1A=": "dorm_form",
+    "eJydjkEOhDAIRa/CATxBrzKZEKM4NqnQILppvPu01oUrm7jjh8f7fNLRQYpKO/aDeWEHqQ7I/UIOrhD8asSZ3VbSzHjO0Rz8lMiOhmMzI8WKvjM0vpgpRDTByfOIo+hy+srRThhEYmarqCxxKkQHD313rN31/QM493xV": "utter_help_to_find_dorm",
+    "eJy1kFEKgzAMhq+SA3iCXmWMIBpdoSYlRl+Kd7dd9zAQVAZ7S8iX7w95pK2BFJVWbDvzwg5SLZDbiRx8muBnI87sMpNmxnNuzcGoRLZdOBYzUqzob4aLK14UIprg4LnHXnR6+8rSShhEYmarqAxxKEQDJ3nf2L+z6neO2jvJzx2OZKsk": "action_listen",
+    "eJy1kFEKwzAIhq/iAXqCXGUMKavdhDQGY/sScvclyx4GgwUGfVP8/H7xkssEOSodON+MJTjIvcAwb+Tg3XhORqGyeyKtDIfamoO7ElkZOHYzUuzof4bBFQ/yEU1w5bDgIrq9fG3pIPQisbJd1Ia4NmKCH3mf2NlZ/Tvf2vOTB1+Nkri5S7k+AUKx0kc=": "utter_answer_limited_budget",
+    "eJy1km0KAiEQhq/iAfYEXiVisJzdBvxCx+2H7N3TDAqKhGh/6eDj846Dh7JNooSIK6gzk3dSlL4BpyxK8SgMJUZX2ZwwVoZcLVmKJSLyNnBkZozQ0d8Mgy4uaAKwh5mcBu2jvfvapRXBeB8q20XtEOZGTOJL3iu2d1afzrt2/+TBVINP1Nz/eaBy6VoXQ5YYNZyyXj59h2fo8QaX+/9C": "action_listen",
+    "eJy1kk0OwiAQRq/CAXoCrmLMpMq0TsJfYKgL0rsLxYWJRoxpVzDh8T5mwimvg8g+4ALjlclZKXLbgB0NSvEsNEVGW9gUMRSGbClZijkg8tpxJGYM0ND/DJ1X3FB7YAcTWQXKBbP56qUFQTvnC9tE9RCmSgziS94rdnRWm8679vjkzlS9i1Td+zQ42ngviyZDjAouSc2fvsNeoT/3dn4AJlgmdA==": "utter_answer_common_space",
+    "eJzFklEKwyAMhq/iAXqCXmWM4GraBdSIpt1D6d2ndQ+DjRZGy55U8vn9JniZl0bNIeIEuhNi36q5bsBrh616HSwlQZ/ZMWHMDPl8lFYNEVGWHccoghEq+pth5xV3tAGEoSdvwHB0q69cmhAsc8hsFZUi9IVo1EbeO3Z2Vp3Op/b85J2pBk5U3Mc0qH165MWSI0EDt9EM377DUaH/6K1j53IlBd3hVuT1CUhHUqE=": "action_listen",
+    "eJzFklEKwyAMhq/iAXqCXmWM4GraBdSIpt1D6d2ndQ+DjRVGS5805Pf78wcv89KoOUScQHdC7Fs11wt47bBVr8JSEvRZOyaMWUM+l9KqISLKssEYRTBClf5H2JjijjaAMPTkDRiObuWVRxOCZQ5ZW0GlCX1RNOqH37vsaK+6nU/s8c4bWw2cqLD3Cah9euTDkiNBA7fRDN++w16mZ2Tr2LncSUF3eFoyj4OuNtcnXJ15pA==": "utter_answer_pay_more_for_own_flat",
+    "eJzFkmEKwyAMha/iAXqCXmWM4Nq0EzQRTVtG2d2nc7DBygqjpb805Pk9X/Q03ys1+4Aj6EYMU63msgHSDmv1KqyJgpS0Q8SQNIZSKbXqA6LcVxiDCAYo0v8IK7e4ovUgDJ2hFloO7snLh0YEy+yTtoByE7qsqNQPv0/Z3l5lOt/Y/Z1Xpuo5mszeJqCmOKXFGmcEW7gMbb/0HbYyPSJbw86lTvS6wcOSEfZ682Re38BxwHwOeCLorF54vLf3+QHP0ql4": "action_listen",
+    "eJzFkmEKwyAMha/iAXqCXmWM4GzaCZqI2pZRvPt03Y/ByoTR0l8a8vyeL3pZUiMW53ECqaJmasWyboCkxVa8C6NDRMraMaDPGk25jK0YPGJMFcYYI3pYpf8RKre4o3EQGXpNHXTs7YtXDk0Ihtll7QoqTeiLohE//D5lR3ut0/nGHu9cmarjoAt7n4CSwpwXo62O2MFt7Iat77CX6RnZFFubO8FJhaclIxzk7smcfIBlj+Uc8EzQG7nxeHt5VyKOpDNWySJK6foEHQnSLA==": "action_listen"
+  }
+}

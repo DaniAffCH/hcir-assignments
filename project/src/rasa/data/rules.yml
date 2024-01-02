@@ -1,12 +1,42 @@
 version: "3.1"
 
 rules:
-  - rule: Say goodbye anytime the user says goodbye
-    steps:
-      - intent: goodbye
-      - action: utter_goodbye
 
-  - rule: Say 'I am a bot' anytime the user challenges
-    steps:
-      - intent: bot_challenge
-      - action: utter_iamabot
+- rule: Say goodbye anytime the user says goodbye
+  steps:
+  - intent: goodbye
+  - action: utter_goodbye
+
+- rule: Say 'I am a bot' anytime the user challenges
+  steps:
+  - intent: bot_challenge
+  - action: utter_iamabot
+
+- rule: Activate Dorm Form
+  steps:
+  - intent: help_to_find_dorm
+  - action: dorm_form
+  - active_loop: dorm_form
+
+- rule: Submit Dorm Form
+  condition:
+  - active_loop: dorm_form
+  steps:
+  - action: dorm_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: utter_submit
+  - action: utter_slots
+
+- rule: Interruption in Dorm Form
+  condition:
+  # Condition that form is active.
+  - active_loop: dorm_form
+  steps:
+  # This unhappy path handles the case of an intent `bot_challenge`.
+  - intent: bot_challenge
+  - action: utter_iamabot
+  # Return to form after handling the `bot_challenge` intent
+  - action: dorm_form
+  - active_loop: dorm_form

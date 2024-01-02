@@ -1,53 +1,143 @@
-version: "3.1"
-
+version: '3.1'
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
 intents:
-  - greet
-  - goodbye
-  - mood_great
-  - mood_unhappy
-  - bot_challenge
-  - help_to_find_dorm
-  - positive
-  - negative
-  - uni_location
+- help_to_find_dorm
+- greet
+- one
+- two
+- three
+- goodbye
+- affirm
+- stop
+- deny
+- mood_great
+- mood_unhappy
+- bot_challenge
+- request_dorm_form
 
+slots:
+
+  limited_budget:
+    type: bool
+    influence_conversation: true
+    mappings:
+      - type: from_intent
+        intent: affirm
+        value: true
+        conditions:
+        - active_loop: dorm_form
+          requested_slot: limited_budget
+      - type: from_intent
+        intent: deny
+        value: false
+        conditions:
+        - active_loop: dorm_form
+          requested_slot: limited_budget
+
+  willing_share:
+    type: bool
+    influence_conversation: true
+    mappings:
+      - type: from_intent
+        intent: affirm
+        value: true
+        conditions:
+        - active_loop: dorm_form
+          requested_slot: willing_share
+      - type: from_intent
+        intent: deny
+        value: false
+        conditions:
+        - active_loop: dorm_form
+          requested_slot: willing_share
+
+  pay_more_for_private:
+    type: bool
+    influence_conversation: true
+    mappings:
+      - type: from_intent
+        intent: affirm
+        value: true
+        conditions:
+        - active_loop: dorm_form
+          requested_slot: pay_more_for_private
+      - type: from_intent
+        intent: deny
+        value: false
+        conditions:
+        - active_loop: dorm_form
+          requested_slot: pay_more_for_private
+
+  uni_location:
+    type: categorical
+    values:
+      - University of Bonn
+      - HBRS in Sankt Augustin
+      - HBRS in Rheinbach
+    influence_conversation: true
+    mappings:
+      - type: from_intent
+        intent: one
+        value: University of Bonn
+        conditions:
+        - active_loop: dorm_form
+          requested_slot: uni_location
+      - type: from_intent
+        intent: two
+        value: HBRS in Sankt Augustin
+        conditions:
+        - active_loop: dorm_form
+          requested_slot: uni_location
+      - type: from_intent
+        intent: three
+        value: HBRS in Rheinbach
+        conditions:
+        - active_loop: dorm_form
+          requested_slot: uni_location
+
+forms:
+  dorm_form:
+    required_slots:
+      - pay_more_for_private
+      - willing_share
+      - limited_budget
+      - uni_location
 responses:
   utter_greet:
-    - text: "Hello! "
-
+  - text: Hey! How are you?
   utter_cheer_up:
-    - text: "Here is something to cheer you up:"
-      image: "https://i.imgur.com/nGF1K8f.jpg"
-
+  - image: https://i.imgur.com/nGF1K8f.jpg
+    text: 'Here is something to cheer you up:'
   utter_did_that_help:
-    - text: "Did that help you?"
-
+  - text: Did that help you?
   utter_happy:
-    - text: "Great, carry on!"
-
+  - text: Great, carry on!
   utter_goodbye:
-    - text: "Bye"
-
+  - text: Bye
   utter_iamabot:
-    - text: "I am a bot, powered by Rasa."
+  - text: I am a bot, powered by Rasa.
+  utter_submit:
+  - text: SUBMIT DEBUG
+  utter_slots:
+  - text: SLOTS SUMMARY DEBUG
+  utter_ask_continue:
+  - text: Are you sure you want to stop the form?
 
-  utter_help_to_find_dorm:
-    - text: "Yes, of course I will help you find a suitable dorm for you. For that I need to ask you a few questions about your preferences. First of all, do you have a limited budget which is below 400 euros?"
+  utter_ask_limited_budget:
+  - text: "Do you have a limited budget which is below 400 euros?"
+  utter_ask_willing_share:
+  - text: "Would you be willing to share common rooms such as kitchen or bathroom?"
+  utter_ask_pay_more_for_private:
+  - text: "Would you pay more to have your own flat and not share any common rooms?"
+  utter_ask_uni_location:
+    - text: "At which uni location are you studying? Say one for University of Bonn; Say two for HBRS in Sankt Augustin; or say three for HBRS in Rheinbach?"
 
-  utter_answer_limited_budget:
-    - text: "Alright, good to know. Then as a next question would you be willing to share common rooms such as kitchen or bathroom?"
-
-  utter_answer_pay_more_for_own_flat:
-    - text: "Okay, I will keep that in mind. At which uni location are you studying? University of Bonn, HBRS in Sankt Augustin or HBRS in Rheinbach?"
-
-  utter_answer_common_space:
-    - text: "Okay, I will keep that in mind. Would you pay more to have your own flat and not share any common rooms?"
-
-  utter_uni_location:
-    - text: "alright."
-
-  
-
-session_config:
-  session_expiration_time: 600
-  carry_over_slots_to_new_session: true
+actions:
+- utter_ask_continue
+- utter_goodbye
+- utter_greet
+- utter_slots
+- utter_submit
+- validate_dorm_form

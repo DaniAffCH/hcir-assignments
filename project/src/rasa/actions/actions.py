@@ -1,27 +1,22 @@
-# This files contains your custom actions which can be used to run
-# custom Python code.
-#
-# See this guide on how to implement these action:
-# https://rasa.com/docs/rasa/custom-actions
+from typing import Text, List, Any, Dict
 
+from rasa_sdk import Tracker, FormValidationAction, Action
+from rasa_sdk.events import EventType
+from rasa_sdk.executor import CollectingDispatcher
+from rasa_sdk.types import DomainDict
 
-# This is a simple example for a custom action which utters "Hello World!"
+class ValidateDormForm(FormValidationAction):
+    def name(self) -> Text:
+        return "validate_dorm_form"
 
-# from typing import Any, Text, Dict, List
-#
-# from rasa_sdk import Action, Tracker
-# from rasa_sdk.executor import CollectingDispatcher
-#
-#
-# class ActionHelloWorld(Action):
-#
-#     def name(self) -> Text:
-#         return "action_hello_world"
-#
-#     def run(self, dispatcher: CollectingDispatcher,
-#             tracker: Tracker,
-#             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-#
-#         dispatcher.utter_message(text="Hello World!")
-#
-#         return []
+    def validate_limited_budget(
+        self,
+        slot_value: Any,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: DomainDict,
+    ) -> Dict[Text, Any]:
+
+        dispatcher.utter_message(text=f"OK! GOTCHA")
+        return {"limited_budget": slot_value}
+

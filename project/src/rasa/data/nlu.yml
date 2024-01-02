@@ -1,170 +1,207 @@
 version: "3.1"
-
 nlu:
-  - intent: greet
-    examples: |
-      - hey
-      - hello
-      - hi
-      - hello there
-      - good morning
-      - good evening
-      - moin
-      - hey there
-      - let's go
-      - hey dude
-      - goodmorning
-      - goodevening
-      - good afternoon
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+    - yo
+    - hello world
+    - hi there
+- intent: goodbye
+  examples: |
+    - cu
+    - good by
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later
+    - thanks, goodbye
+- intent: affirm
+  examples: |
+    - yes
+    - y
+    - indeed
+    - of course
+    - that sounds good
+    - correct
+    - Yes.
+    - indeed
+    - of course
+    - that sounds good
+    - correct
+    - Yes, I do have a limited budget.
+    - Yes my limited budget which is below 400 euros.
+    - Yes, I do.
+    - Yes, I can not spend more than 400 euros.
+    - Yes, I can not spend more than 400 euros for a dorm.
+    - Yes, I do have a limited budget which is below 400 euros.
+    - Yes, I do have a limited budget.
+    - Certainly. I can not spend more than 400 euros for a dorm.
+    - Certainly. I can not spend more than 400 euros.
+    - Certainly. I do have a limited budget which is below 400 euros.
+    - Indeed. I can not spend more than 400 euros for a dorm.
+    - Indeed. I can not spend more than 400 euros.
+    - Yes, I would like to pay more for my own flat.
+    - Yes, I would like to pay more for my own flat to not share any common rooms.
+    - Yes, I would pay more for that.
+    - Yes, I would like to pay more for my own, single flat.
+    - Yes, I would pay more for a single flat.
+    - Yes, of course I would pay more for a single flat.
+    - Sure, I would pay more for a single flat.
+    - Sure, I would pay more for that. 
+    - Yes, I want to pay more for that.
+    - Yes, I would want to share common rooms such as kitchen or bathroom.
+    - Yes, I would want to share common rooms.
+    - Yes, why not.
+    - yes
+    - Yes
+    - Y
+    - Okay, yes.
+    - Okay, yes I would want to share common rooms.
+    - Yes, that would be okay for me.
+    - Yes, that would be okay.
+    - Yes, I want to share.
+    - /affirm
+- intent: deny
+  examples: |
+    - no
+    - n
+    - never
+    - I don't think so
+    - don't like that
+    - no way
+    - not really
+    - never
+    - don't like that
+    - no way
+    - not really
+    - No.
+    - No, I do not have limited budget. 
+    - No, I do not have a limited budget which is below 400 euros.
+    - No, I do not.
+    - No, I can spend more than 400 euros.
+    - No, I can spend more than 400 euros for a dorm.
+    - Not at all.
+    - Not at all, I can spend more than 400 euros for a dorm.
+    - Not at all, I do not have a limited budget which is below 400 euros.
+    - Not really. I can spend more than 400 euros for a dorm.
+    - Not really. 
+    - Nope. I can spend more than 400 euros for a dorm.
+    - Nope. I do not have a limited budget which is below 400 euros.
+    - No, I do not want to pay more for my own flat.
+    - No, I do not want to pay more for my own flat to not share any common rooms.
+    - No, I would not like to pay more for my own, single flat.
+    - No, I do not want to pay more for that. 
+    - No, I do not want to pay more for my own flat.
+    - No, I don't want that.
+    - No, I do not want to pay more. 
+    - No, I don't.
+    - No, I do not want to share common rooms such as kitchen or bathroom.
+    - No, I do not want to share common rooms.
+    - No, I do not want to share.
+    - No.
+    - No, I don't want to share common rooms.
+    - No, I don't want to share.
+    - No, I don't want that.
+- intent: mood_great
+  examples: |
+    - perfect
+    - great
+    - amazing
+    - feeling like a king
+    - wonderful
+    - I am feeling very good
+    - I am great
+    - I am amazing
+    - I am going to save the world
+    - super stoked
+    - extremely good
+    - so so perfect
+    - so good
+    - so perfect
+- intent: mood_unhappy
+  examples: |
+    - my day was horrible
+    - I am sad
+    - I don't feel very well
+    - I am disappointed
+    - super sad
+    - I'm so sad
+    - sad
+    - very sad
+    - unhappy
+    - not good
+    - not very good
+    - extremly sad
+    - so saad
+    - so sad
+- intent: stop
+  examples: |
+    - stop
+    - nevermind
+    - please stop
+    - i want to stop
+    - stop the form
+- intent: bot_challenge
+  examples: |
+    - are you a bot?
+    - are you a human?
+    - am I talking to a bot?
+    - am I talking to a human?
+- intent: buy_pizza
+  examples: |
+    - i'd like to buy a pizza
+    - i want a pizza
+    - can i buy a pizza
+    - I'm interested in a savory round flattened bread of Italian origin
+    - i want to buy a pizza
+- intent: one
+  examples: |
+    - One
+    - One.
+    - one
+    - one.
+    - Number one.
 
-  - intent: goodbye
-    examples: |
-      - cu
-      - good by
-      - cee you later
-      - good night
-      - bye
-      - goodbye
-      - have a nice day
-      - see you around
-      - bye bye
-      - see you later
- 
+- intent: two
+  examples: |
+    - Two
+    - Two.
+    - two
+    - two.
+    - Number Two.
 
-  - intent: mood_great
-    examples: |
-      - perfect
-      - great
-      - amazing
-      - feeling like a king
-      - wonderful
-      - I am feeling very good
-      - I am great
-      - I am amazing
-      - I am going to save the world
-      - super stoked
-      - extremely good
-      - so so perfect
-      - so good
-      - so perfect
-
-  - intent: mood_unhappy
-    examples: |
-      - my day was horrible
-      - I am sad
-      - I don't feel very well
-      - I am disappointed
-      - super sad
-      - I'm so sad
-      - sad
-      - very sad
-      - unhappy
-      - not good
-      - not very good
-      - extremly sad
-      - so saad
-      - so sad
-
-  - intent: bot_challenge
-    examples: |
-      - are you a bot?
-      - are you a human?
-      - am I talking to a bot?
-      - am I talking to a human?
-
-  - intent: help_to_find_dorm
-    examples: |
-      - Are you going to help me find a dorm
-      - I need your help finding a dorm.
-      - Can you help me finding a dorm?
-      - I need help from you. 
-      - Can you help me?
-      - I want to find a dorm. Can you help me?
-      - Can you give me an advice finding a dorm?
-
-  - intent: positive
-    examples: |
-      - Yes.
-      - indeed
-      - of course
-      - that sounds good
-      - correct
-      - Yes, I do have a limited budget.
-      - Yes my limited budget which is below 400 euros.
-      - Yes, I do.
-      - Yes, I can not spend more than 400 euros.
-      - Yes, I can not spend more than 400 euros for a dorm.
-      - Yes, I do have a limited budget which is below 400 euros.
-      - Yes, I do have a limited budget.
-      - Certainly. I can not spend more than 400 euros for a dorm.
-      - Certainly. I can not spend more than 400 euros.
-      - Certainly. I do have a limited budget which is below 400 euros.
-      - Indeed. I can not spend more than 400 euros for a dorm.
-      - Indeed. I can not spend more than 400 euros.
-      - Yes, I would like to pay more for my own flat.
-      - Yes, I would like to pay more for my own flat to not share any common rooms.
-      - Yes, I would pay more for that.
-      - Yes, I would like to pay more for my own, single flat.
-      - Yes, I would pay more for a single flat.
-      - Yes, of course I would pay more for a single flat.
-      - Sure, I would pay more for a single flat.
-      - Sure, I would pay more for that. 
-      - Yes, I want to pay more for that.
-      - Yes, I would want to share common rooms such as kitchen or bathroom.
-      - Yes, I would want to share common rooms.
-      - Yes, why not.
-      - yes
-      - Yes
-      - Y
-      - Okay, yes.
-      - Okay, yes I would want to share common rooms.
-      - Yes, that would be okay for me.
-      - Yes, that would be okay.
-      - Yes, I want to share.
-
-  - intent: negative
-    examples: |
-      - never
-      - don't like that
-      - no way
-      - not really
-      - No.
-      - No, I do not have limited budget. 
-      - No, I do not have a limited budget which is below 400 euros.
-      - No, I do not.
-      - No, I can spend more than 400 euros.
-      - No, I can spend more than 400 euros for a dorm.
-      - Not at all.
-      - Not at all, I can spend more than 400 euros for a dorm.
-      - Not at all, I do not have a limited budget which is below 400 euros.
-      - Not really. I can spend more than 400 euros for a dorm.
-      - Not really. 
-      - Nope. I can spend more than 400 euros for a dorm.
-      - Nope. I do not have a limited budget which is below 400 euros.
-      - No, I do not want to pay more for my own flat.
-      - No, I do not want to pay more for my own flat to not share any common rooms.
-      - No, I would not like to pay more for my own, single flat.
-      - No, I do not want to pay more for that. 
-      - No, I do not want to pay more for my own flat.
-      - No, I don't want that.
-      - No, I do not want to pay more. 
-      - No, I don't.
-      - No, I do not want to share common rooms such as kitchen or bathroom.
-      - No, I do not want to share common rooms.
-      - No, I do not want to share.
-      - No.
-      - No, I don't want to share common rooms.
-      - No, I don't want to share.
-      - No, I don't want that.
-
-  - intent: uni_location
-    examples: |
-      - HBRS Sankt Augustin
-      - HBRS Rheinbach
-      - University of Bonn
-      - Uni Bonn
-      - I study at HBRS Sankt Augustin.
-      - I study at HBRS Rheinbach.
-      - I study at University Bonn.
-      - Hochschule Bonn-Rhein-Sieg in Rheinbach
-      - Hochschule Bonn-Rhein-Sieg in Sankt Augustin 
+- intent: three
+  examples: |
+    - Three
+    - Three.
+    - three
+    - three.
+    - Number three.
+    - tree
+    - Tree
+    - Tree.
+- intent: help_to_find_dorm
+  examples: |
+    - Are you going to help me find a dorm
+    - I need your help finding a dorm.
+    - Can you help me finding a dorm?
+    - I need help from you. 
+    - Can you help me?
+    - I want to find a dorm. Can you help me?
+    - Can you give me an advice finding a dorm?
