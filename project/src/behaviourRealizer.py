@@ -215,7 +215,9 @@ class SaySkill():
             # Write the tts file
             gtts.gTTS(text).save(tmpFile.name)
             # Execute the tts file
-            mixer.Sound(tmpFile.name).play()
+            sound = mixer.Sound(tmpFile.name)
+            sound.play()
+            time.sleep(sound.get_length())
 
 class BehaviorRealizer():
 
