@@ -5,5 +5,5 @@ if [ -n "$pastPid" ]; then
     kill $pastPid
 fi
 model="20231220-190630-abstract-swing.tar.gz"
-rasa run --model "./rasa/models/$model" &
+rasa run --model "./rasa/models/$model" --enable-api &
 python3 main.py

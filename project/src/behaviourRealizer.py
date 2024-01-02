@@ -216,8 +216,6 @@ class SaySkill():
             gtts.gTTS(text).save(tmpFile.name)
             # Execute the tts file
             mixer.Sound(tmpFile.name).play()
-            #playsound(tmpFile.name)
-
 
 class BehaviorRealizer():
 
