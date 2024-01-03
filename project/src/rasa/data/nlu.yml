@@ -163,13 +163,9 @@ nlu:
     - are you a human?
     - am I talking to a bot?
     - am I talking to a human?
-- intent: buy_pizza
+- intent: bad_word
   examples: |
-    - i'd like to buy a pizza
-    - i want a pizza
-    - can i buy a pizza
-    - I'm interested in a savory round flattened bread of Italian origin
-    - i want to buy a pizza
+    - [BADWORD]
 - intent: one
   examples: |
     - One
@@ -177,6 +173,10 @@ nlu:
     - one
     - one.
     - Number one.
+    - Number 1
+    - Number 1.
+    - 1
+    - 1.
 
 - intent: two
   examples: |
@@ -185,6 +185,10 @@ nlu:
     - two
     - two.
     - Number Two.
+    - Number 2
+    - Number 2.
+    - 2
+    - 2.
 
 - intent: three
   examples: |
@@ -193,9 +197,14 @@ nlu:
     - three
     - three.
     - Number three.
+    - Number 3
+    - Number 3.
     - tree
     - Tree
     - Tree.
+    - 3
+    - 3.
+
 - intent: help_to_find_dorm
   examples: |
     - Are you going to help me find a dorm

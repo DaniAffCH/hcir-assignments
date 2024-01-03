@@ -16,6 +16,7 @@ intents:
 - mood_unhappy
 - bot_challenge
 - request_dorm_form
+- bad_word
 
 slots:
 
@@ -107,9 +108,6 @@ forms:
 responses:
   utter_greet:
   - text: Hey! How are you?
-  utter_cheer_up:
-  - image: https://i.imgur.com/nGF1K8f.jpg
-    text: 'Here is something to cheer you up:'
   utter_did_that_help:
   - text: Did that help you?
   utter_happy:
@@ -119,12 +117,11 @@ responses:
   utter_iamabot:
   - text: I am a bot, powered by Rasa.
   utter_submit:
-  - text: SUBMIT DEBUG
-  utter_slots:
-  - text: SLOTS SUMMARY DEBUG
+  - text: I now have all the information I need. Thank you for answering all my questions. I'm currently analyzing all the possibilities to find the best dorm for you
   utter_ask_continue:
   - text: Are you sure you want to stop the form?
-
+  utter_bad_word:
+  - text: I understand that the process of finding accommodation can be frustrating at times. However, it's important for us to maintain a respectful and positive interaction
   utter_ask_limited_budget:
   - text: "Do you have a limited budget which is below 400 euros?"
   utter_ask_willing_share:
@@ -132,12 +129,12 @@ responses:
   utter_ask_pay_more_for_private:
   - text: "Would you pay more to have your own flat and not share any common rooms?"
   utter_ask_uni_location:
-    - text: "At which uni location are you studying? Say one for University of Bonn; Say two for HBRS in Sankt Augustin; or say three for HBRS in Rheinbach?"
-
+  - text: "At which uni location are you studying? Say one for University of Bonn; Say two for HBRS in Sankt Augustin; or say three for HBRS in Rheinbach?"
+  utter_help_dorm:
+  - text: "Of course I am glad to help you. To find the best dorm for you, I have to ask you some questions. First of all"
 actions:
 - utter_ask_continue
 - utter_goodbye
 - utter_greet
-- utter_slots
 - utter_submit
 - validate_dorm_form

@@ -26,3 +26,7 @@ class ConversationEngine():
             print(f"{userInput=}\n{answ=}\n")
         
         return answ
+    
+    def formCompleted(self, sentence):
+        # TODO: very dirty way, find something more elegant
+        return "I'm currently analyzing all the possibilities to find the best dorm for you" in sentence

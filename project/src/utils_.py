@@ -26,3 +26,6 @@ class Dorms:
     location:str
     shared_common_areas:str
     prices:str
+
+    def __str__(self) -> str:
+        return f"{self.name} situated in {self.location}. The dorm offers {self.shared_common_areas}. The price depends on the specific room you choose, but I can provide you a range: {self.prices}"

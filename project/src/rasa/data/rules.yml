@@ -15,8 +15,14 @@ rules:
 - rule: Activate Dorm Form
   steps:
   - intent: help_to_find_dorm
+  - action: utter_help_dorm 
   - action: dorm_form
   - active_loop: dorm_form
+
+- rule: Angry User
+  steps:
+  - intent: bad_word
+  - action: utter_bad_word
 
 - rule: Submit Dorm Form
   condition:
@@ -27,16 +33,15 @@ rules:
   - slot_was_set:
     - requested_slot: null
   - action: utter_submit
-  - action: utter_slots
 
 - rule: Interruption in Dorm Form
   condition:
   # Condition that form is active.
   - active_loop: dorm_form
   steps:
-  # This unhappy path handles the case of an intent `bot_challenge`.
-  - intent: bot_challenge
-  - action: utter_iamabot
-  # Return to form after handling the `bot_challenge` intent
+  # This unhappy path handles the case of an interrupt.
+  - intent: bad_word
+  - action: utter_bad_word
+  # Return to form after handling the `bad_word` intent
   - action: dorm_form
   - active_loop: dorm_form

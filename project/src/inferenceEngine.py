@@ -6,18 +6,18 @@ class InferenceEngine:
     
     def __init__(self):
         bn = gum.BayesNet('Student Dorms')
-        dorm_1 = Dorms("Bismarkstrasse", "Bismarkstrasse 4", "Bonn", "46 Single room in shared flat, 8 Double-Apartments", "Single room: 289,00 - 436,00 euros, Double-Apartement: 507,00 - 812,00 euros")
-        dorm_2 = Dorms("Drussusstrasse", "Drussusstrasse 17", "Bonn", "73 Apartements", "245,00 - 642,00 euros")
-        dorm_3 = Dorms("Europaring", "Europaring 2", "Sankt Augustin", "49 Apartements", "346,00 - 493,00 euros")
-        dorm_4 = Dorms("StuHaus", "StuHaus", "Sankt Augustin", "106 Double/Shared Apartments, 60 Single-Apartments", "Double Apartment: 395 - 413 euros Single Apartment: 493 - 496 euros")
-        dorm_5 = Dorms("Keramikerstrasse", "Keramikerstrasse 38", "Rheinbach", "30 Apartments ", "336,00 - 472,00 euros")
-        dorm_6 = Dorms("Wg_gesucht", "Wg_gesucht", "Rheinbach", "Single room in shared flat", "400 - 500 euros" )
+        dorm_1 = Dorms("Bismarkstrasse", "Bismarkstrasse 4", "Bonn", "46 Single room in shared flat and 8 Double-Apartments", "from 289 to 436 euros for s Single room and from 507 to 812 euros for a Double-Apartement")
+        dorm_2 = Dorms("Drussusstrasse", "Drussusstrasse 17", "Bonn", "73 Apartements", "from 245 to 642 euros")
+        dorm_3 = Dorms("Europaring", "Europaring 2", "Sankt Augustin", "49 Apartements", "from 346 to 493 euros")
+        dorm_4 = Dorms("StuHaus", "StuHaus", "Sankt Augustin", "106 Double or Shared Apartments and 60 Single Apartments", "from 395 to 413 euros for a Double Apartment and from 493 to 496 euros for a Single Apartment")
+        dorm_5 = Dorms("Keramikerstrasse", "Keramikerstrasse 38", "Rheinbach", "30 Apartments ", "from 336 to 472 euros")
+        dorm_6 = Dorms("Wg_gesucht", "Wg_gesucht", "Rheinbach", "Single room in shared flat", "from 400 to 500 euros" )
 
         self.dorm_names = [dorm_1, dorm_2, dorm_3, dorm_4, dorm_5, dorm_6]
         limited_budget = bn.add(gum.LabelizedVariable('limited_budget', 'Limited Budget', ['True', 'False']))
         pay_more_for_own_flat = bn.add(gum.LabelizedVariable('pay_more_for_own_flat', 'Pay more for own flat', ['True', 'False']))
         shared_common_space = bn.add(gum.LabelizedVariable('shared_common_space', 'Shared Common Space', ['True', 'False']))
-        uni_location = bn.add(gum.LabelizedVariable('uni_location', 'University location', ['Uni Bonn','HBRS Sankt Augustin','HBRS Rheinbach']))
+        uni_location = bn.add(gum.LabelizedVariable('uni_location', 'University location', ['University of Bonn','HBRS in Sankt Augustin','HBRS in Rheinbach']))
         expensive = bn.add(gum.LabelizedVariable('expensive', 'Expensive', ['True', 'False']))
         loc_pref = bn.add(gum.LabelizedVariable('location_preference', 'Location Preference', ['Bonn', 'Sankt Augustin', 'Rheinbach']))
         is_social = bn.add(gum.LabelizedVariable('is_social', 'Is Social', ['True', 'False']))
@@ -51,18 +51,18 @@ class InferenceEngine:
         bn.cpt(is_social)[{"pay_more_for_own_flat": "True", "shared_common_space": "False"}] = [0.9, 0.1]
         bn.cpt(is_social)[{"pay_more_for_own_flat": "False", "shared_common_space": "True"}] = [0.1, 0.9]
         
-        bn.cpt(loc_pref)[{"expensive": "True","uni_location": "Uni Bonn", "is_social": "True"}] = [0.8, 0.1, 0.1]
-        bn.cpt(loc_pref)[{"expensive": "False","uni_location": "HBRS Sankt Augustin", "is_social": "False"}] = [0.1, 0.1, 0.8]
-        bn.cpt(loc_pref)[{"expensive": "True","uni_location": "HBRS Rheinbach", "is_social": "True"}] = [0.1, 0.1, 0.8]
-        bn.cpt(loc_pref)[{"expensive": "False","uni_location": "Uni Bonn", "is_social": "False"}] = [0.1, 0.8, 0.1]
-        bn.cpt(loc_pref)[{"expensive": "True","uni_location": "HBRS Sankt Augustin", "is_social": "True"}] = [0.1, 0.8, 0.1]
-        bn.cpt(loc_pref)[{"expensive": "False","uni_location": "HBRS Rheinbach", "is_social": "False"}] = [0.8, 0.1, 0.1]
-        bn.cpt(loc_pref)[{"expensive": "False","uni_location": "Uni Bonn", "is_social": "True"}] = [0.8, 0.1, 0.1]
-        bn.cpt(loc_pref)[{"expensive": "True","uni_location": "HBRS Sankt Augustin", "is_social": "False"}] = [0.1, 0.1, 0.8]
-        bn.cpt(loc_pref)[{"expensive": "True","uni_location": "HBRS Rheinbach", "is_social": "False"}] = [0.8, 0.1, 0.1]
-        bn.cpt(loc_pref)[{"expensive": "True","uni_location": "Uni Bonn", "is_social": "False"}] = [0.1, 0.8, 0.1]
-        bn.cpt(loc_pref)[{"expensive": "False","uni_location": "HBRS Sankt Augustin", "is_social": "True"}] = [0.1, 0.8, 0.1]
-        bn.cpt(loc_pref)[{"expensive": "False","uni_location": "HBRS Rheinbach", "is_social": "True"}] = [0.1, 0.1, 0.8]
+        bn.cpt(loc_pref)[{"expensive": "True","uni_location": "University of Bonn", "is_social": "True"}] = [0.8, 0.1, 0.1]
+        bn.cpt(loc_pref)[{"expensive": "False","uni_location": "HBRS in Sankt Augustin", "is_social": "False"}] = [0.1, 0.1, 0.8]
+        bn.cpt(loc_pref)[{"expensive": "True","uni_location": "HBRS in Rheinbach", "is_social": "True"}] = [0.1, 0.1, 0.8]
+        bn.cpt(loc_pref)[{"expensive": "False","uni_location": "University of Bonn", "is_social": "False"}] = [0.1, 0.8, 0.1]
+        bn.cpt(loc_pref)[{"expensive": "True","uni_location": "HBRS in Sankt Augustin", "is_social": "True"}] = [0.1, 0.8, 0.1]
+        bn.cpt(loc_pref)[{"expensive": "False","uni_location": "HBRS in Rheinbach", "is_social": "False"}] = [0.8, 0.1, 0.1]
+        bn.cpt(loc_pref)[{"expensive": "False","uni_location": "University of Bonn", "is_social": "True"}] = [0.8, 0.1, 0.1]
+        bn.cpt(loc_pref)[{"expensive": "True","uni_location": "HBRS in Sankt Augustin", "is_social": "False"}] = [0.1, 0.1, 0.8]
+        bn.cpt(loc_pref)[{"expensive": "True","uni_location": "HBRS in Rheinbach", "is_social": "False"}] = [0.8, 0.1, 0.1]
+        bn.cpt(loc_pref)[{"expensive": "True","uni_location": "University of Bonn", "is_social": "False"}] = [0.1, 0.8, 0.1]
+        bn.cpt(loc_pref)[{"expensive": "False","uni_location": "HBRS in Sankt Augustin", "is_social": "True"}] = [0.1, 0.8, 0.1]
+        bn.cpt(loc_pref)[{"expensive": "False","uni_location": "HBRS in Rheinbach", "is_social": "True"}] = [0.1, 0.1, 0.8]
            
         bn.cpt(self.student_dorm)[{"expensive": "True", "location_preference": "Bonn","is_social": "True" }] = [0.1, 0.1, 0.1, 0.1, 0.1, 0.5]
         bn.cpt(self.student_dorm)[{"expensive": "True", "location_preference": "Bonn","is_social": "False" }] = [0.1, 0.1, 0.1, 0.1, 0.5, 0.1]
@@ -80,7 +80,7 @@ class InferenceEngine:
 
         self.ie = gum.LazyPropagation(bn)
 
-    def inference(self, limited_budget: str, pay_more_for_own_flat: str, shared_common_space: str, uni_location:str):
+    def __call__(self, limited_budget: str, pay_more_for_own_flat: str, shared_common_space: str, uni_location:str):
         self.ie.setEvidence({'limited_budget': limited_budget, 'pay_more_for_own_flat': pay_more_for_own_flat, 'shared_common_space': shared_common_space, 'uni_location': uni_location})
         self.ie.makeInference()
         d = self.ie.posterior(self.student_dorm)

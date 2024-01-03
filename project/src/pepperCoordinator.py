@@ -6,6 +6,8 @@ from BMLparser import Parser
 from utils_ import PepperStates, Request
 from speech.recognition import SpeechRecognition
 from conversationEngine import ConversationEngine
+from inferenceEngine import InferenceEngine
+from rasaInterface import RasaInterface
 import numpy as np
 
 # Main Idea: every state has a FSM associated 
@@ -74,7 +76,6 @@ class RecognitionFSM():
                 user = 'Daniele' if self.userDetected == FaceClasses.DANIELE else 'Klara'
                 self.thePepperCoordinator.addRequest("say", {"text": f"I'm not sure about who you are. Are you {user}?"})
                 sentiment, sentence = self.thePepperCoordinator.speechRecognition.listenAndGetSentiment()
-                print(sentiment, sentence)
                 if sentiment == "no" or sentiment is None:
                     self.userDetected = None
                     self.thePepperCoordinator.addRequest("sayGesture", {"text": f"Ok I'm going to look at you more carefully"}, True)
@@ -99,27 +100,73 @@ class ConversationFSM():
         self.thePepperCoordinator = thePepperCoordinator
     
     def __call__(self) -> Any:
+        # TODO: if bye goto to Farewell
         match self.state:
             case 0:
                 # General conversation!
                 sentence = self.thePepperCoordinator.speechRecognition.listen(7)
                 answ = self.thePepperCoordinator.conversationEngine(sentence, verbose=True)
                 self.thePepperCoordinator.addRequest("sayGesture", {"text": answ})
+
+                if self.thePepperCoordinator.conversationEngine.formCompleted(answ):
+                    self.state = 2
                
             case 1:
+                # TODO: it never ends up here!
                 # Very short answer expected
                 sentence = self.thePepperCoordinator.speechRecognition.listen(4)
                 answ = self.thePepperCoordinator.conversationEngine(sentence, verbose=True)
                 self.thePepperCoordinator.addRequest("agreeGesture", {"text": answ})
                # self.thePepperCoordinator.addRequest("say", {"text": answ})
+                if self.thePepperCoordinator.conversationEngine.formCompleted(answ):
+                    self.state = 2
+                
+            case 2:
+                self.state = 3 #DEAD STATE
+                self.thePepperCoordinator.setState(PepperStates.INFERENCE)
 
 
 class InferenceFSM():
-    # Inference is the inference itself + answer. If the user it's not satisfied go back to conversation
-    pass
+    def __init__(self, thePepperCoordinator) -> None:
+        self.state = 0
+        self.thePepperCoordinator = thePepperCoordinator
+
+    def __call__(self) -> Any:
+        match self.state:
+            case 0:
+                form = RasaInterface.getSlotValues()
+
+                self.sortedPreferences = self.thePepperCoordinator.inferenceEngine(str(form['limited_budget']),
+                                                                                   str(form['willing_share']),
+                                                                                   str(form['pay_more_for_private']),
+                                                                                   str(form['uni_location']))
+                self.state = 1
+            case 1:
+                if len(self.sortedPreferences) == 0:
+                    self.thePepperCoordinator.addRequest("sayGesture", {"text": f"Unfortunately I proposed you all the dormitories I know and I don't have any other alternative to suggest."})
+                    self.state = 2 # DEAD STATE
+                    self.thePepperCoordinator.setState(PepperStates.FAREWELL)
+                else:
+                    dormText = str(self.sortedPreferences[0][0])
+                    print(self.sortedPreferences[0])
+                    self.thePepperCoordinator.addRequest("sayGesture", {"text": f"{dormText}. Are you satisfied with this dorm?"})
+                    sentiment, _ = self.thePepperCoordinator.speechRecognition.listenAndGetSentiment()
+                    if sentiment == "yes":
+                        self.state = 2 # DEAD STATE
+                        self.thePepperCoordinator.setState(PepperStates.FAREWELL)
+                    else:
+                        self.thePepperCoordinator.addRequest("sayGesture", {"text": f"Ok, I can find an alternative"})
+                        self.sortedPreferences.pop(0)
+
 
 class FarewellFSM():
-    pass
+    def __init__(self, thePepperCoordinator) -> None:
+        self.state = 0
+        self.thePepperCoordinator = thePepperCoordinator
+
+    def __call__() -> Any:
+        # can I help you with something else? Yes -> goto conversational No -> bye bye 
+        print("OK!")
 
 class PepperCoordinator():
     def __init__(self, pepper) -> None:
@@ -127,8 +174,8 @@ class PepperCoordinator():
         self.stateToFSM = {
             PepperStates.RECOGNITION: RecognitionFSM(self),
             PepperStates.CONVERSATION: ConversationFSM(self),
-            PepperStates.INFERENCE: InferenceFSM(),
-            PepperStates.FAREWELL: FarewellFSM()
+            PepperStates.INFERENCE: InferenceFSM(self),
+            PepperStates.FAREWELL: FarewellFSM(self)
         }
         self.loading(pepper)
         self.setState(PepperStates.RECOGNITION)
@@ -139,6 +186,7 @@ class PepperCoordinator():
         self.speechRecognition = SpeechRecognition()
         self.faceRecognition = FaceRecognition("model/finetuned.pt")
         self.conversationEngine = ConversationEngine()
+        self.inferenceEngine = InferenceEngine()
 
 
     def update(self):
