@@ -30,3 +30,10 @@ class ConversationEngine():
     def formCompleted(self, sentence):
         # TODO: very dirty way, find something more elegant
         return "I'm currently analyzing all the possibilities to find the best dorm for you" in sentence
+
+    def shortAnswerExpected(self, sentence):
+        # TODO: even more dirty
+        return "?" in sentence
+    
+    def earlyEnd(self, sentence):
+        return "Bye" in sentence

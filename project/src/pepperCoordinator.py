@@ -98,31 +98,25 @@ class ConversationFSM():
     def __init__(self, thePepperCoordinator) -> None:
         self.state = 0
         self.thePepperCoordinator = thePepperCoordinator
+        self.shortAnsExpected = False
     
     def __call__(self) -> Any:
-        # TODO: if bye goto to Farewell
         match self.state:
             case 0:
                 # General conversation!
-                sentence = self.thePepperCoordinator.speechRecognition.listen(7)
+                waitingTime = 4 if self.shortAnsExpected else 7
+                sentence = self.thePepperCoordinator.speechRecognition.listen(waitingTime)
                 answ = self.thePepperCoordinator.conversationEngine(sentence, verbose=True)
                 self.thePepperCoordinator.addRequest("sayGesture", {"text": answ})
+                self.shortAnsExpected = self.thePepperCoordinator.conversationEngine.shortAnswerExpected(answ)
 
                 if self.thePepperCoordinator.conversationEngine.formCompleted(answ):
-                    self.state = 2
+                    self.state = 1
+                elif self.thePepperCoordinator.conversationEngine.earlyEnd(answ):
+                    self.thePepperCoordinator.setState(PepperStates.FAREWELL)
                
             case 1:
-                # TODO: it never ends up here!
-                # Very short answer expected
-                sentence = self.thePepperCoordinator.speechRecognition.listen(4)
-                answ = self.thePepperCoordinator.conversationEngine(sentence, verbose=True)
-                self.thePepperCoordinator.addRequest("agreeGesture", {"text": answ})
-               # self.thePepperCoordinator.addRequest("say", {"text": answ})
-                if self.thePepperCoordinator.conversationEngine.formCompleted(answ):
-                    self.state = 2
-                
-            case 2:
-                self.state = 3 #DEAD STATE
+                self.state = 0
                 self.thePepperCoordinator.setState(PepperStates.INFERENCE)
 
 
@@ -144,7 +138,7 @@ class InferenceFSM():
             case 1:
                 if len(self.sortedPreferences) == 0:
                     self.thePepperCoordinator.addRequest("sayGesture", {"text": f"Unfortunately I proposed you all the dormitories I know and I don't have any other alternative to suggest."})
-                    self.state = 2 # DEAD STATE
+                    self.state = 0
                     self.thePepperCoordinator.setState(PepperStates.FAREWELL)
                 else:
                     dormText = str(self.sortedPreferences[0][0])
@@ -152,7 +146,7 @@ class InferenceFSM():
                     self.thePepperCoordinator.addRequest("sayGesture", {"text": f"{dormText}. Are you satisfied with this dorm?"})
                     sentiment, _ = self.thePepperCoordinator.speechRecognition.listenAndGetSentiment()
                     if sentiment == "yes":
-                        self.state = 2 # DEAD STATE
+                        self.state = 0
                         self.thePepperCoordinator.setState(PepperStates.FAREWELL)
                     else:
                         self.thePepperCoordinator.addRequest("sayGesture", {"text": f"Ok, I can find an alternative"})
@@ -164,9 +158,18 @@ class FarewellFSM():
         self.state = 0
         self.thePepperCoordinator = thePepperCoordinator
 
-    def __call__() -> Any:
-        # can I help you with something else? Yes -> goto conversational No -> bye bye 
-        print("OK!")
+    def __call__(self) -> Any:
+        match self.state:
+            case 0:
+                self.thePepperCoordinator.addRequest("sayGesture", {"text": f"Can I help you with something else?"})
+                sentiment, _ = self.thePepperCoordinator.speechRecognition.listenAndGetSentiment()
+                if sentiment == "yes":
+                    self.thePepperCoordinator.setState(PepperStates.CONVERSATION)
+                else:
+                    self.state = 1
+            case 1:
+                self.thePepperCoordinator.addRequest("bml_goodbye")
+                self.state = 2 # DEAD STATE FOREVER
 
 class PepperCoordinator():
     def __init__(self, pepper) -> None:
