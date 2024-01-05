@@ -1,5 +1,5 @@
 import pyAgrum as gum
-import pyAgrum.lib.notebook as gnb
+#import pyAgrum.lib.notebook as gnb
 from utils_ import Dorms
 
 class InferenceEngine:
