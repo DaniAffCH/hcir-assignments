@@ -10,7 +10,14 @@
                     "start": 0,
                     "end": 1
                 }
-            ]
+                
+            ],
+            "gaze": [{
+                "id": "g1",
+                "start": 0,
+                "end": 14,
+                "target": "human"
+            }]
         }
     }
 }

@@ -107,6 +107,71 @@ class LookAtRelativePointSkill():
 
         self.pepper.goToPosture("StandInit", 0.5)
 
+class ShakeHeadSkill():
+    """
+    A class used to implement a shaking head skill.
+
+    ...
+
+    Attributes
+    ----------
+    pepper : qibullet.pepper_virtual.PepperVirtual
+        pepper instance
+
+    Methods
+    -------
+    __call__(execTime)
+        executes the shaking head given an execution time.
+    """
+
+    def __init__(self, pepperInstance, speed=.3, waveAngle=45) -> None:
+        assert (speed >= 0.0 and speed <= 1.0)
+        assert (waveAngle > 0 and waveAngle < 90)
+
+        self.speed = speed
+        # The variable self.state represents the current FSM state
+        self.state = 0
+        self.pepper = pepperInstance
+        self.waveAngle = waveAngle
+
+        state = namedtuple(
+            'state', ['jointName', 'targetDegree', 'speed', 'nextState', 'threshold'])
+
+
+        self.fsm = [
+            # Set the right shoulder in default position
+            state(jointName="HeadYaw", targetDegree=90,
+                  speed=1, nextState=1, threshold=1e-2),
+            # Moves the arm to right direction rotating the shoulder
+            state(jointName="HeadYaw", targetDegree=-90, speed=1, nextState=1, threshold=1e-2),
+            # Flip the arm facing upward
+        ]
+
+        
+    def execute_state(self, state):
+        # Setting the desired joint angle
+        target = self.degtorad(state.targetDegree)
+        # Error between the desired joint angle and the actual one
+        error = abs(self.pepper.getAnglesPosition(state.jointName) - target)
+
+        # If the error is small enough, then execute the state transition
+        if error < state.threshold:
+            self.state = state.nextState
+        else:
+            # Otherwise issue the command
+            self.pepper.setAngles(state.jointName, target, state.speed)
+            
+    def degtorad(self, x):
+        return x*pi/180
+    
+    def __call__(self, execTime):
+        beginTime = time.time()
+        while time.time() - beginTime < execTime:
+            self.execute_state(self.fsm[self.state])
+
+        # Finally go back to the base configuration again
+        self.pepper.goToPosture("StandInit", 1.)
+        self.state = 0
 
 class WavingSkill():
 
@@ -227,6 +292,7 @@ class BehaviorRealizer():
         self.theLookAtRelativePointSkill = LookAtRelativePointSkill(pepper)
         self.theNodeSkill = NodSkill(pepper)
         self.thePoseSkill = PoseSkill(pepper)
+        self.theShakeHeadSkill = ShakeHeadSkill(pepper)
         self.pepper = pepper
 
     def say(self, text):
@@ -236,14 +302,15 @@ class BehaviorRealizer():
         self.theWavingSkill(execTime)
 
     def cross(self, execTime=5):
-        joint_angles = {
-            "RShoulderPitch": -90, 
-            "LShoulderPitch": -90,
-            "RElbowRoll": 90,
-            "LElbowRoll": -90,
-        }
-        self.thePoseSkill(joint_angles, execTime)
-
+        #joint_angles = {
+           
+            #"RShoulderPitch": -90, 
+            #"LShoulderPitch": -90,
+            #"RElbowRoll": 90,
+            #"LElbowRoll": -90,
+        #}
+        #self.thePoseSkill(joint_angles, execTime)
+        self.theShakeHeadSkill(execTime)
     def lookAtRelativePoint(self, x, y, z, execTime=5):
         self.theLookAtRelativePointSkill(x, y, z, execTime)
 

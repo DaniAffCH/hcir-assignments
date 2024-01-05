@@ -65,7 +65,7 @@ class Speech(BehaviourClass):
 
 class Gaze(BehaviourClass):
     def routine(self, atomicBehaviour):
-        self.behaviourRealizer.lookAtRelativePoint(50,0,20,atomicBehaviour["end"] - atomicBehaviour["start"])
+        self.behaviourRealizer.lookAtRelativePoint(50,-40,10,atomicBehaviour["end"] - atomicBehaviour["start"])
 
 class Head(BehaviourClass):
     def routine(self, atomicBehaviour):
