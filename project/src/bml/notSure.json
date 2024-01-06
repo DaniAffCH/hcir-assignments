@@ -1,10 +1,10 @@
-
 {
     "bml": {
         "xmlns": "custombml-1.0",
         "character": "Pepper",
-        "id": "sayGesture",
+        "id": "notSure",
         "behaviours": {
+
             "gaze": [{
                 "id": "g1",
                 "start": 0,
@@ -19,11 +19,12 @@
                     "text": "{text}"
                 }
             ],
+         
             "gesture": [
                 {
-                    "id":"talkingPos",
+                    "id":"notSure",
                     "start": 0,
-                    "end": 7
+                    "end": 3
                 }
             ]
         }

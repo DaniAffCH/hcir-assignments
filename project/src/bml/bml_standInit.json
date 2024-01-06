@@ -15,7 +15,7 @@
             "gaze": [{
                 "id": "g1",
                 "start": 0,
-                "end": 14,
+                "end": 1,
                 "target": "human"
             }]
         }

@@ -1,31 +1,24 @@
-
 {
     "bml": {
         "xmlns": "custombml-1.0",
         "character": "Pepper",
-        "id": "sayGesture",
+        "id": "plainPose",
         "behaviours": {
+
             "gaze": [{
                 "id": "g1",
                 "start": 0,
                 "end": 3,
                 "target": "human"
             }],
-            "speech": [
-                {
-                    "id": "s1",
-                    "start": 0,
-                    "end" : 3,
-                    "text": "{text}"
-                }
-            ],
             "gesture": [
                 {
-                    "id":"talkingPos",
+                    "id":"plainPose",
                     "start": 0,
                     "end": 7
                 }
             ]
+
         }
     }
 }

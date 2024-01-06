@@ -35,6 +35,7 @@ class RecognitionFSM():
                 self.thePepperCoordinator.addRequest("sayGesture", {"text": f"Hi! I'm Pepper. Let's see if I can recognize you!"})
                 self.state = 1
             case 1:
+               # self.thePepperCoordinator.addRequest("plain")
                 if self.ts is None:
                     self.faceDetections = list()
                     self.ts = time.time()
@@ -52,6 +53,7 @@ class RecognitionFSM():
                     self.state = 2
             
             case 2:
+           #     self.thePepperCoordinator.addRequest("plain")
                 # threshold based on statistical analysis
                 l = len(self.faceDetections)
                 pd = self.faceDetections.count(FaceClasses.DANIELE) 
@@ -75,6 +77,7 @@ class RecognitionFSM():
             case 3:
                 user = 'Daniele' if self.userDetected == FaceClasses.DANIELE else 'Klara'
                 self.thePepperCoordinator.addRequest("say", {"text": f"I'm not sure about who you are. Are you {user}?"})
+                
                 sentiment, sentence = self.thePepperCoordinator.speechRecognition.listenAndGetSentiment()
                 if sentiment == "no" or sentiment is None:
                     self.userDetected = None
@@ -85,13 +88,13 @@ class RecognitionFSM():
 
             case 4:
                 user = 'Daniele' if self.userDetected == FaceClasses.DANIELE else 'Klara'
-                self.thePepperCoordinator.addRequest("hello", {"name": user})
+                self.thePepperCoordinator.addRequest("sayGesture", {"name": user})
                 self.state = 5 #DEAD STATE
                 self.thePepperCoordinator.setState(PepperStates.CONVERSATION)
 
             case 5:
                 self.thePepperCoordinator.addRequest("agreeGesture", {"text": f"I could not detect a face."})
-                self.thePepperCoordinator.addRequest("notOk")
+                self.thePepperCoordinator.addRequest("notSure", {"text": f"Sorry, let's try again."})
                 self.state = 1
 
 class ConversationFSM():
@@ -117,6 +120,7 @@ class ConversationFSM():
                
             case 1:
                 self.state = 0
+                self.thePepperCoordinator.addRequest("agreeGesture", {"text": answ})
                 self.thePepperCoordinator.setState(PepperStates.INFERENCE)
 
 
@@ -143,13 +147,13 @@ class InferenceFSM():
                 else:
                     dormText = str(self.sortedPreferences[0][0])
                     print(self.sortedPreferences[0])
-                    self.thePepperCoordinator.addRequest("sayGesture", {"text": f"{dormText}. Are you satisfied with this dorm?"})
+                    self.thePepperCoordinator.addRequest("agreeGesture", {"text": f"{dormText}. Are you satisfied with this dorm?"})
                     sentiment, _ = self.thePepperCoordinator.speechRecognition.listenAndGetSentiment()
                     if sentiment == "yes":
                         self.state = 0
                         self.thePepperCoordinator.setState(PepperStates.FAREWELL)
                     else:
-                        self.thePepperCoordinator.addRequest("sayGesture", {"text": f"Ok, I can find an alternative"})
+                        self.thePepperCoordinator.addRequest("notSure", {"text": f"Okay, I can find an alternative"})
                         self.sortedPreferences.pop(0)
 
 
@@ -161,7 +165,7 @@ class FarewellFSM():
     def __call__(self) -> Any:
         match self.state:
             case 0:
-                self.thePepperCoordinator.addRequest("sayGesture", {"text": f"Can I help you with something else?"})
+                self.thePepperCoordinator.addRequest("agreeGesture", {"text": f"Can I help you with something else?"})
                 sentiment, _ = self.thePepperCoordinator.speechRecognition.listenAndGetSentiment()
                 if sentiment == "yes":
                     self.thePepperCoordinator.setState(PepperStates.CONVERSATION)
