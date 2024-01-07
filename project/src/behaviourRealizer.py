@@ -6,7 +6,7 @@ import tempfile
 from collections import namedtuple
 from qibullet.robot_posture import RobotPosture
 from math import pi, atan2, sin
-
+import random
 class PoseSkill():
 
     """
@@ -317,8 +317,7 @@ class BehaviorRealizer():
         self.thePoseSkill(joint_angles, execTime)
         self.theGoToPostureSkill("lookUser",0.8)
 
-
-    def talkingPose(self, execTime=5):
+    def openArmPose(self, execTime=5):
         joint_angles = {
             "HeadYaw" : -40,
             "RShoulderPitch": 90, 
@@ -332,7 +331,13 @@ class BehaviorRealizer():
         }
         self.thePoseSkill(joint_angles, execTime)
         self.theGoToPostureSkill("lookUser",0.8)
-        
+
+
+    def talkingPose(self, execTime=5):
+        possibleGestures = [self.openArmPose, self.agreeGesture]
+        idx = random.randint(0, len(possibleGestures)-1)
+        possibleGestures[idx](execTime)
+
 
     def agreeGesture(self, execTime=5):
         joint_angles = {
