@@ -51,36 +51,36 @@ class InferenceEngine:
         bn.cpt(is_social)[{"pay_more_for_own_flat": "True", "shared_common_space": "False"}] = [0.9, 0.1]
         bn.cpt(is_social)[{"pay_more_for_own_flat": "False", "shared_common_space": "True"}] = [0.1, 0.9]
         
-        bn.cpt(loc_pref)[{"expensive": "True","uni_location": "University of Bonn", "is_social": "True"}] = [0.8, 0.1, 0.1]
-        bn.cpt(loc_pref)[{"expensive": "False","uni_location": "HBRS in Sankt Augustin", "is_social": "False"}] = [0.1, 0.1, 0.8]
-        bn.cpt(loc_pref)[{"expensive": "True","uni_location": "HBRS in Rheinbach", "is_social": "True"}] = [0.1, 0.1, 0.8]
-        bn.cpt(loc_pref)[{"expensive": "False","uni_location": "University of Bonn", "is_social": "False"}] = [0.1, 0.8, 0.1]
-        bn.cpt(loc_pref)[{"expensive": "True","uni_location": "HBRS in Sankt Augustin", "is_social": "True"}] = [0.1, 0.8, 0.1]
-        bn.cpt(loc_pref)[{"expensive": "False","uni_location": "HBRS in Rheinbach", "is_social": "False"}] = [0.8, 0.1, 0.1]
-        bn.cpt(loc_pref)[{"expensive": "False","uni_location": "University of Bonn", "is_social": "True"}] = [0.8, 0.1, 0.1]
-        bn.cpt(loc_pref)[{"expensive": "True","uni_location": "HBRS in Sankt Augustin", "is_social": "False"}] = [0.1, 0.1, 0.8]
-        bn.cpt(loc_pref)[{"expensive": "True","uni_location": "HBRS in Rheinbach", "is_social": "False"}] = [0.8, 0.1, 0.1]
-        bn.cpt(loc_pref)[{"expensive": "True","uni_location": "University of Bonn", "is_social": "False"}] = [0.1, 0.8, 0.1]
-        bn.cpt(loc_pref)[{"expensive": "False","uni_location": "HBRS in Sankt Augustin", "is_social": "True"}] = [0.1, 0.8, 0.1]
-        bn.cpt(loc_pref)[{"expensive": "False","uni_location": "HBRS in Rheinbach", "is_social": "True"}] = [0.1, 0.1, 0.8]
-           
-        bn.cpt(self.student_dorm)[{"expensive": "True", "location_preference": "Bonn","is_social": "True" }] = [0.1, 0.1, 0.1, 0.1, 0.1, 0.5]
-        bn.cpt(self.student_dorm)[{"expensive": "True", "location_preference": "Bonn","is_social": "False" }] = [0.1, 0.1, 0.1, 0.1, 0.5, 0.1]
-        bn.cpt(self.student_dorm)[{"expensive": "True", "location_preference": "Rheinbach","is_social": "True" }] = [0.1, 0.1, 0.1, 0.1, 0.1, 0.5]
-        bn.cpt(self.student_dorm)[{"expensive": "True", "location_preference": "Rheinbach","is_social": "False" }] = [0.1, 0.1, 0.1, 0.5, 0.1, 0.1]
-        bn.cpt(self.student_dorm)[{"expensive": "True", "location_preference": "Sankt Augustin","is_social": "False" }] = [0.1, 0.1, 0.1, 0.1, 0.1, 0.5]
-        bn.cpt(self.student_dorm)[{"expensive": "True", "location_preference": "Sankt Augustin","is_social": "True" }] = [0.1, 0.1, 0.5, 0.1, 0.1, 0.1]
-       
-        bn.cpt(self.student_dorm)[{"expensive": "False", "location_preference": "Bonn","is_social": "False" }] = [0.1, 0.1, 0.1, 0.5, 0.1, 0.1]
-        bn.cpt(self.student_dorm)[{"expensive": "False", "location_preference": "Bonn","is_social": "True"}] = [0.1, 0.1, 0.1, 0.1, 0.1, 0.5]
-        bn.cpt(self.student_dorm)[{"expensive": "False", "location_preference": "Sankt Augustin","is_social": "False" }] = [0.1, 0.1, 0.1, 0.1, 0.1, 0.5]  
-        bn.cpt(self.student_dorm)[{"expensive": "False", "location_preference": "Sankt Augustin","is_social": "True"}] = [0.1, 0.1, 0.1, 0.1, 0.5, 0.1]
-        bn.cpt(self.student_dorm)[{"expensive": "False", "location_preference": "Rheinbach","is_social": "False" }] = [0.1, 0.1, 0.1, 0.1, 0.1, 0.5]
-        bn.cpt(self.student_dorm)[{"expensive": "False", "location_preference": "Rheinbach","is_social": "True" }] = [0.1, 0.1, 0.1, 0.1, 0.5, 0.1]
+        bn.cpt(loc_pref)[{"expensive": "True", "uni_location": "University of Bonn", "is_social": "True"}] = [0.8, 0.1, 0.1]
+        bn.cpt(loc_pref)[{"expensive": "False", "uni_location": "HBRS in Sankt Augustin", "is_social": "False"}] = [0.1, 0.8, 0.1]
+        bn.cpt(loc_pref)[{"expensive": "True", "uni_location": "HBRS in Rheinbach", "is_social": "True"}] = [0.4, 0.0, 0.6]
+        bn.cpt(loc_pref)[{"expensive": "False", "uni_location": "University of Bonn", "is_social": "False"}] = [0.5, 0.25, 0.25]
+        bn.cpt(loc_pref)[{"expensive": "True", "uni_location": "HBRS in Sankt Augustin", "is_social": "True"}] = [0.3, 0.7, 0.0]
+        bn.cpt(loc_pref)[{"expensive": "False", "uni_location": "HBRS in Rheinbach", "is_social": "False"}] = [0.1, 0.0, 0.9]
+        bn.cpt(loc_pref)[{"expensive": "False", "uni_location": "University of Bonn", "is_social": "True"}] = [0.8, 0.1, 0.1]
+        bn.cpt(loc_pref)[{"expensive": "True", "uni_location": "HBRS in Sankt Augustin", "is_social": "False"}] = [0.1, 0.9, 0.0]
+        bn.cpt(loc_pref)[{"expensive": "True", "uni_location": "HBRS in Rheinbach", "is_social": "False"}] = [0.1, 0.0, 0.9]
+        bn.cpt(loc_pref)[{"expensive": "True", "uni_location": "University of Bonn", "is_social": "False"}] = [0.8, 0.1, 0.1]
+        bn.cpt(loc_pref)[{"expensive": "False", "uni_location": "HBRS in Sankt Augustin", "is_social": "True"}] = [0.1, 0.8, 0.1]
+        bn.cpt(loc_pref)[{"expensive": "False", "uni_location": "HBRS in Rheinbach", "is_social": "True"}] = [0.1, 0.0, 0.9]
 
+        bn.cpt(self.student_dorm)[{"expensive": "True", "location_preference": "Bonn","is_social": "True" }] = [0.2, 0.6, 0.0, 0.1, 0.0, 0.1]
+        bn.cpt(self.student_dorm)[{"expensive": "True", "location_preference": "Bonn","is_social": "False" }] =  [0.6, 0.2, 0.1, 0.0, 0.1, 0.0]
+        bn.cpt(self.student_dorm)[{"expensive": "True", "location_preference": "Rheinbach","is_social": "True" }] = [0.0, 0.1, 0.0, 0.1, 0.2, 0.6]
+        bn.cpt(self.student_dorm)[{"expensive": "True", "location_preference": "Rheinbach","is_social": "False" }] = [0.1, 0.0, 0.1, 0.0, 0.6, 0.2]
+        bn.cpt(self.student_dorm)[{"expensive": "True", "location_preference": "Sankt Augustin","is_social": "False" }] = [0.1, 0.0, 0.6, 0.2, 0.1, 0.0]
+        bn.cpt(self.student_dorm)[{"expensive": "True", "location_preference": "Sankt Augustin","is_social": "True" }] = [0.0, 0.1, 0.2, 0.6, 0.0, 0.1]        
+
+        bn.cpt(self.student_dorm)[{"expensive": "False", "location_preference": "Bonn","is_social": "False" }] = [0.4, 0.4, 0.1, 0.0, 0.0, 0.1]
+        bn.cpt(self.student_dorm)[{"expensive": "False", "location_preference": "Bonn","is_social": "True"}] = [0.6, 0.2, 0.0, 0.1, 0.0, 0.1]
+        bn.cpt(self.student_dorm)[{"expensive": "False", "location_preference": "Sankt Augustin","is_social": "False" }] = [0.0, 0.1, 0.6, 0.2, 0.1, 0.0]  
+        bn.cpt(self.student_dorm)[{"expensive": "False", "location_preference": "Sankt Augustin","is_social": "True"}] = [0.1, 0.0, 0.2, 0.6, 0.0, 0.1]
+        bn.cpt(self.student_dorm)[{"expensive": "False", "location_preference": "Rheinbach","is_social": "False" }] = [0.0, 0.1, 0.1, 0.0, 0.6, 0.2]
+        bn.cpt(self.student_dorm)[{"expensive": "False", "location_preference": "Rheinbach","is_social": "True" }] = [0.1, 0.0, 0.0, 0.1, 0.2, 0.6]
         self.ie = gum.LazyPropagation(bn)
 
     def __call__(self, limited_budget: str, pay_more_for_own_flat: str, shared_common_space: str, uni_location:str):
+        print(f"{limited_budget=} {pay_more_for_own_flat=} {shared_common_space=} {uni_location=}")
         self.ie.setEvidence({'limited_budget': limited_budget, 'pay_more_for_own_flat': pay_more_for_own_flat, 'shared_common_space': shared_common_space, 'uni_location': uni_location})
         self.ie.makeInference()
         d = self.ie.posterior(self.student_dorm)

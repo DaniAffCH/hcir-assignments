@@ -4,23 +4,25 @@
         "character": "Pepper",
         "id": "hello",
         "behaviours": {
-            "gaze": [{
-                "id": "g1",
-                "start": 0,
-                "end": 4,
-                "target": "human"
-            }],
+            "gaze": [
+                {
+                    "id": "g1",
+                    "start": 0,
+                    "end": 4,
+                    "target": "human"
+                }
+            ],
             "speech": [
                 {
                     "id": "s1",
                     "start": 0,
-                    "end" : 4,
-                    "text": "Hello {name}! Nice to see you again"
+                    "end": 4,
+                    "text": "Hello {name}! Nice to see you again. How can I help you today?"
                 }
             ],
             "gesture": [
                 {
-                    "id":"wave",
+                    "id": "wave",
                     "start": 0,
                     "end": 6
                 }

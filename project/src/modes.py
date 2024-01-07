@@ -57,9 +57,7 @@ class Gesture(BehaviourClass):
         elif atomicBehaviour["id"] == "notSure":
             self.behaviourRealizer.notSure(atomicBehaviour["end"] - atomicBehaviour["start"])   
         elif atomicBehaviour["id"] == "agreeGesture":
-            self.behaviourRealizer.agreeGesture(atomicBehaviour["end"] - atomicBehaviour["start"])   
-        elif atomicBehaviour["id"] == "plainPose":
-            self.behaviourRealizer.plainPose(atomicBehaviour["end"] - atomicBehaviour["start"])
+            self.behaviourRealizer.agreeGesture(atomicBehaviour["end"] - atomicBehaviour["start"])
         else:
             raise Exception(f"[FATAL] id {atomicBehaviour['id']} is not valid for a Gesture")
 

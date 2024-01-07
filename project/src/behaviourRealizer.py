@@ -4,8 +4,9 @@ from pygame import mixer
 import time
 import tempfile
 from collections import namedtuple
-
+from qibullet.robot_posture import RobotPosture
 from math import pi, atan2, sin
+
 class PoseSkill():
 
     """
@@ -32,13 +33,13 @@ class PoseSkill():
     def degtorad(self, x):
         return x*pi/180
 
-    def __call__(self, poseDict, execTime) -> Any:
+    def __call__(self, poseDict, execTime, fromDegree=True) -> Any:
         beginTime = time.time()
         while time.time() - beginTime < execTime:
             # set every joint angle specified in the dictionary
             for k in poseDict:
-                self.pepper.setAngles(k, self.degtorad(poseDict[k]), 0.5)
-        self.pepper.goToPosture("StandInit", 0.5)
+                angle = self.degtorad(poseDict[k]) if fromDegree else poseDict[k]
+                self.pepper.setAngles(k, angle, 0.5)
 
 
 class NodSkill():
@@ -72,8 +73,6 @@ class NodSkill():
             # apply f(t)
             self.pepper.setAngles("HeadPitch", f(t), 1.)
 
-        self.pepper.goToPosture("StandZero", 0.5)
-
 
 class LookAtRelativePointSkill():
     """
@@ -104,9 +103,6 @@ class LookAtRelativePointSkill():
             # The minus in front of the z axis is because the reference frame axis points down.
             pitchAngle = atan2(-z, x)
             self.pepper.setAngles("HeadPitch", pitchAngle, 1.)
-
-        self.pepper.goToPosture("StandInit", 0.5)
-
 
 class WavingSkill():
 
@@ -193,8 +189,6 @@ class WavingSkill():
         while time.time() - beginTime < execTime:
             self.execute_state(self.fsm[self.state])
 
-        # Finally go back to the base configuration again
-        self.pepper.goToPosture("StandInit", 1.)
         self.state = 0
 class SaySkill():
     """
@@ -219,6 +213,43 @@ class SaySkill():
             sound.play()
             time.sleep(sound.get_length())
 
+    
+class GoToPostureSkill():
+    def __init__(self, pepper, thePoseSkill: PoseSkill) -> None:
+        self.frameworkPostures = [RobotPosture.STAND, RobotPosture.STAND_INIT, RobotPosture.STAND_ZERO, RobotPosture.CROUCH]
+        self.customPostures = {"lookUser":{ "HeadPitch":-0.21168947219848633,
+                                            "HeadYaw":-0.698,
+                                            "HipPitch":-0.026077747344970703,
+                                            "HipRoll":-0.004601955413818359,
+                                            "KneePitch":0,
+                                            "LElbowRoll":-0.5184855461120605,
+                                            "LElbowYaw":-1.2179806232452393,
+                                            "LHand":0.5896309614181519,
+                                            "LShoulderPitch":1.5800002813339233,
+                                            "LShoulderRoll":0.11658263206481934,
+                                            "LWristYaw":-0.03072190284729004,
+                                            "RElbowRoll":0.5184855461120605,
+                                            "RElbowYaw":1.225650668144226,
+                                            "RHand":0.5887521505355835,
+                                            "RShoulderPitch":1.5800001621246338,
+                                            "RShoulderRoll":-0.11504864692687988,
+                                            "RWristYaw":0.027570009231567383
+                                        },
+                                }
+        self.pepper = pepper
+        self.thePoseSkill = thePoseSkill
+
+    def __call__(self, postureName:str, velocity) -> Any:
+        if postureName in self.frameworkPostures:
+            self.pepper.goToPosture(postureName, velocity)
+        elif postureName in self.customPostures:
+            execTime = 1.2 - velocity 
+            self.thePoseSkill(self.customPostures[postureName], execTime, False)
+        else:
+            raise Exception(f"[FATAL] {postureName} is not a valid posture")
+                
+
+
 class BehaviorRealizer():
 
     def __init__(self, pepper):
@@ -227,6 +258,7 @@ class BehaviorRealizer():
         self.theLookAtRelativePointSkill = LookAtRelativePointSkill(pepper)
         self.theNodeSkill = NodSkill(pepper)
         self.thePoseSkill = PoseSkill(pepper)
+        self.theGoToPostureSkill = GoToPostureSkill(pepper, self.thePoseSkill)
         self.pepper = pepper
 
     def say(self, text):
@@ -234,6 +266,7 @@ class BehaviorRealizer():
 
     def waving(self, execTime=5):
         self.theWavingSkill(execTime)
+        self.theGoToPostureSkill("lookUser",0.8)
 
     def cross(self, execTime=5):
         joint_angles = {
@@ -244,12 +277,15 @@ class BehaviorRealizer():
             "LElbowRoll": -90,
         }
         self.thePoseSkill(joint_angles, execTime)
+        self.theGoToPostureSkill("lookUser",0.8)
 
     def lookAtRelativePoint(self, x, y, z, execTime=5):
         self.theLookAtRelativePointSkill(x, y, z, execTime)
 
     def nod(self, execTime=5):
         self.theNodeSkill(execTime)
+        self.theGoToPostureSkill("lookUser",0.8)
+
 
     def happySwirl(self, execTime=5):
         joint_angles = {
@@ -259,9 +295,10 @@ class BehaviorRealizer():
             "RShoulderPitch": -90.0,
         }
         self.thePoseSkill(joint_angles, execTime)
+        self.theGoToPostureSkill("lookUser",0.8)
 
     def standInit(self):
-        self.pepper.goToPosture("StandInit", 0.5)
+        self.theGoToPostureSkill("StandInit",0.5)
 
     def notSure(self, execTime=3):
         joint_angles = {
@@ -278,6 +315,7 @@ class BehaviorRealizer():
             "RWristYaw": 80
         }
         self.thePoseSkill(joint_angles, execTime)
+        self.theGoToPostureSkill("lookUser",0.8)
 
 
     def talkingPose(self, execTime=5):
@@ -293,6 +331,8 @@ class BehaviorRealizer():
             "RWristYaw": 120
         }
         self.thePoseSkill(joint_angles, execTime)
+        self.theGoToPostureSkill("lookUser",0.8)
+        
 
     def agreeGesture(self, execTime=5):
         joint_angles = {
@@ -305,14 +345,4 @@ class BehaviorRealizer():
             "LShoulderPitch": 100
         }
         self.thePoseSkill(joint_angles, execTime)
-    
-    def plainPose(self, execTime=5):
-        joint_angles = {
-            "HeadYaw" : -40,
-            "RShoulderPitch": 70,
-            "LShoulderPitch": 70, 
-            "RElbowYaw": 120,
-            "RWristYaw": 70,
-
-        }
-        self.thePoseSkill(joint_angles, execTime)
+        self.theGoToPostureSkill("lookUser",0.8)
