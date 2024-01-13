@@ -9,7 +9,7 @@ class InferenceEngine:
         dorm_1 = Dorms("Bismarkstrasse", "Bismarkstrasse 4", "Bonn", "46 Single room in shared flat and 8 Double-Apartments", "from 289 to 436 euros for s Single room and from 507 to 812 euros for a Double-Apartement")
         dorm_2 = Dorms("Drussusstrasse", "Drussusstrasse 17", "Bonn", "73 Apartements", "from 245 to 642 euros")
         dorm_3 = Dorms("Europaring", "Europaring 2", "Sankt Augustin", "49 Apartements", "from 346 to 493 euros")
-        dorm_4 = Dorms("StuHaus", "StuHaus", "Sankt Augustin", "106 Double or Shared Apartments and 60 Single Apartments", "from 395 to 413 euros for a Double Apartment and from 493 to 496 euros for a Single Apartment")
+        dorm_4 = Dorms("StuHaus", "StuHaus", "Sankt Augustin", "106 Double or Shared Apartments and 60 Single Apartments", "400 euros for a Double Apartment and 490 euros for a Single Apartment")
         dorm_5 = Dorms("Keramikerstrasse", "Keramikerstrasse 38", "Rheinbach", "30 Apartments ", "from 336 to 472 euros")
         dorm_6 = Dorms("Wg_gesucht", "Wg_gesucht", "Rheinbach", "Single room in shared flat", "from 400 to 500 euros" )
 
