@@ -66,7 +66,7 @@ class NodSkill():
         beginTime = time.time()
 
         # sinusoidal trajectory for the head pitch
-        def f(t): return -pi/4*sin(2*pi*t/execTime)
+        def f(t): return -pi/8*sin(2*pi*t/execTime)
 
         while time.time() - beginTime < execTime:
             t = time.time() - beginTime

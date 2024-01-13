@@ -10,6 +10,8 @@ from inferenceEngine import InferenceEngine
 from rasaInterface import RasaInterface
 import numpy as np
 
+import random
+
 # Main Idea: every state has a FSM associated 
 class RecognitionFSM():
     def __init__(self, thePepperCoordinator) -> None:
@@ -28,6 +30,7 @@ class RecognitionFSM():
             img = cv2.putText(img, classification.name, (int(box[0]), int(box[1]) - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 0, 0), 2)
         cv2.imshow("Detection", img)
         cv2.waitKey(1)
+
 
     def __call__(self) -> Any:
         match self.state:
@@ -60,11 +63,11 @@ class RecognitionFSM():
 
                 m = max([pd, pk, pu])
                 
-                if m == pd:
+                if m == pd and pd > 5:
                     self.userDetected = FaceClasses.DANIELE
                     self.state = 4 if pd/l > self.detectionThreshold else 3
 
-                elif m == pk:
+                elif m == pk and pk > 5:
                     self.userDetected = FaceClasses.KLARA
                     self.state = 4 if pk/l > self.detectionThreshold else 3
 
