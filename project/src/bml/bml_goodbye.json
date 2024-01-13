@@ -17,11 +17,11 @@
                     "id": "s1",
                     "start": 0,
                     "end": 5,
-                    "text": "It was nice meeting you!"
+                    "text": "It was nice meeting you! Good luck with your choice!"
                 },
                 {
                     "id": "s2",
-                    "start": 7,
+                    "start": 6,
                     "end": 10,
                     "text": "Goodbye!"
                 }

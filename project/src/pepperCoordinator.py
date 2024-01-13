@@ -35,7 +35,7 @@ class RecognitionFSM():
     def __call__(self) -> Any:
         match self.state:
             case 0:
-                self.thePepperCoordinator.addRequest("sayGesture", {"text": f"Hi! I'm Pepper a virtual assistant. Let's see if I can recognize you!"})
+                self.thePepperCoordinator.addRequest("sayGesture", {"text": f"Hi! My name is dorm buddy and I can help students to find a dorm. Let's see if I can recognize you!"})
                 self.state = 1
             case 1:
                 if self.ts is None:
@@ -147,13 +147,14 @@ class InferenceFSM():
                 else:
                     dormText = str(self.sortedPreferences[0][0])
                     print(self.sortedPreferences[0])
-                    self.thePepperCoordinator.addRequest("agreeGesture", {"text": f"{dormText}. Are you satisfied with this dorm?"})
+                    self.thePepperCoordinator.addRequest("agreeGesture", {"text": {dormText}})
+                    self.thePepperCoordinator.addRequest("sayGesture", {"text":"Are you satisfied with this dorm?"})
                     sentiment, _ = self.thePepperCoordinator.speechRecognition.listenAndGetSentiment()
                     if sentiment == "yes":
                         self.state = 0
                         self.thePepperCoordinator.setState(PepperStates.FAREWELL)
                     else:
-                        self.thePepperCoordinator.addRequest("notSure", {"text": f"Okay, I can find an alternative"})
+                        self.thePepperCoordinator.addRequest("notSure", {"text": f"Okay, no problem. I will find an alternative for you!"})
                         self.sortedPreferences.pop(0)
 
 
