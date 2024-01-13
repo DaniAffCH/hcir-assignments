@@ -10,8 +10,6 @@ from inferenceEngine import InferenceEngine
 from rasaInterface import RasaInterface
 import numpy as np
 
-import random
-
 # Main Idea: every state has a FSM associated 
 class RecognitionFSM():
     def __init__(self, thePepperCoordinator) -> None:
@@ -108,7 +106,7 @@ class ConversationFSM():
         match self.state:
             case 0:
                 # General conversation!
-                waitingTime = 4 if self.shortAnsExpected else 7
+                waitingTime = 4 if self.shortAnsExpected else 6
                 sentence = self.thePepperCoordinator.speechRecognition.listen(waitingTime)
                 answ = self.thePepperCoordinator.conversationEngine(sentence, verbose=True)
                 self.thePepperCoordinator.addRequest("sayGesture", {"text": answ})
