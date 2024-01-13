@@ -147,8 +147,7 @@ class InferenceFSM():
                 else:
                     dormText = str(self.sortedPreferences[0][0])
                     print(self.sortedPreferences[0])
-                    self.thePepperCoordinator.addRequest("agreeGesture", {"text": {dormText}})
-                    self.thePepperCoordinator.addRequest("sayGesture", {"text":"Are you satisfied with this dorm?"})
+                    self.thePepperCoordinator.addRequest("agreeGesture", {"text": f"I found something for you! How about {dormText}. Are you satisfied with this dorm?"})
                     sentiment, _ = self.thePepperCoordinator.speechRecognition.listenAndGetSentiment()
                     if sentiment == "yes":
                         self.state = 0
