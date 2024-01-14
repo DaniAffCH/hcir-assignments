@@ -1,0 +1,57 @@
+{
+  "lookup": {
+    "rules": {
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"bad_word\"}}]": "utter_bad_word",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"bad_word\"}}, {\"prev_action\": {\"action_name\": \"utter_bad_word\"}, \"user\": {\"intent\": \"bad_word\"}}]": "action_listen",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"help_to_find_dorm\"}}]": "utter_help_dorm",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"help_to_find_dorm\"}}, {\"prev_action\": {\"action_name\": \"utter_help_dorm\"}, \"user\": {\"intent\": \"help_to_find_dorm\"}}]": "dorm_form",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"help_to_find_dorm\"}}, {\"prev_action\": {\"action_name\": \"utter_help_dorm\"}, \"user\": {\"intent\": \"help_to_find_dorm\"}}, {\"active_loop\": {\"name\": \"dorm_form\"}, \"prev_action\": {\"action_name\": \"dorm_form\"}, \"user\": {\"intent\": \"help_to_find_dorm\"}}]": "action_listen",
+      "[{\"active_loop\": {\"name\": \"should_not_be_set\"}, \"prev_action\": {\"action_name\": \"dorm_form\"}}]": "utter_submit",
+      "[{\"active_loop\": {\"name\": \"should_not_be_set\"}, \"prev_action\": {\"action_name\": \"dorm_form\"}}, {\"active_loop\": {\"name\": \"should_not_be_set\"}, \"prev_action\": {\"action_name\": \"utter_submit\"}}]": "action_listen",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"bot_challenge\"}}]": "utter_iamabot",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"bot_challenge\"}}, {\"prev_action\": {\"action_name\": \"utter_iamabot\"}, \"user\": {\"intent\": \"bot_challenge\"}}]": "action_listen",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"thanks\"}}]": "utter_thanks",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"thanks\"}}, {\"prev_action\": {\"action_name\": \"utter_thanks\"}, \"user\": {\"intent\": \"thanks\"}}]": "action_listen",
+      "[{\"active_loop\": {\"name\": \"dorm_form\"}, \"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"thanks\"}}]": "utter_thanks",
+      "[{\"active_loop\": {\"name\": \"dorm_form\"}, \"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"thanks\"}}, {\"active_loop\": {\"name\": \"dorm_form\"}, \"prev_action\": {\"action_name\": \"utter_thanks\"}, \"user\": {\"intent\": \"thanks\"}}]": "dorm_form",
+      "[{\"active_loop\": {\"name\": \"dorm_form\"}, \"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"thanks\"}}, {\"active_loop\": {\"name\": \"dorm_form\"}, \"prev_action\": {\"action_name\": \"utter_thanks\"}, \"user\": {\"intent\": \"thanks\"}}, {\"active_loop\": {\"name\": \"dorm_form\"}, \"prev_action\": {\"action_name\": \"dorm_form\"}, \"user\": {\"intent\": \"thanks\"}}]": "action_listen",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"goodbye\"}}]": "utter_goodbye",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"goodbye\"}}, {\"prev_action\": {\"action_name\": \"utter_goodbye\"}, \"user\": {\"intent\": \"goodbye\"}}]": "action_listen",
+      "[{\"active_loop\": {\"name\": \"dorm_form\"}, \"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"bad_word\"}}]": "utter_bad_word",
+      "[{\"active_loop\": {\"name\": \"dorm_form\"}, \"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"bad_word\"}}, {\"active_loop\": {\"name\": \"dorm_form\"}, \"prev_action\": {\"action_name\": \"utter_bad_word\"}, \"user\": {\"intent\": \"bad_word\"}}]": "dorm_form",
+      "[{\"active_loop\": {\"name\": \"dorm_form\"}, \"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"bad_word\"}}, {\"active_loop\": {\"name\": \"dorm_form\"}, \"prev_action\": {\"action_name\": \"utter_bad_word\"}, \"user\": {\"intent\": \"bad_word\"}}, {\"active_loop\": {\"name\": \"dorm_form\"}, \"prev_action\": {\"action_name\": \"dorm_form\"}, \"user\": {\"intent\": \"bad_word\"}}]": "action_listen"
+    },
+    "rule_only_slots": [],
+    "rule_only_loops": [
+      "dorm_form"
+    ],
+    "rules_for_loop_unhappy_path": {
+      "[{\"prev_action\": {\"action_name\": \"utter_help_dorm\"}}, {\"active_loop\": {\"name\": \"dorm_form\"}, \"prev_action\": {\"action_name\": \"dorm_form\"}, \"user\": {\"intent\": \"help_to_find_dorm\"}}]": "do_not_predict_loop_action",
+      "[{\"prev_action\": {\"action_name\": \"utter_thanks\"}}, {\"active_loop\": {\"name\": \"dorm_form\"}, \"prev_action\": {\"action_name\": \"dorm_form\"}, \"user\": {\"intent\": \"thanks\"}}]": "do_not_predict_loop_action",
+      "[{\"prev_action\": {\"action_name\": \"utter_bad_word\"}}, {\"active_loop\": {\"name\": \"dorm_form\"}, \"prev_action\": {\"action_name\": \"dorm_form\"}, \"user\": {\"intent\": \"bad_word\"}}]": "do_not_predict_loop_action"
+    },
+    "rules_not_in_stories": [
+      "handling active loops and forms - dorm_form - action_listen",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"thanks\"}}]",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"bot_challenge\"}}]",
+      "predicting default action with intent back",
+      "[{\"active_loop\": {\"name\": \"dorm_form\"}, \"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"bad_word\"}}, {\"active_loop\": {\"name\": \"dorm_form\"}, \"prev_action\": {\"action_name\": \"utter_bad_word\"}, \"user\": {\"intent\": \"bad_word\"}}]",
+      "[{\"active_loop\": {\"name\": \"should_not_be_set\"}, \"prev_action\": {\"action_name\": \"dorm_form\"}}, {\"active_loop\": {\"name\": \"should_not_be_set\"}, \"prev_action\": {\"action_name\": \"utter_submit\"}}]",
+      "predicting default action with intent session_start",
+      "handling active loops and forms - dorm_form",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"thanks\"}}, {\"prev_action\": {\"action_name\": \"utter_thanks\"}, \"user\": {\"intent\": \"thanks\"}}]",
+      "predicting default action with intent restart",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"bad_word\"}}]",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"help_to_find_dorm\"}}, {\"prev_action\": {\"action_name\": \"utter_help_dorm\"}, \"user\": {\"intent\": \"help_to_find_dorm\"}}]",
+      "[{\"active_loop\": {\"name\": \"should_not_be_set\"}, \"prev_action\": {\"action_name\": \"dorm_form\"}}]",
+      "[{\"active_loop\": {\"name\": \"dorm_form\"}, \"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"thanks\"}}]",
+      "[{\"active_loop\": {\"name\": \"dorm_form\"}, \"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"thanks\"}}, {\"active_loop\": {\"name\": \"dorm_form\"}, \"prev_action\": {\"action_name\": \"utter_thanks\"}, \"user\": {\"intent\": \"thanks\"}}]",
+      "[{\"active_loop\": {\"name\": \"dorm_form\"}, \"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"bad_word\"}}]",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"help_to_find_dorm\"}}]",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"goodbye\"}}, {\"prev_action\": {\"action_name\": \"utter_goodbye\"}, \"user\": {\"intent\": \"goodbye\"}}]",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"bot_challenge\"}}, {\"prev_action\": {\"action_name\": \"utter_iamabot\"}, \"user\": {\"intent\": \"bot_challenge\"}}]",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"bad_word\"}}, {\"prev_action\": {\"action_name\": \"utter_bad_word\"}, \"user\": {\"intent\": \"bad_word\"}}]",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"goodbye\"}}]"
+    ]
+  }
+}

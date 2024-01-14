@@ -18,9 +18,8 @@ nlu:
     - yo
     - hello world
     - hi there
-- intent: goodbye
+- intent: goodbye 
   examples: |
-    - cu
     - good by
     - cee you later
     - good night
@@ -189,6 +188,9 @@ nlu:
     - Number 2.
     - 2
     - 2.
+    - too
+    - Too
+    - Too.
 
 - intent: three
   examples: |
@@ -214,3 +216,11 @@ nlu:
     - Can you help me?
     - I want to find a dorm. Can you help me?
     - Can you give me an advice finding a dorm?
+
+- intent: thanks
+  examples: |
+    - Thank you!
+    - Thank you
+    - Thanks
+    - Thank you.
+    - Thanks.

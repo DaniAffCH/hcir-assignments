@@ -17,7 +17,7 @@ intents:
 - bot_challenge
 - request_dorm_form
 - bad_word
-
+- thanks
 slots:
 
   limited_budget:
@@ -132,6 +132,8 @@ responses:
   - text: "At which uni location are you studying? Say one for University of Bonn; Say two for HBRS in Sankt Augustin; or say three for HBRS in Rheinbach?"
   utter_help_dorm:
   - text: "Of course I am glad to help you. To find the best dorm for you, I have to ask you some questions. First of all"
+  utter_thanks:
+  - text: "I'm here to help you!"
 actions:
 - utter_ask_continue
 - utter_goodbye

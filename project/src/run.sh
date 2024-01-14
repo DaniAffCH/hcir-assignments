@@ -9,7 +9,7 @@ if [ -n "$pastPid" ]; then
     echo "KILLING THE PREVIOUS ACTION RASA PROCESS $pastPid"
     kill $pastPid
 fi
-model="20240103-120330-unary-novella.tar.gz"
+model="20240114-125809-sunny-hyperparameter.tar.gz"
 cd rasa
 rasa run actions &
 cd ..

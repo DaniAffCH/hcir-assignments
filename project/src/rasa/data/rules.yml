@@ -34,6 +34,11 @@ rules:
     - requested_slot: null
   - action: utter_submit
 
+- rule: Thanks or no voice 
+  steps:
+  - intent: thanks
+  - action: utter_thanks
+
 - rule: Interruption in Dorm Form
   condition:
   # Condition that form is active.
@@ -45,3 +50,16 @@ rules:
   # Return to form after handling the `bad_word` intent
   - action: dorm_form
   - active_loop: dorm_form
+
+- rule: No speak or thankies in Dorm Form
+  condition:
+  # Condition that form is active.
+  - active_loop: dorm_form
+  steps:
+  # This unhappy path handles the case of an interrupt.
+  - intent: thanks
+  - action: utter_thanks
+  # Return to form after handling the `thanks` intent
+  - action: dorm_form
+  - active_loop: dorm_form
+
