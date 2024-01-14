@@ -2,6 +2,8 @@ import pyAgrum as gum
 #import pyAgrum.lib.notebook as gnb
 from utils_ import Dorms
 
+# The `InferenceEngine` class is a Bayesian network that helps determine the best student dormitory
+# based on various factors.
 class InferenceEngine:
     
     def __init__(self):

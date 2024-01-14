@@ -11,6 +11,9 @@ from rasaInterface import RasaInterface
 import numpy as np
 
 # Main Idea: every state has a FSM associated 
+
+# The `RecognitionFSM` class is a Finite State Machine that handles the recognition process for
+# identifying users based on their faces.
 class RecognitionFSM():
     def __init__(self, thePepperCoordinator) -> None:
         self.state = 0
@@ -96,6 +99,8 @@ class RecognitionFSM():
                 self.thePepperCoordinator.addRequest("notSure", {"text": f"Let's try again."})
                 self.state = 1
 
+# The ConversationFSM class is a state machine that manages the conversation flow between a Pepper
+# robot and a user, using speech recognition and a conversation engine.
 class ConversationFSM():
     def __init__(self, thePepperCoordinator) -> None:
         self.state = 0
@@ -122,6 +127,8 @@ class ConversationFSM():
                 self.thePepperCoordinator.setState(PepperStates.INFERENCE)
 
 
+# The `InferenceFSM` class is a finite state machine that handles the inference process for suggesting
+# dormitories based on user preferences.
 class InferenceFSM():
     def __init__(self, thePepperCoordinator) -> None:
         self.state = 0
@@ -155,6 +162,8 @@ class InferenceFSM():
                         self.sortedPreferences.pop(0)
 
 
+# The FarewellFSM class represents a finite state machine that handles the farewell process in a
+# conversation with a Pepper robot.
 class FarewellFSM():
     def __init__(self, thePepperCoordinator) -> None:
         self.state = 0
@@ -173,6 +182,8 @@ class FarewellFSM():
                 self.thePepperCoordinator.addRequest("bml_goodbye")
                 self.state = 2 # DEAD STATE FOREVER
 
+# The PepperCoordinator class is responsible for managing the state and functionality of a Pepper
+# robot, including loading necessary components and handling requests.
 class PepperCoordinator():
     def __init__(self, pepper) -> None:
 

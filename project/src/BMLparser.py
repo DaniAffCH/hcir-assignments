@@ -4,6 +4,10 @@ import json
 import os
 
 BML_PATH = "bml"
+
+# The Parser class is responsible for parsing and processing BML files, including
+# performing sanity checks, sorting behaviours, filling templates, and coordinating
+# the execution of behaviours.
 class Parser():
     def __init__(self, pepper) -> None:
         self.modeCoordinator = Coordinator(self, pepper)
