@@ -214,6 +214,8 @@ class SaySkill():
             time.sleep(sound.get_length())
 
     
+# The `GoToPostureSkill` class is a Python class that allows a Pepper robot to go to predefined
+# postures or custom postures.
 class GoToPostureSkill():
     def __init__(self, pepper, thePoseSkill: PoseSkill) -> None:
         self.frameworkPostures = [RobotPosture.STAND, RobotPosture.STAND_INIT, RobotPosture.STAND_ZERO, RobotPosture.CROUCH]
@@ -249,6 +251,9 @@ class GoToPostureSkill():
             raise Exception(f"[FATAL] {postureName} is not a valid posture")
                 
 
+# The BehaviorRealizer class defines various behaviors for a Pepper robot, such as waving, crossing
+# arms, looking at a relative point, nodding, performing a happy swirl, standing in an initial
+# position, expressing uncertainty, opening arms, and performing a talking pose or an agree gesture.
 
 class BehaviorRealizer():
 

@@ -1,6 +1,8 @@
 from filter.filter import BadWordsFilter
 from rasaInterface import RasaInterface
 
+# The ConversationEngine class handles user input, filters out bad words,
+# interacts with the RasaInterface, and provides a response.
 class ConversationEngine():
     def __init__(self) -> None:
         self.badWordsDetector = BadWordsFilter("filter/GoogleNews-vectors-negative300.bin")
